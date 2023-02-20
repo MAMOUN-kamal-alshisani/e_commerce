@@ -1,0 +1,40 @@
+@import "../../../scss_variables/variables";
+
+.header_card_container {
+  z-index: 1;
+  bottom: -111px;
+  left: 0;
+  right: 0;
+  position: absolute;
+  margin-bottom: 10px;
+  .all_header_cards {
+    @include flex(flex, space-around, nowrap, row);
+
+    .headerCard_div {
+      @include flex(flex, unset, nowrap, column);
+      width: 290px;
+      height: 250px;
+      background-color: rgba(255, 255, 255, 0.772);
+border-radius: 6px;
+color:#673ab7;
+cursor: pointer;
+&:hover{
+
+    background-color:white;
+    transition: ease-in-out 1s;
+}
+      h3 {
+        border-bottom: 1px solid;
+        padding: 5px;
+        font-family: "Courier New", Courier, monospace;
+        // color: royalblue;
+      }
+      h5 {
+        border-bottom: 1px solid;
+        padding: 5px;
+        // color: royalblue;
+        letter-spacing: 1px;
+      }
+    }
+  }
+}

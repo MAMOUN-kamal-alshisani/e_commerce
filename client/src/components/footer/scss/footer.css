@@ -1,0 +1,36 @@
+.footer {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  background-color: #3f51b5;
+  color: white;
+}
+.footer .footer_container .items_div {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+.footer .footer_container .items_div .firstDiv {
+  flex: 1;
+  padding-left: 20px;
+}
+.footer .footer_container .items_div .secondDiv {
+  flex: 1;
+  padding-left: 80px;
+}
+.footer .footer_container .items_div .secondDiv .footer_list {
+  list-style: none;
+}
+.footer .footer_container .items_div .secondDiv .footer_list .footer_item {
+  padding-top: 5px;
+}
+.footer .footer_container .items_div .secondDiv .footer_list .footer_item .footer_linktag {
+  color: white;
+  text-decoration: none;
+  transition: ease-in-out 1s;
+}
+.footer .footer_container .items_div .secondDiv .footer_list .footer_item .footer_linktag:hover {
+  color: dimgrey;
+}
+.footer .footer_container .items_div .thirdDiv {
+  flex: 1;
+}/*# sourceMappingURL=footer.css.map */

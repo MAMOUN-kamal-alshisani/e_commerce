@@ -1,0 +1,11 @@
+
+html, body { height: 100%}
+
+body{
+padding:0px;
+margin:0px;
+box-sizing: border-box;
+background-color: aliceblue;
+font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+text-transform: capitalize;
+}

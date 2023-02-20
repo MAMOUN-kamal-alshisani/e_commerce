@@ -1,0 +1,94 @@
+.signup_div {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+}
+.signup_div .form_div {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+  width: 600px;
+  height: 80vh;
+  min-height: -moz-fit-content;
+  min-height: fit-content;
+  background-color: #673ab7;
+  border-radius: 6px;
+  box-shadow: 0px 0px 1px 0px grey;
+}
+.signup_div .form_div .form_header {
+  font-family: "Courier New", Courier, monospace;
+  text-align: center;
+  color: white;
+  letter-spacing: 1px;
+}
+.signup_div .form_div .sign_form .form_input_div {
+  margin-top: 20px;
+}
+.signup_div .form_div .sign_form .form_input_div .input_text {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 300px;
+  height: 25px;
+  padding: 5px;
+  border: 1px solid #00bcd4;
+  font-size: large;
+}
+.signup_div .form_div .sign_form .form_input_div .input_submit {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+  width: 310px;
+  height: 35px;
+  background-color: #3ab1eb;
+  color: aliceblue;
+  border: 1px solid grey;
+  cursor: pointer;
+  font-size: large;
+  transition: ease-in-out 1s;
+}
+.signup_div .form_div .sign_form .form_input_div .input_submit:hover {
+  box-shadow: 0px 0px 5px 0px white;
+  background-color: #1faff7;
+}
+.signup_div .form_div .login_div {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.signup_div .form_div .login_tag {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  cursor: pointer;
+  transition: ease-in-out 1s;
+}
+.signup_div .form_div .login_tag:hover {
+  color: cornsilk;
+}
+.signup_div .form_div .usernameError_div {
+  padding: 5px;
+  padding-top: 10px;
+  color: red;
+}
+.signup_div .form_div .emailError_div {
+  padding: 5px;
+  padding-top: 10px;
+  color: red;
+}
+.signup_div .form_div .passowrdError_div {
+  padding: 5px;
+  padding-top: 10px;
+  color: red;
+}/*# sourceMappingURL=signup.css.map */

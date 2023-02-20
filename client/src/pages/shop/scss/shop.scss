@@ -1,0 +1,42 @@
+@import "../../../scss_variables/variables";
+
+.shop{
+
+.inputItem_div{
+    @include flex(flex, center, wrap, row);
+gap: 30px;
+
+
+.filter_btn_div{
+    @include flex(flex, center, wrap, row);
+    .filter_btn{
+       text-transform: capitalize;
+       color: cornflowerblue;
+font-size: larger;
+        background-color: transparent;
+        border: transparent;
+        cursor: pointer;
+        
+
+        &:hover{
+       color: blue;
+
+        }
+    }
+}
+}
+
+
+    .shopList_Container{
+ 
+
+        .card_container{
+            width: 100%;
+            // max-width: 1224px;
+        
+            @include flex(flex, center, wrap, row);
+        }
+    }
+
+  
+}

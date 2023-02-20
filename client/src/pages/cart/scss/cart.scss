@@ -1,0 +1,319 @@
+@import "../../../scss_variables/variables";
+
+// .cart {
+//   background-color: brown;
+//   max-width: 1024px;
+//   width: 100%;
+//   height: 100vh;
+
+//   .cart_section {
+//     padding-left: 100px;
+
+//     .cart_header {
+//       @include flex(flex, space-between, nowrap, row);
+//       border-bottom: 3px solid grey;
+//     }
+
+//     .cart_container {
+
+//       .details_header_div {
+//         @include flex(flex, space-between, wrap, row);
+//         margin-left: 145px
+//       }
+
+//       .item_card {
+//         @include flex(flex, space-between, wrap, row);
+
+//         .card_list {
+//           @include flex(flex, space-between, wrap, row);
+//           gap: 20px;
+
+//           .cart_item_info_div {
+//             @include flex(flex, space-between, wrap, column);
+//           }
+//         }
+
+// .item_second_div{
+//     @include flex(flex, space-between, nowrap, row);
+//     justify-content: center;
+// gap: 10px;
+//     .item_btn{
+
+//         width: 30px;
+//         height: 20px;
+//     }
+//     p{
+//         width: 30px;
+//         height: 20px;
+//     }
+// }
+
+//       }
+//     }
+//   }
+// }
+
+// .cart {
+//   margin: 0px auto;
+//   max-width: 1024px;
+//   width: 100%;
+//   height: 100vh;
+//   background-color: red;
+//   .cart_ft_section {
+//     .cart_details_cr {
+//       @include flex(flex, unset, nowrap, column);
+//       background-color: blue;
+
+//       .cart_header_pt1 {
+//         @include flex(flex, space-around, nowrap, row);
+//       }
+//       .cart_cardheader_pt2 {
+
+//         // gap: 60px;
+//         @include flex(flex, space-evenly, nowrap, row);
+
+//         #product_details_header {
+//           padding-right: 200px;
+//         }
+//       }
+
+//       .cart_card_pt3 {
+//         // @include flex(flex, space-evenly, nowrap, row);
+
+//         .item_card {
+//           @include flex(flex, space-evenly, nowrap, row);
+
+//           .card_list {
+//             @include flex(flex, space-between, nowrap, row);
+//             align-items: flex-end;
+//             .cardImg_div {
+//               // margin-right: 20px;
+//               height: fit-content;
+//             }
+//             gap: 50px;
+//             .cart_item_info_div {
+//               @include flex(flex, space-between, wrap, column);
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+.cart {
+  max-width: 1424px;
+  width: 100%;
+  height: 100vh;
+
+  @include flex(flex, unset, nowrap, row);
+  margin-bottom: 50px;
+  .cart_cr {
+    overflow: auto;
+    width: 90%;
+    background-color: white;
+    margin-left: 100px;
+    padding: 25px;
+    // @include flex(flex, center, nowrap, c);
+    .cart_item_pt1 {
+      @include flex(flex, space-between, nowrap, row);
+      margin-left: 50px;
+      margin-right: 50px;
+      border-bottom: 3px solid #f5f2f2;
+      // justify-content: space-around;
+    }
+
+    .cart_list {
+      color: grey;
+      @include flex(flex, space-around, nowrap, row);
+      gap: 10px;
+
+      .cart_item_pt2 {
+        //   @include flex(flex, space-around, nowrap, row);
+
+        .product_details_div {
+          @include flex(flex, space-around, nowrap, column);
+
+          .item_card {
+            // padding-top: 20px;
+
+            @include flex(flex, space-between, nowrap, row);
+            .card_list {
+              @include flex(flex, space-between, nowrap, row);
+
+              gap: 40px;
+              .cardImg_div {
+                @include flex(flex, flex-end, nowrap, column);
+                object-fit: cover;
+              }
+
+              .cart_item_info_div {
+                @include flex(flex, space-between, nowrap, column);
+                align-items: flex-start;
+                padding-top: 20px;
+
+                .cart_name {
+                  color: black;
+                  padding-left: 5px;
+                }
+                .cart_title {
+                  color: grey;
+                  padding-left: 5px;
+                }
+
+                .remove_item_btn {
+
+                  border: transparent;
+                  background-color: transparent;
+                color: crimson;
+                cursor: pointer;
+
+transition: ease-in-out 1s;
+                &:hover{
+color: red
+                }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .cart_item_pt3 {
+        @include flex(flex, unset, nowrap, column);
+
+        .product_details_div {
+          @include flex(flex, space-around, nowrap, column);
+          // align-items: flex-start;
+          height: 100%;
+          // padding-top: 20px;
+          .item_second_div {
+            @include flex(flex, space-between, nowrap, row);
+            // gap: 10px;
+            // height: 200px;
+            // margin-top:19px
+            .item_btn{
+              background-color: transparent;
+              
+            }
+             .symbol-btn{
+              border: transparent;
+              font-size: larger;
+              padding: 5px;
+              cursor: pointer;
+
+
+              &:hover{
+                color:crimson
+              }
+             }
+             .quantity-btn{
+border: 1px solid #ebebeb;
+color:grey;
+padding:5px 10px;
+             }
+            
+          }
+        }
+      }
+
+      .cart_item_pt4 {
+        @include flex(flex, unset, nowrap, column);
+        .product_details_div {
+          @include flex(flex, space-around, nowrap, column);
+          // align-items: flex-start;
+          height: 100%;
+        }
+      }
+      .cart_item_pt5 {
+        @include flex(flex, unset, nowrap, column);
+
+        .product_details_div {
+          @include flex(flex, space-around, nowrap, column);
+          // align-items: flex-start;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  .cart_form_section {
+    @include flex(flex, unset, nowrap, column);
+    width: 35%;
+    background-color: #f6f6f6;
+    // padding-left:10px;
+    // padding-right:10px;
+    padding: 25px;
+    .summary_div {
+      border-bottom: 3px solid #eee9e9;
+
+      text-align: center;
+    }
+
+    .ship_details_pt1 {
+      @include flex(flex, space-between, nowrap, row);
+      gap: 20px;
+    }
+
+    .ship_details_pt2 {
+      height: 60vh;
+      @include flex(flex, space-around, wrap, column);
+      align-content: flex-start;
+      gap: 20px;
+      padding: 0px 40px;
+      border-bottom: 3px solid #eee9e9;
+      .ship_input {
+        @include flex(flex, space-around, nowrap, column);
+        gap: 20px;
+        width: fit-content;
+        font-weight: bold;
+        input {
+          width: 300px;
+          height: 25px;
+          padding: 5px;
+          border: 1px solid #607d8b;;
+
+
+          &:focus{
+            outline: 1px solid rgb(200, 197, 197);
+          }
+        }
+
+
+        .promo_btn{
+          height: 30px;
+          width: 70px;
+        }
+      }
+    }
+    .ship_details_pt3 {
+      @include flex(flex, space-between, nowrap, row);
+      margin-top: 10px;
+      color:grey;
+      font-weight: bold
+    }
+
+    .checkout_div {
+      @include flex(flex, center, nowrap, row);
+      margin-top: 20px;
+     
+      .checkout_btn{
+        width: 80%;
+        height: 40px;
+        border: transparent;
+        background-color: #4d4d4d;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 6px;
+
+transition: ease-in-out 1s;
+        &:hover{
+        background-color: #413f3f;
+
+        }
+      } 
+ 
+    }
+  }
+}

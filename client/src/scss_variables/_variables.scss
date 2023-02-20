@@ -1,0 +1,12 @@
+
+$align-items:'center';
+$border-radius:6px;
+
+
+@mixin flex($display,$jstcontent,$flexwarp,$flexdirection) {
+    display: $display;
+    justify-content:$jstcontent ;
+    flex-wrap: $flexwarp;
+    flex-direction: $flexdirection;
+}
+

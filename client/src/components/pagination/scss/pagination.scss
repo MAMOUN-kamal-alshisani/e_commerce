@@ -1,0 +1,29 @@
+@import "../../../scss_variables/variables";
+
+.pagination {
+  @include flex(flex, center, wrap, row);
+
+  margin: 10px;
+
+  .page-item {
+    @include flex(flex, center, wrap, row);
+    list-style: none;
+    width: 18px;
+    height: 25px;
+    border-radius: 2px;
+    font-size: larger;
+    border: 1px solid grey;
+    background: white;
+    cursor: pointer;
+            padding:5px;
+    margin-left:10px;
+
+
+    .pageLink {
+      color: blue;
+      &:hover {
+        color: rgb(32, 41, 66);
+      }
+    }
+  }
+}

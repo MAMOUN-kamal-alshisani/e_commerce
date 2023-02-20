@@ -1,0 +1,96 @@
+@import "../../../scss_variables/variables";
+
+.signup_div {
+  @include flex(flex, center, wrap, row);
+
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  .form_div {
+    @include flex(flex, center, wrap, column);
+    align-content: center;
+    width: 600px;
+    height: 80vh;
+  min-height: fit-content;
+    background-color: #673ab7;
+    // background-color: #2196f3;
+    
+    border-radius: 6px;
+
+    box-shadow: 0px 0px 1px 0px grey;
+
+    .form_header {
+      font-family: "Courier New", Courier, monospace;
+      text-align: center;
+      color: white;
+      letter-spacing: 1px;
+    }
+
+    .sign_form {
+      .form_input_div {
+        margin-top: 20px;
+
+        .input_text {
+          @include flex(flex, center, wrap, column);
+
+          width: 300px;
+          height: 25px;
+          padding: 5px;
+          border: 1px solid #00bcd4;
+          font-size: large;
+        }
+
+        .input_submit {
+          @include flex(flex, center, wrap, column);
+          align-content: center;
+          width: 310px;
+          height: 35px;
+          background-color: #3ab1eb;
+          // background-color: #673ab7;
+          color: aliceblue;
+          border:1px solid grey;
+         
+          cursor: pointer;
+          font-size: large;
+          transition: ease-in-out 1s;
+          &:hover {
+            box-shadow: 0px 0px 5px 0px white;
+            background-color: #1faff7;
+          }
+        }
+      }
+    }
+
+    .login_div {
+      @include flex(flex, center, wrap, row);
+    }
+    .login_tag {
+      @include flex(flex, center, wrap, row);
+      cursor: pointer;
+      transition: ease-in-out 1s;
+      &:hover {
+        color: cornsilk;
+      }
+    }
+
+
+
+    .usernameError_div{
+      padding:5px;
+      padding-top: 10px;
+  color: red;
+
+    }
+.emailError_div{
+padding:5px;
+padding-top: 10px;
+color: red;
+
+}
+.passowrdError_div{
+  padding:5px;
+  padding-top: 10px;
+  color: red;
+}
+  }
+}

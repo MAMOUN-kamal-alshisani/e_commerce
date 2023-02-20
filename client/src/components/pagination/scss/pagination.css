@@ -1,0 +1,29 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin: 10px;
+}
+.pagination .page-item {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  list-style: none;
+  width: 18px;
+  height: 25px;
+  border-radius: 2px;
+  font-size: larger;
+  border: 1px solid grey;
+  background: white;
+  cursor: pointer;
+  padding: 5px;
+  margin-left: 10px;
+}
+.pagination .page-item .pageLink {
+  color: blue;
+}
+.pagination .page-item .pageLink:hover {
+  color: rgb(32, 41, 66);
+}/*# sourceMappingURL=pagination.css.map */

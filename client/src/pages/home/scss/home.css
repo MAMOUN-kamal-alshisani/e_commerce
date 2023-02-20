@@ -1,0 +1,98 @@
+.homepage_container {
+  margin-top: 160px;
+  max-width: 1424px;
+  width: 100%;
+}
+.homepage_container .featured_items {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  margin-left: 80px;
+  margin-right: 100px;
+  border-bottom: 1px solid rgb(61, 114, 154);
+  margin-bottom: 20px;
+}
+.homepage_container .featured_items .featured_items_link {
+  text-decoration: none;
+  color: royalblue;
+}
+.homepage_container .featured_items .featured_items_link:hover {
+  color: blue;
+}
+.homepage_container .first_card_div {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-left: 80px;
+}
+.homepage_container .first_card_div .card {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  cursor: pointer;
+}
+.homepage_container .first_card_div .card .container {
+  border-radius: 6px;
+  transition: ease-in-out 1s;
+}
+.homepage_container .first_card_div .card .container:hover {
+  box-shadow: 0px 0px 5px 0px white;
+  background-color: rgba(164, 164, 164, 0.176);
+}
+.homepage_container .first_card_div .card .container .img_cn .cardImg {
+  width: 100%;
+  border-radius: 6px;
+  -o-object-fit: fill;
+     object-fit: fill;
+}
+.homepage_container .first_card_div .card .container .card_title {
+  text-align: center;
+  color: grey;
+}
+.homepage_container .first_card_div .card .container .card_name {
+  padding: 5px;
+  text-align: center;
+}
+.homepage_container .first_card_div .card .container .itemDetails {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+.homepage_container .first_card_div .card .container .itemDetails .card_h3 {
+  color: red;
+  padding: 5px;
+}
+.homepage_container .first_card_div .card .container .itemDetails .card_Stock {
+  color: grey;
+  padding: 5px;
+}
+.homepage_container .homepage_second_div {
+  border-top: 1px solid grey;
+  padding-top: 20px;
+  margin: 50px 100px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+.homepage_container .homepage_second_div .second_div_textplace {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  border-radius: 6px;
+  width: 50%;
+}
+.homepage_container .homepage_second_div .second_div_textplace p {
+  line-height: 50px;
+}
+.homepage_container .homepage_second_div .second_div_textplace h1 {
+  text-shadow: 0px 1px 0px white;
+}
+.homepage_container .homepage_second_div .second_div_imgplace .homepage_section_img {
+  width: 500px;
+  border-radius: 6px;
+}/*# sourceMappingURL=home.css.map */

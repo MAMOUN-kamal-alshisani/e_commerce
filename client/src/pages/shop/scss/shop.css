@@ -1,0 +1,31 @@
+.shop .inputItem_div {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 30px;
+}
+.shop .inputItem_div .filter_btn_div {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.shop .inputItem_div .filter_btn_div .filter_btn {
+  text-transform: capitalize;
+  color: cornflowerblue;
+  font-size: larger;
+  background-color: transparent;
+  border: transparent;
+  cursor: pointer;
+}
+.shop .inputItem_div .filter_btn_div .filter_btn:hover {
+  color: blue;
+}
+.shop .shopList_Container .card_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+}/*# sourceMappingURL=shop.css.map */

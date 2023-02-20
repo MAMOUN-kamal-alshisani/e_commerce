@@ -1,0 +1,117 @@
+@import "../../../scss_variables/variables";
+
+.homepage_container {
+  margin-top: 160px;
+  max-width: 1424px;
+  width: 100%;
+
+  .featured_items {
+    // width:60%;
+    @include flex(flex, space-between, nowrap, row);
+    align-items: center;
+    gap: 10px;
+    margin-left: 80px;
+    margin-right: 100px;
+    border-bottom: 1px solid rgb(61, 114, 154);
+   margin-bottom: 20px;
+    // box-shadow: 0px 0px 1px 0px grey;
+    // border-bottom: 1px solid rgb(61, 114, 154);
+    // outline: 12px 0px 20px 0px rgb(68, 57, 57)
+    // margin-bottom: 25px;
+
+    .featured_items_link {
+      text-decoration: none;
+      color: royalblue;
+     
+      &:hover {
+        color: blue;
+      }
+    }
+
+    h3 {
+   
+    }
+  }
+
+  .first_card_div {
+    @include flex(flex, center, wrap, row);
+    // background-color: aqua;
+    // border-bottom: 2px solid royalblue;
+    margin-left: 80px;
+
+    .card {
+      @include flex(flex, center, wrap, row);
+      cursor: pointer;
+
+      .container {
+        border-radius: 6px;
+        transition: ease-in-out 1s;
+
+        &:hover {
+          box-shadow: 0px 0px 5px 0px white;
+          background-color: rgba(164, 164, 164, 0.176);
+        }
+
+        .img_cn {
+
+          .cardImg {
+            width: 100%;
+            border-radius: 6px;
+            object-fit: fill;
+          }
+        }
+        .card_title {
+          text-align: center;
+          color: grey;
+        }
+        .card_name {
+          padding: 5px;
+          text-align: center;
+        }
+
+        .itemDetails {
+          @include flex(flex, space-between, nowrap, row);
+
+          .card_h3 {
+            color: red;
+            padding: 5px;
+          }
+          .card_Stock {
+            color: grey;
+            padding: 5px;
+          }
+        }
+      }
+    }
+  }
+
+  .homepage_second_div {
+    border-top: 1px solid grey;
+    
+    padding-top: 20px;
+    margin:50px 100px;
+    @include flex(flex, space-around, nowrap, row);
+
+    .second_div_textplace {
+      font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+
+      border-radius: 6px;
+      // background-color: white;
+      width: 50%;
+
+      p {
+        line-height: 50px;
+      }
+      h1 {
+        text-shadow: 0px 1px 0px white;
+      }
+    }
+
+    .second_div_imgplace {
+      .homepage_section_img {
+        width: 500px;
+        border-radius: 6px;
+      }
+    }
+  }
+}
