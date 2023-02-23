@@ -46,3 +46,6 @@ server.use('*',notFound)
 
 
 server.listen(PORT, () => console.log(`Running on port ${PORT}`));
+
+
+module.exports = server

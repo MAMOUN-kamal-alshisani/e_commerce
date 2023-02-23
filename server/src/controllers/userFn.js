@@ -26,7 +26,6 @@ async function getUser(req, res) {
 }
 
 async function createUser(req, res) {
-  const { Username, Email, Password } = req.body;
   try {
     const user = await User.create(req.body);
 
@@ -45,7 +44,7 @@ async function deleteUser(req, res) {
 
     console.log(user);
 
-    res.status(201).send("user has been removed successfully");
+    res.status(200).send("user has been removed successfully");
   } catch (err) {
     console.log(err);
     res.status(404).send(err);

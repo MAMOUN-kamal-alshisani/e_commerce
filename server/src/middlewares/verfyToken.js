@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
+require('dotenv').config()
 
 async function verifyToken(req, res, next) {
   const token = req.cookies.token;
@@ -9,7 +10,7 @@ async function verifyToken(req, res, next) {
   }
 
   try {
-    const validToken = jwt.verify(token, "secret");
+    const validToken = jwt.verify(token, process.env.SECRET);
 
     if (validToken) {
       req.user = User.findOne({ where: { id: validToken.id } });
@@ -20,45 +21,5 @@ async function verifyToken(req, res, next) {
     res.send(err.message);
     console.log(err);
   }
-  // if(!token){
-  //     res.status(404).send('you are not authenticated!')
-  // }
-
-  // const decoded = jwt.verify(token,'secret')
-  // req.user = await User.findOne({where:{id:decoded.id}})
-
-  // console.log(decoded);
-  //    const decoded =await jwt.verify(token,'secret',(err,user)=>{
-
-  //         if(err){
-  //         res.status(403).send(err);
-  //         }
-  //        req.user =  User.findOne({where:{id:decoded.id}})
-
-  //         req.user = user
-  //         console.log( req.user);
-  //     })
-
-  // next()
 }
 module.exports = verifyToken;
-
-// function verifyUser(req,res,next){
-// const id = req.params.id
-//     verifyToken(req,res,next,()=>{
-//         if(req.user.id == id){
-//             next()
-//         }else{
-//            res.status(403).send('you are not authorized!')
-//         }
-//     })
-// }
-
-// async function isAuthenticated(req,res,next){
-
-//     const token = req.cookies.user
-
-//     console.log(token);
-//     }
-
-// module.exports = isAuthenticated

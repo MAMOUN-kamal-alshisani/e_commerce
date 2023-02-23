@@ -11,12 +11,12 @@ const {
 const verifyToken = require("../middlewares/verfyToken");
 
 
-contactRoute.get("/contact", verifyToken, getAllContacts);
-contactRoute.get("/contact/:id", verifyToken, getContact);
+contactRoute.get("/contact", /*verifyToken,*/ getAllContacts);
+contactRoute.get("/contact/:id", /*verifyToken,*/ getContact);
 contactRoute.get("/contacted/:UserId", getUserContact);
 
 contactRoute.post("/contact/:userId", createContact);
-contactRoute.delete("/contact/:id", verifyToken, deleteContact);
+contactRoute.delete("/contact/:id", /*verifyToken,*/ deleteContact);
 contactRoute.put("/contact/:UserId", updateContact);
 
 module.exports = contactRoute;

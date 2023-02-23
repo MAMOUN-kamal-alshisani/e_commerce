@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 require('dotenv').config()
-const sql = new Sequelize('postgres://postgres:0000@localhost:5432/e_commerce')
-
+// const sql = new Sequelize('postgres://postgres:0000@localhost:5432/e_commerce')
+const sql = new Sequelize(process.env.DATABASE)
 
 
 sql.authenticate().then(()=>{

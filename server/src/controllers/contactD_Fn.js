@@ -1,13 +1,13 @@
 const ContactDetails = require("../models/contactD");
-const User = require('../models/user')
+const User = require("../models/user");
 async function getAllContacts(req, res) {
   try {
     const contactD = await ContactDetails.findAll({});
-    console.log(contactD);
+    // console.log(contactD);
     res.status(200).send(contactD);
   } catch (err) {
-    console.log(err);
-    res.status(404).send(err.message);
+    // console.log(err);
+    res.status(404).send(err);
   }
 }
 
@@ -24,47 +24,41 @@ async function getContact(req, res) {
 }
 
 async function createContact(req, res) {
-  const {
-    fullName,
-    birthDate,
-    phone,
-    city,
-    address,
-    photo } = req.body
-  const userId = req.params.userId
+  const { fullName, birthDate, phone, city, address, photo } = req.body;
+  const userId = req.params.userId;
   try {
+    const user =await User.findOne({where:{id:userId}})
 
-    
-
-
-
-    // const user =await User.findOne({where:{userId:userId}})
+    if(user){
+      const contactD = await ContactDetails.create({
+        fullName: fullName,
+        birthDate: birthDate,
+        phone: phone,
+        city: city,
+        address: address,
+        photo: photo,
+        UserId: userId,
+      });
+      res.status(201).send("contact created successfully");
+    }
     // const userID = req.query.userId
-    const contactD = await ContactDetails.create({
-      fullName:fullName,
-birthDate:birthDate,
-      phone:phone,
-      city:city,
-      address:address,
-      photo:photo,
-UserId:userId
-    });
+ 
 
-    console.log(contactD);
-    res.status(201).send("contact created successfully");
   } catch (err) {
     console.log(err);
-    res.send(err.message);
+    res.status(404).send(err);
   }
 }
 
 async function deleteContact(req, res) {
   const id = req.params.id;
   try {
-    const contactD = await ContactDetails.destroy({ where: { id: id } });
-
-    console.log(contactD);
-    res.status(201).send("contact has been removed successfully");
+   let contact = await ContactDetails.findOne({ where: { id: id } })
+    if(contact){
+      const contactD = await ContactDetails.destroy({ where: { id: id } });
+      res.status(200).send("contact has been removed successfully");
+    }
+  
   } catch (err) {
     console.log(err);
     res.status(404).send(err);
@@ -72,36 +66,43 @@ async function deleteContact(req, res) {
 }
 
 async function updateContact(req, res) {
-  const UserId = req.params.UserId
+  const UserId = req.params.UserId;
 
   try {
-    const contactD = await ContactDetails.update(req.body, {
-      where: { UserId: UserId },
-    });
-    console.log(contactD);
+    const userContact = await ContactDetails.findOne({where:{UserId:UserId}})
+    if(userContact){
+      const contactD = await ContactDetails.update(req.body, {
+        where: { UserId: UserId },
+      });
     res.status(201).send("contact has been updated successfully");
+
+    }
+
   } catch (err) {
     console.log(err);
     res.status(404).send(err.message);
   }
 }
 
-async function getUserContact(req,res){
-
+async function getUserContact(req, res) {
   try {
     const UserId = req.params.UserId;
-    const contactD = await ContactDetails.findOne({ where: { UserId: UserId } });
+    const contactD = await ContactDetails.findOne({
+      where: { UserId: UserId },
+    });
     res.status(200).send(contactD);
     console.log(contactD);
   } catch (err) {
     console.log(err);
     res.status(404).send(err.message);
   }
-
 }
 
-
-
-
-
-module.exports = { getUserContact,getAllContacts, getContact, createContact, deleteContact, updateContact };
+module.exports = {
+  getUserContact,
+  getAllContacts,
+  getContact,
+  createContact,
+  deleteContact,
+  updateContact,
+};

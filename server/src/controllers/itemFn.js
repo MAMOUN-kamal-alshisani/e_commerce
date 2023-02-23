@@ -9,7 +9,7 @@ async function getAllItems(req, res) {
     res.status(200).send(item);
   } catch (err) {
     console.log(err);
-    res.status(404).send(err.message);
+    res.status(404).send(err);
   }
 }
 
@@ -17,11 +17,14 @@ async function getItem(req, res) {
   try {
     const id = req.params.id;
     const item = await Item.findOne({ where: { id: id } });
-    res.status(200).send(item);
+    // if(item == []) return res.status(404).send('item not found!');
+  //  else{
+    res.status(200).send(item)
+  //  }
     console.log(item);
   } catch (err) {
     console.log(err);
-    res.status(404).send(err.message);
+    res.status(404).send(err);
   }
 }
 
@@ -29,22 +32,29 @@ async function createItem(req, res) {
   try {
     const item = await Item.create(req.body);
 
-    console.log(item);
+    // console.log(item);
     res.status(201).send("item created successfully");
   } catch (err) {
     console.log(err);
-    res.send(err.message);
+    res.status(404).send(err);
   }
 }
 
 async function deleteItem(req, res) {
   const id = req.params.id;
   try {
-    const item = await Item.destroy({ where: { id: id } });
+    const findItem =  await Item.findOne({where:{id:id}})
 
-    console.log(item);
+    if(findItem){
+      const item = await Item.destroy({ where: { id: id } });
+      res.status(200).send("item has been removed successfully");
+    }
+    
+    else{
+      return  res.status(404).send(err);
+    }
 
-    res.status(201).send("item has been removed successfully");
+  
   } catch (err) {
     console.log(err);
     res.status(404).send(err);
@@ -55,14 +65,19 @@ async function updateItem(req, res) {
   const id = req.params.id;
 
   try {
-    const item = await Item.update(req.body, {
-      where: { id: id },
-    });
-    console.log(item);
-    res.status(201).send("item has been updated successfully");
+    const findItem =  await Item.findOne({where:{id:id}})
+if(findItem){
+  const item = await Item.update(req.body, {
+    where: { id: id },
+  });
+  res.status(201).send("item has been updated successfully");
+}else{
+  return  res.status(404).send(err);
+}
+
   } catch (err) {
-    console.log(err);
-    res.status(404).send(err.message);
+    // console.log(err);
+    res.status(404).send(err);
   }
 }
 
