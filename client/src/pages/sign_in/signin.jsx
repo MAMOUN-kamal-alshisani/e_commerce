@@ -23,9 +23,10 @@ const errorPassword= document.querySelector('.passowrdError_div')
 
 
   const signin = async () => {
-    // setIsLoading(true)
+    setIsLoading(true)
     const url = "http://localhost:4000/signin";
     try {
+      setIsLoading(false)
       const user = await axios.post(url, {
         Email: email,
         Password: password,
@@ -46,7 +47,7 @@ const errorPassword= document.querySelector('.passowrdError_div')
       navigate("/");
       
     } catch (err) {
-      // setIsLoading(false)
+      setIsLoading(false)
       if(err.response.data.includes('password'))
       errorPassword.textContent =err.response.data
       else if(err.response.data.includes('email'))

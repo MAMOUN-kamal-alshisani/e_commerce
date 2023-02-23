@@ -2,24 +2,22 @@ import "./scss/cart.css";
 import Header from "../../components/header/header";
 // import {useFetchCartQuery} from '../../store/apis/cartApi'
 // import { useSelector } from "react-redux";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../store/slices/cartSlice";
 import { useEffect, useState } from "react";
-function Cart() {
-  const [totalPrice, setTotalPrice] = useState(0);
 
-  // const [itemTotal,setItemTotal] = useState([])
-  // const allTotalsPrice= []
-  console.log(totalPrice);
-  // console.log(allTotalsPrice);
+import { CgSpinner } from "react-icons/cg";
+
+function Cart() {
+  const [totalPrice] = useState(0);
   const dispatch = useDispatch();
   const cartItems = JSON.parse(localStorage?.getItem("cart"));
 
   const cart = useSelector((state) => {
     return state.cart;
   });
-  console.log(cart);
+  // console.log(cart);
   const handleMinusQuantity = (item) => {
     dispatch(cartActions.decreaseQuantity(item));
   };
@@ -82,7 +80,7 @@ function Cart() {
               <div className="product_details_div">
                 {cartItems?.map((item, index) => {
                   return (
-                    <div className="item_second_div">
+                    <div className="item_second_div" key={index}>
                       <button
                         onClick={() => handleMinusQuantity(item)}
                         className="item_btn symbol-btn"
@@ -106,7 +104,7 @@ function Cart() {
               <div className="product_details_div">
                 {cartItems?.map((item, index) => {
                   return (
-                    <div className="item_third_div">
+                    <div className="item_third_div" key={index}>
                       <p>{Math.ceil(eval(item.price))} </p>
                     </div>
                   );
@@ -119,7 +117,7 @@ function Cart() {
               <div className="product_details_div">
                 {cartItems?.map((item, index) => {
                   return (
-                    <div className="item_forth_div">
+                    <div className="item_forth_div" key={index}>
                       <p>
                         {/* { allTotalsPrice.push(Math.ceil(eval(item.price + "*" + item.itemQuantity)))} */}
                         ${Math.ceil(eval(item.price + "*" + item.itemQuantity))}

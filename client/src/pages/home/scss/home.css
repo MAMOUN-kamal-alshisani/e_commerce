@@ -11,7 +11,6 @@
   align-items: center;
   gap: 10px;
   margin-left: 80px;
-  margin-right: 100px;
   border-bottom: 1px solid rgb(61, 114, 154);
   margin-bottom: 20px;
 }
@@ -42,7 +41,7 @@
 }
 .homepage_container .first_card_div .card .container:hover {
   box-shadow: 0px 0px 5px 0px white;
-  background-color: rgba(164, 164, 164, 0.176);
+  background-color: rgba(238, 226, 226, 0.176);
 }
 .homepage_container .first_card_div .card .container .img_cn .cardImg {
   width: 100%;
@@ -52,7 +51,7 @@
 }
 .homepage_container .first_card_div .card .container .card_title {
   text-align: center;
-  color: grey;
+  color: red;
 }
 .homepage_container .first_card_div .card .container .card_name {
   padding: 5px;

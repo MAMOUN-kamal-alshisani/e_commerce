@@ -1,7 +1,7 @@
 header {
   height: 100%;
+  position: relative;
   box-shadow: 0px 0px 4px 0px grey;
-  margin-bottom: 50px;
 }
 header .headerDiv {
   background-color: white;
@@ -62,8 +62,8 @@ header .upper_container .input_div form {
   flex-direction: row;
 }
 header .upper_container .input_div form .header_search {
-  width: 250px;
-  height: 30px;
+  width: 270px;
+  height: 35px;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
   border: 1px solid #607d8b;
@@ -74,16 +74,17 @@ header .upper_container .input_div form .header_search:focus {
   outline: 1px solid teal;
 }
 header .upper_container .input_div form .form_submit {
-  background: #607d8b;
+  background: #009688;
   color: white;
-  height: 34px;
+  font-weight: bold;
+  height: 39px;
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
   border: transparent;
   cursor: pointer;
 }
 header .upper_container .input_div form .form_submit:hover {
-  background: #83a5b6;
+  background: #06b9a7;
 }
 header .buttom_contianer {
   display: flex;
@@ -112,11 +113,8 @@ header .backgroundImg_div .backgroundImg {
   filter: blur(10px);
 }
 header .backgroundImg_div .backgroundImgText {
-  color: black;
-  position: absolute;
-  display: flex;
-  justify-content: flex-end;
   top: 27%;
+  position: absolute;
 }
 header .backgroundImg_div .backgroundImgText .imgText_div {
   -webkit-backdrop-filter: blur(1px);
@@ -125,7 +123,6 @@ header .backgroundImg_div .backgroundImgText .imgText_div {
   justify-content: center;
   flex-wrap: wrap;
   flex-direction: row;
-  text-transform: capitalize;
   color: rgb(18, 18, 23);
   text-shadow: 1px 1px 0px grey;
 }

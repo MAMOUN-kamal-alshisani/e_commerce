@@ -1,4 +1,5 @@
 .cart {
+  margin-top: 50px;
   max-width: 1424px;
   width: 100%;
   height: 100vh;
@@ -76,9 +77,10 @@
   padding-left: 5px;
 }
 .cart .cart_cr .cart_list .cart_item_pt2 .product_details_div .item_card .card_list .cart_item_info_div .remove_item_btn {
-  border: transparent;
   background-color: transparent;
+  border: 1px solid transparent;
   color: crimson;
+  font-size: medium;
   cursor: pointer;
   transition: ease-in-out 1s;
 }
@@ -221,13 +223,12 @@
   width: 80%;
   height: 40px;
   border: transparent;
-  background-color: #4d4d4d;
+  background-color: #009688;
   color: white;
-  font-weight: bold;
   cursor: pointer;
   border-radius: 6px;
   transition: ease-in-out 1s;
 }
 .cart .cart_form_section .checkout_div .checkout_btn:hover {
-  background-color: #413f3f;
+  background-color: #02ac9b;
 }/*# sourceMappingURL=cart.css.map */

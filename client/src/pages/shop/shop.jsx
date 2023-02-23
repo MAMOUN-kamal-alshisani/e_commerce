@@ -1,39 +1,59 @@
 import "./scss/shop.css";
-import Card from "./card/card";
 import Header from "../../components/header/header";
 import Pagination from "../../components/pagination/pagination";
 import { useFetchItemsQuery } from "../../store/apis/itemApi";
+import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { cartActions } from "../../store/slices/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
+import Skeleton from '@mui/material/Skeleton';
+import ShopCard from "./parts/shopcard/shopcard";
+
 function Shop({ item }) {
-  const dispatch = useDispatch();
   const { data, error, isLoading } = useFetchItemsQuery(item);
+  const location = useLocation()
+  const dispatch = useDispatch();
+// console.log(data);
+  // useSelector((state)=>{
+
+  //   // console.log(state);
+  // })
   const [items, setItems] = useState(data);
-  const allCategories = ["all", ...new Set(data?.map((item) => item.title))];
 
+  const allCategories = ["All", ...new Set(data?.map((item) => item.title))];
+
+  
   useEffect(() => {
-    console.log('sdsd');
-
-    return()=> setItems(data)
-  }, []);
+  
+    if(items?.length <= 0){
+     return setItems(data);
+    }
+  if(location?.state?.search == '' || null){
+    const filtered = items?.filter((item) => item.title == location.state.search);
+    setItems(filtered)
+  }
+  }, [items,data]);
 
   const searchedItems = (category) => {
-   
-    if (category === "all") {
+    setItems(data);
+    if (category === "All") {
       setItems(data);
       return;
     }
-    if(!items){
-      console.log('update');
-      setItems(data);
-    }
-  
+   
     const filtered = items?.filter((item) => item.title == category);
-    setItems(filtered);
+     setItems(filtered);
+     return
+   
+
+    // else if(items.length <= 0){
+    //   console.log('update');
+    //  return setItems(data);
+    // }
+  
+
   };
 
- 
 
   //// pagination code!!
   const [currentPage, setCurrentPage] = useState(1);
@@ -49,7 +69,7 @@ function Shop({ item }) {
 
   const addToCart = (cart) => {
     dispatch(cartActions.addToCart(cart));
-    console.log("item added");
+    // console.log("item added");
   };
 if(error){
 
@@ -57,7 +77,12 @@ if(error){
 }
 if(isLoading){
 
-  return 'loading please wait'
+  return <>
+  <Skeleton variant="text" sx={{ fontSize: '4rem' }} animation="wave" />
+  <Skeleton variant="text" sx={{ fontSize: '4rem' }} animation="wave" />
+  <Skeleton variant="text" sx={{ fontSize: '4rem' }} animation="wave" />
+  <Skeleton variant="text" sx={{ fontSize: '4rem' }} animation="wave" />
+  <Skeleton variant="text" sx={{ fontSize: '4rem' }} animation="wave" /></>
 }
   return (
     <div className="shop">
@@ -72,6 +97,7 @@ if(isLoading){
             >
               {category}
             </button>
+          
           </div>
         ))}
       </div>
@@ -80,7 +106,7 @@ if(isLoading){
 
       <div className="shopList_Container">
         <div className="card_container">
-          <Card currentPosts={currentPosts} addToCart={addToCart} />
+          <ShopCard currentPosts={currentPosts} addToCart={addToCart} />
         </div>
         <Pagination
           postsPerPage={postsPerPage}

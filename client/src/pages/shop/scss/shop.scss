@@ -1,42 +1,31 @@
 @import "../../../scss_variables/variables";
 
-.shop{
-
-.inputItem_div{
+.shop {
+    // margin-top: 50px;
+  .inputItem_div {
+    margin-top: 50px;
     @include flex(flex, center, wrap, row);
-gap: 30px;
+    gap: 30px;
 
+    .filter_btn_div {
+      @include flex(flex, center, wrap, row);
 
-.filter_btn_div{
-    @include flex(flex, center, wrap, row);
-    .filter_btn{
-       text-transform: capitalize;
-       color: cornflowerblue;
-font-size: larger;
-        background-color: transparent;
-        border: transparent;
-        cursor: pointer;
-        
+      .filter_btn {
+        @include colorRelated(transparent, transparent, $primaryclr1);
+        cursor: $pointer;
+        font-size: larger;
 
-        &:hover{
-       color: blue;
-
+        &:hover {
+          color: $primaryclr2;
         }
+      }
     }
-}
-}
+  }
 
-
-    .shopList_Container{
- 
-
-        .card_container{
-            width: 100%;
-            // max-width: 1224px;
-        
-            @include flex(flex, center, wrap, row);
-        }
+  .shopList_Container {
+    .card_container {
+      width: $fullWidth;
+      @include flex(flex, center, wrap, row);
     }
-
-  
+  }
 }

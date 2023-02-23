@@ -7,22 +7,23 @@
 
   .page-item {
     @include flex(flex, center, wrap, row);
-    list-style: none;
+    // list-style: none;
     width: 18px;
     height: 25px;
     border-radius: 2px;
-    font-size: larger;
-    border: 1px solid grey;
-    background: white;
-    cursor: pointer;
-            padding:5px;
+    font-size: $fontSizeLarger;
+    border: 1px solid $bordertr;
+    background: $bordertr;
+            padding:$paddingFive;
     margin-left:10px;
 
-
     .pageLink {
-      color: blue;
+    cursor: $pointer;
+font-size: $fontSizeLarge;
+transition: $transition;
+      color: $primaryclr2;
       &:hover {
-        color: rgb(32, 41, 66);
+        color: $primaryclr3;
       }
     }
   }

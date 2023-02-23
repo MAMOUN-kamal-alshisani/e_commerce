@@ -1,60 +1,59 @@
 @import "../../../scss_variables/variables";
-
 header {
   height: 100%;
-
+  position: $relativePosition;
   .headerDiv {
-    background-color: white;
+    background-color: $bg_color1;
 
     // height: 11vh;
-    box-shadow: 0px 0px 1px 0px grey;
+    box-shadow: 0px 0px 1px 0px $primaryclr4;
   }
   .Link {
-    text-decoration: none;
-    color: royalblue;
+    text-decoration: $textDecoration;
+    color: $primaryclr1;
     // font-size: x-large;
-    font-size: large;
+    font-size: $fontSizeLarge;
     margin: 10px;
-    transition: ease-in-out 1s;
+    transition: $transition;
 
     &:hover {
       color: rgb(64, 63, 64);
     }
   }
   .link-icon {
-    font-size: x-large;
+    font-size: $fontSizeXlarge;
   }
 
   .link-tag {
-    font-size: large;
+    font-size: $fontSizeLarge;
     letter-spacing: 1px;
   }
   .logout {
     &:hover {
-      color: crimson;
+      color: $primaryclr5;
     }
   }
   .upper_container {
     @include flex(flex, space-between, wrap, row);
-    align-items: center;
+    align-items: $txtAlignCenter;
     height: 52px;
     .siteName_div {
       width: fit-content;
       display: inline;
-      padding-left: 5px;
+      padding-left: $paddingFive;
 
       .siteName_Link {
-        color: royalblue;
+        color: $primaryclr1;
         font-family: "Courier New", Courier, monospace;
-        text-decoration: none;
+        text-decoration: $textDecoration;
         font-weight: bolder;
         p {
-          font-size: large;
+          font-size: $fontSizeLarge;
 
-          transition: ease-in-out 1s;
+          transition: $transition;
           &:hover {
-            text-shadow: 0px 1px 0px grey;
-            color: blue;
+            text-shadow: 0px 1px 0px $primaryclr4;
+            color: $primaryclr2;
           }
         }
       }
@@ -62,33 +61,34 @@ header {
 
     .input_div {
       form {
-    @include flex(flex, space-between, wrap, row);
+        @include flex(flex, space-between, wrap, row);
 
         .header_search {
-          width: 250px;
-          height: 30px;
+          width: 270px;
+          height: 35px;
 
-          border-top-left-radius: $border-radius;
-          border-bottom-left-radius: $border-radius;
+          border-top-left-radius: $borderRadius;
+          border-bottom-left-radius: $borderRadius;
           border: 1px solid #607d8b;
-          font-size: large;
+          font-size: $fontSizeLarge;
           &:focus {
-            border: transparent;
+            border: $bordertr;
             outline: 1px solid teal;
           }
         }
 
         .form_submit {
-          background: #607d8b;
-          color: white;
-          height: 34px;
-          border-top-right-radius: $border-radius;
-          border-bottom-right-radius: $border-radius;
-          border: transparent;
-          cursor: pointer;
+          background: #009688;
+          color: $bg_color1;
+          font-weight: bold;
+          height: 39px;
+          border-top-right-radius: $borderRadius;
+          border-bottom-right-radius: $borderRadius;
+          border: $bordertr;
+          cursor: $pointer;
 
           &:hover {
-            background: #83a5b6;
+            background: #06b9a7;
           }
         }
       }
@@ -102,11 +102,11 @@ header {
       @include flex(flex, space-between, wrap, row);
 
       .tags_Div_Nav1 {
-        padding-left: 5px;
+        padding-left: $paddingFive;
       }
 
       .tags_Div_Nav2 {
-        padding-left: 5px;
+        padding-left: $paddingFive;
       }
     }
   }
@@ -115,37 +115,39 @@ header {
     .backgroundImg {
       height: 600px;
       object-fit: cover;
-      position: relative;
+      position: $relativePosition;
       width: 100%;
       filter: blur(10px);
       // filter: brightness(90%);
     }
 
     .backgroundImgText {
-      // width: 50%;
-      color: black;
-      position: absolute;
-      display: flex;
-      justify-content: flex-end;
-      // margin: 0 auto;
       top: 27%;
+      position: $absolutePosition;
+      // width: 50%;
+      // @include flex(flex, space-between, wrap, row);
+
+      // color: blue;
+
+      // display: flex;
+      // justify-content: flex-end;
+      // margin: 0 auto;
 
       // -webkit-backdrop-filter: blur(90%);
 
       .imgText_div {
         backdrop-filter: blur(1px);
         @include flex(flex, center, wrap, row);
-        text-transform: capitalize;
         color: rgb(18, 18, 23);
-        text-shadow: 1px 1px 0px grey;
+        text-shadow: 1px 1px 0px $primaryclr4;
         p {
-          font-size: larger;
+          font-size: $fontSizeLarger;
         }
       }
     }
   }
 
   // border: 1px solid grey;
-  box-shadow: 0px 0px 4px 0px grey;
-  margin-bottom: 50px;
+  box-shadow: 0px 0px 4px 0px $primaryclr4;
+  // margin-bottom: 50px;
 }

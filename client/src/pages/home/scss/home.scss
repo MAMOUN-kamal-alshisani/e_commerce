@@ -3,82 +3,70 @@
 .homepage_container {
   margin-top: 160px;
   max-width: 1424px;
-  width: 100%;
+  width: $fullWidth;
 
   .featured_items {
-    // width:60%;
     @include flex(flex, space-between, nowrap, row);
     align-items: center;
     gap: 10px;
     margin-left: 80px;
-    margin-right: 100px;
     border-bottom: 1px solid rgb(61, 114, 154);
    margin-bottom: 20px;
-    // box-shadow: 0px 0px 1px 0px grey;
-    // border-bottom: 1px solid rgb(61, 114, 154);
-    // outline: 12px 0px 20px 0px rgb(68, 57, 57)
-    // margin-bottom: 25px;
 
     .featured_items_link {
       text-decoration: none;
-      color: royalblue;
+      color: $primaryclr1;
      
       &:hover {
-        color: blue;
+        color: $primaryclr2;
       }
-    }
-
-    h3 {
-   
     }
   }
 
   .first_card_div {
     @include flex(flex, center, wrap, row);
-    // background-color: aqua;
-    // border-bottom: 2px solid royalblue;
     margin-left: 80px;
 
     .card {
       @include flex(flex, center, wrap, row);
-      cursor: pointer;
+      cursor: $pointer;
 
       .container {
-        border-radius: 6px;
-        transition: ease-in-out 1s;
+        border-radius:$borderRadius;
+        transition: $transition;
 
         &:hover {
           box-shadow: 0px 0px 5px 0px white;
-          background-color: rgba(164, 164, 164, 0.176);
+          background-color: rgba(238, 226, 226, 0.176);
         }
 
         .img_cn {
 
           .cardImg {
-            width: 100%;
-            border-radius: 6px;
+            width: $fullWidth;
+            border-radius: $borderRadius;
             object-fit: fill;
           }
         }
         .card_title {
-          text-align: center;
-          color: grey;
+          text-align: $txtAlignCenter;
+          color: $primaryclr3;
         }
         .card_name {
-          padding: 5px;
-          text-align: center;
+          padding: $paddingFive;
+          text-align: $txtAlignCenter;
         }
 
         .itemDetails {
           @include flex(flex, space-between, nowrap, row);
 
           .card_h3 {
-            color: red;
-            padding: 5px;
+            color: $primaryclr3;
+            padding: $paddingFive;
           }
           .card_Stock {
-            color: grey;
-            padding: 5px;
+            color: $primaryclr4;
+            padding: $paddingFive;
           }
         }
       }
@@ -86,17 +74,14 @@
   }
 
   .homepage_second_div {
-    border-top: 1px solid grey;
-    
+    border-top: 1px solid $primaryclr4;
     padding-top: 20px;
     margin:50px 100px;
     @include flex(flex, space-around, nowrap, row);
 
     .second_div_textplace {
       font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-
-      border-radius: 6px;
-      // background-color: white;
+      border-radius: $borderRadius;
       width: 50%;
 
       p {
@@ -110,7 +95,7 @@
     .second_div_imgplace {
       .homepage_section_img {
         width: 500px;
-        border-radius: 6px;
+        border-radius: $borderRadius;
       }
     }
   }

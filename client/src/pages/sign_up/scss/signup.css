@@ -17,9 +17,9 @@
   height: 80vh;
   min-height: -moz-fit-content;
   min-height: fit-content;
-  background-color: #673ab7;
+  background-image: linear-gradient(royalblue, rgb(52, 52, 152));
   border-radius: 6px;
-  box-shadow: 0px 0px 1px 0px grey;
+  box-shadow: 0px 0px 1px 0px rgb(102, 98, 98);
 }
 .signup_div .form_div .form_header {
   font-family: "Courier New", Courier, monospace;
@@ -41,6 +41,10 @@
   border: 1px solid #00bcd4;
   font-size: large;
 }
+.signup_div .form_div .sign_form .form_input_div .input_text:focus {
+  border: transparent;
+  outline: 1px solid crimson;
+}
 .signup_div .form_div .sign_form .form_input_div .input_submit {
   display: flex;
   justify-content: center;
@@ -49,8 +53,9 @@
   align-content: center;
   width: 310px;
   height: 35px;
+  padding: 20px;
   background-color: #3ab1eb;
-  color: aliceblue;
+  color: white;
   border: 1px solid grey;
   cursor: pointer;
   font-size: large;
@@ -59,6 +64,10 @@
 .signup_div .form_div .sign_form .form_input_div .input_submit:hover {
   box-shadow: 0px 0px 5px 0px white;
   background-color: #1faff7;
+}
+.signup_div .form_div .sign_form .form_input_div .input_submit:focus {
+  border: transparent;
+  outline: 1px solid rgb(181, 178, 178);
 }
 .signup_div .form_div .login_div {
   display: flex;

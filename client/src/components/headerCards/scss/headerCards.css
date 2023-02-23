@@ -21,7 +21,7 @@
   height: 250px;
   background-color: rgba(255, 255, 255, 0.772);
   border-radius: 6px;
-  color: #673ab7;
+  color: #e91e63;
   cursor: pointer;
 }
 .header_card_container .all_header_cards .headerCard_div:hover {
@@ -29,12 +29,12 @@
   transition: ease-in-out 1s;
 }
 .header_card_container .all_header_cards .headerCard_div h3 {
-  border-bottom: 1px solid;
+  border-bottom: 1px solid grey;
   padding: 5px;
   font-family: "Courier New", Courier, monospace;
 }
 .header_card_container .all_header_cards .headerCard_div h5 {
-  border-bottom: 1px solid;
+  border-bottom: 1px solid grey;
   padding: 5px;
   letter-spacing: 1px;
 }/*# sourceMappingURL=headerCards.css.map */

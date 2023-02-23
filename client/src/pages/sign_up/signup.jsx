@@ -7,7 +7,7 @@ import { useDispatch,useSelector } from "react-redux";
 import {authActions} from '../../store/slices/authSlice'
 function SignUp() {
   const dispatch = useDispatch()
-
+const [isLoading,setIsLoading]= useState(false)
 // const auth = useSelector((state,action)=>{
 
 //   console.log(state.auth);
@@ -25,8 +25,11 @@ function SignUp() {
 //     errorPassword.innerHTML = ""
 // errorEmail.innerHTML = ""
 // errorUsername.innerHTML =""
-    const url = "http://localhost:4000/signup";
+
+
 try{
+  const url = "http://localhost:4000/signup";
+
   const user = await axios.post(url, {
     Username: username,
     Email: email,
@@ -39,14 +42,14 @@ try{
     token:user.data.token
   }))
   dispatch(authActions.setCredentials({user:user.data.user,token:user.data.token}))
+
   navigate('/')
-
-  // const User = Cookies.set("user", user.data.user);
-  // console.log(User);
-
-  // return User;
+ 
 }catch(err){
-  if(err?.response?.data?.errors[0].msg?.includes('password') /*|| err.response.data.includes('password')*/){
+ 
+  if(err?.response?.data?.errors[0].msg?.includes('password') /*|| err.response.data.includes('password')*/)
+  
+  {
     errorPassword.textContent =err.response.data.errors[0].msg /*|| err.response.data*/
   }
    
@@ -66,7 +69,10 @@ try{
     // console.log(User);
   };
 
+if(isLoading){
 
+  return 'sdasd'
+}
   return (
     <div className="signup">
       <Header />

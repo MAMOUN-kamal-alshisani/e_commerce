@@ -1,41 +1,40 @@
 @import "../../../scss_variables/variables";
 
 .profile {
-  position: relative;
-  width: 100%;
+  position: $relativePosition;
+  width: $fullWidth;
   height: 100vh;
 
   .profile_div {
     // max-width: 1024px;
     height: 100vh;
-    align-items: center;
+    align-items: $itemsAlignCenter;
     @include flex(flex, center, nowrap, row);
 
     .profile_info_container {
       height: fit-content;
       padding: 100px;
-      box-shadow: 0px 0px 5px 0px grey;
-      background: white;
+      box-shadow: 0px 0px 5px 0px $primaryclr4;
+      background: $bg_color1;
       .profile_data {
         @include flex(flex, space-between, nowrap, row);
 
         .img_div {
-          
-          position: relative;
+          position: $relativePosition;
           @include flex(flex, space-between, nowrap, column);
           // background-color: rgba(0, 0, 0, 0.424);;
-          box-shadow: 0px 0px 1px 0px grey;
+          box-shadow: 0px 0px 1px 0px $primaryclr4;
 
           //  background-color: aqua;
-          border-radius: 6px;
+          border-radius: $borderRadius;
           .profile_img {
-            border-radius: 6px 0px;
+            border-radius: $borderRadius 0px;
           }
           .img_formDiv {
             width: fit-content;
 
             form {
-              position: absolute;
+              position: $absolutePosition;
               // bottom: 80px;
               top: 0px;
               right: 1px;
@@ -43,8 +42,8 @@
               .inputLabel {
                 padding: 10px;
                 color: rgb(48, 93, 111);
-                font-size: x-large;
-                cursor: pointer;
+                font-size: $fontSizeXlarge;
+                cursor: $pointer;
 
                 &:hover {
                   color: rgb(17, 34, 41);
@@ -69,11 +68,11 @@
 
         .info_div {
           border-radius: 0px 6px;
-          background-color: white;
+          background-color: $bg_color1;
           // background-color: #3ab1eb;
-          box-shadow: 0px 0px 1px 0px grey;
+          box-shadow: 0px 0px 1px 0px $primaryclr4;
           @include flex(flex, flex-start, nowrap, column);
-          font-size: large;
+          font-size: $fontSizeLarge;
           gap: 20px;
           width: 400px;
           // background-color: rgba(0, 0, 0, 0.424);
@@ -82,39 +81,30 @@
             color: black;
             // border-bottom: 1px solid white;
             padding: 10px;
-
-            b {
-            }
           }
 
-
-          .updateProfileBtn{
+          .updateProfileBtn {
             @include flex(flex, center, nowrap, row);
-            padding: 5px;
-gap: 10px;
-border: transparent;
-background-color: rgb(61, 133, 162);
-color: white;
-cursor: pointer;
-height: 30px;
-font-size: medium;
+            padding: $paddingFive;
+            gap: 10px;
+            border: $bordertr;
+            background-color: rgb(61, 133, 162);
+            color: $bg_color1;
+            cursor: $pointer;
+            height: 30px;
+            font-size: medium;
 
-border-bottom-left-radius: 6px;
-border-bottom-right-radius: 6px;
+            border-bottom-left-radius: 6px;
+            border-bottom-right-radius: 6px;
 
-
-&:hover{
-
-background-color: rgb(54, 145, 181);
-
-}
-svg{
-   
-  path{
-    stroke:azure
-  }
-}
-
+            &:hover {
+              background-color: rgb(54, 145, 181);
+            }
+            svg {
+              path {
+                stroke: $bg_color1;
+              }
+            }
           }
         }
       }

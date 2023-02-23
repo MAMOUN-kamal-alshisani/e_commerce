@@ -5,7 +5,7 @@
   bottom: -111px;
   left: 0;
   right: 0;
-  position: absolute;
+  position: $absolutePosition;
   margin-bottom: 10px;
   .all_header_cards {
     @include flex(flex, space-around, nowrap, row);
@@ -15,23 +15,22 @@
       width: 290px;
       height: 250px;
       background-color: rgba(255, 255, 255, 0.772);
-border-radius: 6px;
-color:#673ab7;
-cursor: pointer;
-&:hover{
-
-    background-color:white;
-    transition: ease-in-out 1s;
-}
+      border-radius: 6px;
+      color: #e91e63;
+      cursor: $pointer;
+      &:hover {
+        background-color: $bg_color1;
+        transition: $transition;
+      }
       h3 {
-        border-bottom: 1px solid;
-        padding: 5px;
+        border-bottom: 1px solid $primaryclr4;
+        padding: $paddingFive;
         font-family: "Courier New", Courier, monospace;
         // color: royalblue;
       }
       h5 {
-        border-bottom: 1px solid;
-        padding: 5px;
+        border-bottom: 1px solid $primaryclr4;
+        padding: $paddingFive;
         // color: royalblue;
         letter-spacing: 1px;
       }

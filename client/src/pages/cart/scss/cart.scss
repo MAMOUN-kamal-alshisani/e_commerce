@@ -1,107 +1,7 @@
 @import "../../../scss_variables/variables";
 
-// .cart {
-//   background-color: brown;
-//   max-width: 1024px;
-//   width: 100%;
-//   height: 100vh;
-
-//   .cart_section {
-//     padding-left: 100px;
-
-//     .cart_header {
-//       @include flex(flex, space-between, nowrap, row);
-//       border-bottom: 3px solid grey;
-//     }
-
-//     .cart_container {
-
-//       .details_header_div {
-//         @include flex(flex, space-between, wrap, row);
-//         margin-left: 145px
-//       }
-
-//       .item_card {
-//         @include flex(flex, space-between, wrap, row);
-
-//         .card_list {
-//           @include flex(flex, space-between, wrap, row);
-//           gap: 20px;
-
-//           .cart_item_info_div {
-//             @include flex(flex, space-between, wrap, column);
-//           }
-//         }
-
-// .item_second_div{
-//     @include flex(flex, space-between, nowrap, row);
-//     justify-content: center;
-// gap: 10px;
-//     .item_btn{
-
-//         width: 30px;
-//         height: 20px;
-//     }
-//     p{
-//         width: 30px;
-//         height: 20px;
-//     }
-// }
-
-//       }
-//     }
-//   }
-// }
-
-// .cart {
-//   margin: 0px auto;
-//   max-width: 1024px;
-//   width: 100%;
-//   height: 100vh;
-//   background-color: red;
-//   .cart_ft_section {
-//     .cart_details_cr {
-//       @include flex(flex, unset, nowrap, column);
-//       background-color: blue;
-
-//       .cart_header_pt1 {
-//         @include flex(flex, space-around, nowrap, row);
-//       }
-//       .cart_cardheader_pt2 {
-
-//         // gap: 60px;
-//         @include flex(flex, space-evenly, nowrap, row);
-
-//         #product_details_header {
-//           padding-right: 200px;
-//         }
-//       }
-
-//       .cart_card_pt3 {
-//         // @include flex(flex, space-evenly, nowrap, row);
-
-//         .item_card {
-//           @include flex(flex, space-evenly, nowrap, row);
-
-//           .card_list {
-//             @include flex(flex, space-between, nowrap, row);
-//             align-items: flex-end;
-//             .cardImg_div {
-//               // margin-right: 20px;
-//               height: fit-content;
-//             }
-//             gap: 50px;
-//             .cart_item_info_div {
-//               @include flex(flex, space-between, wrap, column);
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
-
 .cart {
+  margin-top: 50px;
   max-width: 1424px;
   width: 100%;
   height: 100vh;
@@ -111,7 +11,7 @@
   .cart_cr {
     overflow: auto;
     width: 90%;
-    background-color: white;
+    background-color: $bg_color1;
     margin-left: 100px;
     padding: 25px;
     // @include flex(flex, center, nowrap, c);
@@ -124,7 +24,7 @@
     }
 
     .cart_list {
-      color: grey;
+      color: $primaryclr4;
       @include flex(flex, space-around, nowrap, row);
       gap: 10px;
 
@@ -154,24 +54,21 @@
 
                 .cart_name {
                   color: black;
-                  padding-left: 5px;
+                  padding-left: $paddingFive;
                 }
                 .cart_title {
-                  color: grey;
-                  padding-left: 5px;
+                  color: $primaryclr4;
+                  padding-left: $paddingFive;
                 }
-
                 .remove_item_btn {
+                  @include colorRelated($bordertr, $bordertr, $primaryclr5);
+                  font-size: medium;
+                  cursor: $pointer;
 
-                  border: transparent;
-                  background-color: transparent;
-                color: crimson;
-                cursor: pointer;
-
-transition: ease-in-out 1s;
-                &:hover{
-color: red
-                }
+                  transition: $transition;
+                  &:hover {
+                    color: $primaryclr3;
+                  }
                 }
               }
             }
@@ -184,35 +81,29 @@ color: red
 
         .product_details_div {
           @include flex(flex, space-around, nowrap, column);
-          // align-items: flex-start;
+
           height: 100%;
-          // padding-top: 20px;
           .item_second_div {
             @include flex(flex, space-between, nowrap, row);
-            // gap: 10px;
-            // height: 200px;
-            // margin-top:19px
-            .item_btn{
-              background-color: transparent;
-              
+
+            .item_btn {
+              background-color: $bordertr;
             }
-             .symbol-btn{
-              border: transparent;
-              font-size: larger;
-              padding: 5px;
-              cursor: pointer;
+            .symbol-btn {
+              border: $bordertr;
+              font-size: $fontSizeLarger;
+              padding: $paddingFive;
+              cursor: $pointer;
 
-
-              &:hover{
-                color:crimson
+              &:hover {
+                color: crimson;
               }
-             }
-             .quantity-btn{
-border: 1px solid #ebebeb;
-color:grey;
-padding:5px 10px;
-             }
-            
+            }
+            .quantity-btn {
+              border: 1px solid #ebebeb;
+              color: $primaryclr4;
+              padding: 5px 10px;
+            }
           }
         }
       }
@@ -247,7 +138,7 @@ padding:5px 10px;
     .summary_div {
       border-bottom: 3px solid #eee9e9;
 
-      text-align: center;
+      text-align: $txtAlignCenter;
     }
 
     .ship_details_pt1 {
@@ -270,17 +161,15 @@ padding:5px 10px;
         input {
           width: 300px;
           height: 25px;
-          padding: 5px;
-          border: 1px solid #607d8b;;
+          padding: $paddingFive;
+          border: 1px solid #607d8b;
 
-
-          &:focus{
+          &:focus {
             outline: 1px solid rgb(200, 197, 197);
           }
         }
 
-
-        .promo_btn{
+        .promo_btn {
           height: 30px;
           width: 70px;
         }
@@ -289,31 +178,29 @@ padding:5px 10px;
     .ship_details_pt3 {
       @include flex(flex, space-between, nowrap, row);
       margin-top: 10px;
-      color:grey;
-      font-weight: bold
+      color: $primaryclr4;
+      font-weight: bold;
     }
 
     .checkout_div {
       @include flex(flex, center, nowrap, row);
       margin-top: 20px;
-     
-      .checkout_btn{
+
+      .checkout_btn {
         width: 80%;
         height: 40px;
         border: transparent;
-        background-color: #4d4d4d;
-        color: white;
-        font-weight: bold;
-        cursor: pointer;
-        border-radius: 6px;
+        background-color: #009688;
+        color: $bg_color1;
+        // font-weight: bold;
+        cursor: $pointer;
+        border-radius: $borderRadius;
 
-transition: ease-in-out 1s;
-        &:hover{
-        background-color: #413f3f;
-
+        transition: $transition;
+        &:hover {
+          background-color: #02ac9b;
         }
-      } 
- 
+      }
     }
   }
 }
