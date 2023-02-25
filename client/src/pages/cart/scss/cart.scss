@@ -1,0 +1,284 @@
+@import "../../../scss_variables/variables";
+
+.cart {
+  margin-top: 50px;
+  max-width: 1424px;
+  width: 100%;
+  height: 100vh;
+
+  @include flex(flex, unset, nowrap, row);
+  margin-bottom: 50px;
+  .cart_cr {
+    overflow: auto;
+    width: 90%;
+    background-color: $bg_color1;
+    margin-left: 100px;
+    padding: 25px;
+    // @include flex(flex, center, nowrap, c);
+    .cart_item_pt1 {
+      @include flex(flex, space-between, nowrap, row);
+      margin-left: 50px;
+      margin-right: 50px;
+      border-bottom: 3px solid #f5f2f2;
+      // justify-content: space-around;
+    }
+
+    .cart_list {
+      color: $primaryclr4;
+      @include flex(flex, space-around, nowrap, row);
+      gap: 10px;
+
+      .cart_item_pt2 {
+        //   @include flex(flex, space-around, nowrap, row);
+
+        .product_details_div {
+          @include flex(flex, space-around, nowrap, column);
+
+          .item_card {
+            // padding-top: 20px;
+
+            @include flex(flex, space-between, nowrap, row);
+            .card_list {
+              @include flex(flex, space-between, nowrap, row);
+
+              gap: 40px;
+              .cardImg_div {
+                @include flex(flex, flex-end, nowrap, column);
+                object-fit: cover;
+              }
+
+              .cart_item_info_div {
+                @include flex(flex, space-between, nowrap, column);
+                align-items: flex-start;
+                padding-top: 20px;
+
+                .cart_name {
+                  color: black;
+                  padding-left: $paddingFive;
+                }
+                .cart_title {
+                  color: $primaryclr4;
+                  padding-left: $paddingFive;
+                }
+                .remove_item_btn {
+                  @include colorRelated($bordertr, $bordertr, $primaryclr5);
+                  font-size: medium;
+                  cursor: $pointer;
+
+                  transition: $transition;
+                  &:hover {
+                    color: $primaryclr3;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .cart_item_pt3 {
+        @include flex(flex, unset, nowrap, column);
+
+        .product_details_div {
+          @include flex(flex, space-around, nowrap, column);
+
+          height: 100%;
+          .item_second_div {
+            @include flex(flex, space-between, nowrap, row);
+
+            .item_btn {
+              background-color: $bordertr;
+            }
+            .symbol-btn {
+              border: $bordertr;
+              font-size: $fontSizeLarger;
+              padding: $paddingFive;
+              cursor: $pointer;
+
+              &:hover {
+                color: crimson;
+              }
+            }
+            .quantity-btn {
+              border: 1px solid #ebebeb;
+              color: $primaryclr4;
+              padding: 5px 10px;
+            }
+          }
+        }
+      }
+
+      .cart_item_pt4 {
+        @include flex(flex, unset, nowrap, column);
+        .product_details_div {
+          @include flex(flex, space-around, nowrap, column);
+          // align-items: flex-start;
+          height: 100%;
+        }
+      }
+      .cart_item_pt5 {
+        @include flex(flex, unset, nowrap, column);
+
+        .product_details_div {
+          @include flex(flex, space-around, nowrap, column);
+          // align-items: flex-start;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  .cart_form_section {
+    @include flex(flex, unset, nowrap, column);
+    width: 35%;
+    background-color: #f6f6f6;
+    // padding-left:10px;
+    // padding-right:10px;
+    padding: 25px;
+    .summary_div {
+      border-bottom: 3px solid #eee9e9;
+
+      text-align: $txtAlignCenter;
+    }
+
+    .ship_details_pt1 {
+      @include flex(flex, space-between, nowrap, row);
+      gap: 20px;
+    }
+
+    .ship_details_pt2 {
+      height: 60vh;
+      @include flex(flex, space-around, wrap, column);
+      align-content: flex-start;
+      gap: 20px;
+      padding: 0px 40px;
+      border-bottom: 3px solid #eee9e9;
+      .ship_input {
+        @include flex(flex, space-around, nowrap, column);
+        gap: 20px;
+        width: fit-content;
+        font-weight: bold;
+        input {
+          width: 300px;
+          height: 25px;
+          padding: $paddingFive;
+          border: 1px solid #607d8b;
+
+          &:focus {
+            outline: 1px solid rgb(200, 197, 197);
+          }
+        }
+
+        .promo_btn {
+          height: 30px;
+          width: 70px;
+        }
+      }
+    }
+    .ship_details_pt3 {
+      @include flex(flex, space-between, nowrap, row);
+      margin-top: 10px;
+      color: $primaryclr4;
+      font-weight: bold;
+    }
+
+    .checkout_div {
+      @include flex(flex, center, nowrap, row);
+      margin-top: 20px;
+
+      .checkout_btn {
+        width: 80%;
+        height: 40px;
+        border: transparent;
+        background-color: #009688;
+        color: $bg_color1;
+        // font-weight: bold;
+        cursor: $pointer;
+        border-radius: $borderRadius;
+
+        transition: $transition;
+      
+
+        &:hover {
+          background-color: #02ac9b;
+        }
+
+        .CgSpinner{
+
+          animation: rotateSpinner 3s;
+        }
+      }
+      @keyframes rotateSpinner {
+        0% {
+          rotate: (0);
+        }
+        25% {
+          rotate: (90deg);
+        }
+        50% {
+          rotate: (180deg);
+        }
+        75% {
+          rotate: (270deg);
+        }
+        100% {
+          rotate: (360deg);
+        }
+        // 100% {display: none;}
+      }
+
+      .checkout_data_container {
+        p {
+          // color: rgb(252, 0, 0);
+          text-align: center;
+          font-size: large;
+        }
+
+        .cart_checkout_img {
+          width: 600px;
+          border-radius: 25px;
+          height: 250px;
+        }
+
+        .checkout_data {
+          @include flex(flex, space-between, wrap, column);
+          height: 300px;
+          background-color: #fafdfd;
+          overflow: auto;
+          border-radius: 6px;
+          padding: 15px;
+
+          .itemHeader {
+            font-size: larger;
+            padding: 5px;
+          }
+          .checkout_list_items {
+            // @include flex(flex, unset, nowrap, column);
+
+            color: grey;
+
+            .item_div {
+              @include flex(flex, space-between, nowrap, row);
+              width: 100%;
+
+              span:first-child {
+                padding: 5px;
+                color: #009688;
+              }
+            }
+
+            // margin-right: 250px;
+          }
+          .checkout_total_div {
+            @include flex(flex, flex-end, nowrap, row);
+
+            h5 {
+              text-align: end;
+              color: red;
+            }
+          }
+        }
+      }
+    }
+  }
+}

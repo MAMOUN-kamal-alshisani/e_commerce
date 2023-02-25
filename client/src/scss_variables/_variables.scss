@@ -1,0 +1,35 @@
+
+$primaryclr1: royalblue;
+$primaryclr2: blue;
+$primaryclr3:red;
+$primaryclr4:grey;
+$primaryclr5:crimson;
+
+$bg_color1:white;
+
+$pointer: pointer;
+$transition:ease-in-out 1s;
+$borderRadius:6px;
+$fullWidth:100%;
+$txtAlignCenter:center;
+$itemsAlignCenter:center;
+$paddingFive:5px;
+$textDecoration:none;
+$fontSizeLarge:large;
+$fontSizeLarger:larger;
+$fontSizeXlarge:x-large;
+$bordertr:transparent;
+$relativePosition:relative;
+$absolutePosition:absolute;
+@mixin flex($display,$jstcontent,$flexwarp,$flexdirection) {
+    display: $display;
+    justify-content:$jstcontent ;
+    flex-wrap: $flexwarp;
+    flex-direction: $flexdirection;
+}
+
+@mixin colorRelated($background,$border,$color) {
+    background-color: $background;
+    border: 1px solid $border;
+color:$color ;
+}

@@ -1,0 +1,16 @@
+@import "../../../scss_variables/variables";
+
+
+button {
+    background-color: $bordertr;
+    border: $textDecoration;
+    outline: $textDecoration;
+    cursor: $pointer;
+    font-size: $fontSizeLarger;
+  }
+  .on {
+    color: gold;
+  }
+  .off {
+    color: #ccc;
+  }

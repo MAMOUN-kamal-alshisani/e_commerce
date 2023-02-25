@@ -1,0 +1,115 @@
+@import "../../../scss_variables/variables";
+
+.signup_div {
+  @include flex(flex, center, wrap, row);
+  width: $fullWidth;
+  height: 100vh;
+  align-items: $itemsAlignCenter;
+  .form_div {
+    @include flex(flex, center, wrap, column);
+    align-content: $txtAlignCenter;
+    width: 600px;
+    height: 80vh;
+    min-height: fit-content;
+
+    background-image: linear-gradient(royalblue, rgb(52, 52, 152));
+    border-radius: $borderRadius;
+
+    box-shadow: 0px 0px 1px 0px rgb(102, 98, 98);
+
+    .form_header {
+      font-family: "Courier New", Courier, monospace;
+      text-align: $txtAlignCenter;
+      color: $bg_color1;
+      letter-spacing: 1px;
+    }
+
+    .sign_form {
+      .form_input_div {
+        margin-top: 20px;
+
+        .input_text {
+          @include flex(flex, center, wrap, column);
+
+          width: 300px;
+          height: 25px;
+          padding: $paddingFive;
+          border: 1px solid #00bcd4;
+          font-size: $fontSizeLarge;
+          &:focus {
+            border: $bordertr;
+            outline: 1px solid $primaryclr5;
+          }
+        }
+
+        .input_submit {
+          @include flex(flex, center, wrap, column);
+          align-content: $itemsAlignCenter;
+          width: 310px;
+          height: 35px;
+          padding: 20px;
+
+          background-color: #3ab1eb;
+          // background-color: #673ab7;
+          color: $bg_color1;
+          border: 1px solid $primaryclr4;
+
+          cursor: $pointer;
+          font-size: $fontSizeLarge;
+          transition: $transition;
+          &:hover {
+            box-shadow: 0px 0px 5px 0px $bg_color1;
+            background-color: #1faff7;
+          }
+
+          &:focus {
+            border: $bordertr;
+            outline: 1px solid rgb(181, 178, 178);
+          }
+
+
+          .loading_icon{
+            // transform: rotateX(90);
+            animation: rotateIcon 3s
+          }
+          
+          @keyframes rotateIcon {
+            0%   {rotate:(0)}
+            25%  {rotate:(90deg)}
+            50%  {rotate:(180deg)}
+            90% {rotate:(360deg)}
+            100% {display: none;}
+          }
+        }
+      }
+    }
+
+    .login_div {
+      @include flex(flex, center, wrap, row);
+    }
+    .login_tag {
+      @include flex(flex, center, wrap, row);
+      cursor: $pointer;
+      transition: $transition;
+      &:hover {
+        color: cornsilk;
+      }
+    }
+
+    .usernameError_div {
+      padding: $paddingFive;
+      padding-top: 10px;
+      color: $primaryclr3;
+    }
+    .emailError_div {
+      padding: $paddingFive;
+      padding-top: 10px;
+      color: $primaryclr3;
+    }
+    .passowrdError_div {
+      padding: $paddingFive;
+      padding-top: 10px;
+      color: $primaryclr3;
+    }
+  }
+}

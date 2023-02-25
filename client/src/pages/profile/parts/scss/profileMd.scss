@@ -1,0 +1,108 @@
+@import "../../../../scss_variables/variables";
+
+.form_container {
+  z-index: 1;
+  width: $fullWidth;
+  height: $fullWidth;
+  position: $absolutePosition;
+  background-color: rgba(0, 0, 0, 0.15);
+  .profile_form {
+    @include flex(flex, center, nowrap, column);
+    // border-radius:6px ;
+    margin-right: 100px;
+    background-color: rgb(236, 230, 230);
+    width: 300px;
+    padding: 10px;
+    border: 1px solid steelblue;
+
+
+.close_div{
+  @include flex(flex, flex-end, nowrap, column);
+  align-items: flex-end;
+  .close_btn{
+
+    svg{
+      font-size: $fontSizeXlarge;
+// background-color: black;
+  color: black;
+transition: $transition;
+
+  &:hover{
+    color: red;
+  }
+    }
+  }
+}
+
+
+    h3 {
+      text-align: $itemsAlignCenter;
+      color: $bg_color1;
+    }
+
+    width: 500px;
+    height: 500px;
+
+    position: $absolutePosition;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    // top: 0;
+    // bottom: 0;
+
+    .profile_form_input_div {
+      @include flex(flex, center, nowrap, column);
+
+      margin-top: 20px;
+      gap: 5px;
+
+      input {
+        height: 30px;
+
+        &:focus {
+          border: $bordertr;
+          outline: 2px solid #1faff7;
+        }
+      }
+    }
+
+    .form_btn {
+      align-content: $itemsAlignCenter;
+      margin-top: 20px;
+      border-radius: $borderRadius;
+
+      height: 35px;
+      background-color: #3ab1eb;
+      border: $primaryclr4;
+      color: $bg_color1;
+      cursor: $pointer;
+      font-size: $fontSizeLarge;
+      transition: $transition;
+      &:hover {
+        box-shadow: 0px 0px 5px 0px $bg_color1;
+        background-color: #1faff7;
+      }
+
+
+
+      .loadSpinner{
+ animation: rotateIcon 3s
+
+      }
+@keyframes rotateIcon {
+  0%   {rotate:(0)}
+  25%  {rotate:(90deg)}
+  50%  {rotate:(180deg)}
+  75%{
+    rotate:(270deg)
+  }
+  100% {rotate:(360deg)}
+  // 100% {display: none;}
+}
+
+
+    }
+  }
+}

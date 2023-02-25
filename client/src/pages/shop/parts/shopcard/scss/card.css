@@ -1,0 +1,98 @@
+.card {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.card .container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  background-color: white;
+  width: 300px;
+  box-shadow: 0px 0px 1px 0px grey;
+}
+.card .container .img_cn {
+  width: 100%;
+  height: 100%;
+}
+.card .container .img_cn .cardImg {
+  width: 100%;
+  height: 250px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.card .container .card_title_div .card_title {
+  text-align: center;
+  color: grey;
+}
+.card .container .card_name_div .card_name {
+  padding: 5px;
+  text-align: center;
+}
+.card .container .itemDetails {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+.card .container .itemDetails .card_h3 {
+  color: red;
+  padding: 5px;
+}
+.card .container .itemDetails .card_Stock {
+  color: grey;
+  padding: 5px;
+}
+.card .container .add_btn_div {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  padding: 10px;
+}
+.card .container .add_btn_div .add_btn {
+  height: 40px;
+  background-color: crimson;
+  border: transparent;
+  cursor: pointer;
+  transition: ease-in-out 1s;
+  color: white;
+}
+.card .container .add_btn_div .add_btn:hover {
+  background-color: red;
+}
+.card .container .add_btn_div .add_btn svg {
+  font-size: larger;
+  padding-left: 4px;
+}
+.card .container .rating_star_div {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+.card .loading_icon {
+  animation: rotateIcon 3s;
+}
+@keyframes rotateIcon {
+  0% {
+    rotate: 0;
+  }
+  25% {
+    rotate: 90deg;
+  }
+  50% {
+    rotate: 180deg;
+  }
+  90% {
+    rotate: 360deg;
+  }
+  100% {
+    display: none;
+  }
+}/*# sourceMappingURL=card.css.map */

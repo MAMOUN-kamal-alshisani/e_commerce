@@ -1,0 +1,15 @@
+button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: larger;
+}
+
+.on {
+  color: gold;
+}
+
+.off {
+  color: #ccc;
+}/*# sourceMappingURL=rating.css.map */

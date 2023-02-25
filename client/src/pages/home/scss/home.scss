@@ -1,0 +1,106 @@
+@import "../../../scss_variables/variables";
+
+.homepage_container {
+  margin-top: 160px;
+  max-width: 1424px;
+  width: $fullWidth;
+
+  .featured_items {
+    @include flex(flex, space-between, nowrap, row);
+    align-items: center;
+    gap: 10px;
+    margin-left: 80px;
+    border-bottom: 1px solid rgb(61, 114, 154);
+   margin-bottom: 20px;
+
+    .featured_items_link {
+      text-decoration: none;
+      color: $primaryclr1;
+     
+      &:hover {
+        color: $primaryclr2;
+      }
+    }
+  }
+
+  .first_card_div {
+    @include flex(flex, center, wrap, row);
+    margin-left: 80px;
+
+    .card {
+      @include flex(flex, center, wrap, row);
+      cursor: $pointer;
+
+      .container {
+        width: 300px;
+        border-radius:$borderRadius;
+        transition: $transition;
+
+        &:hover {
+          box-shadow: 0px 0px 5px 0px white;
+          background-color: rgba(238, 226, 226, 0.176);
+        }
+
+        .img_cn {
+          width: $fullWidth;
+          .cardImg {
+            width: $fullWidth;
+            // width: 250px;
+            height: 250px;
+            border-radius: $borderRadius;
+          object-fit: contain;
+           
+          }
+        }
+        .card_title {
+          text-align: $txtAlignCenter;
+          color: $primaryclr3;
+        }
+        .card_name {
+          padding: $paddingFive;
+          text-align: $txtAlignCenter;
+        }
+
+        .itemDetails {
+          @include flex(flex, space-between, nowrap, row);
+
+          .card_price {
+            color: $primaryclr3;
+            padding: $paddingFive;
+          }
+          .card_Stock {
+            color: $primaryclr4;
+            padding: $paddingFive;
+          }
+        }
+      }
+    }
+  }
+
+  .homepage_second_div {
+    border-top: 1px solid $primaryclr4;
+    padding-top: 20px;
+    margin:50px 100px;
+    @include flex(flex, space-around, nowrap, row);
+
+    .second_div_textplace {
+      font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+      border-radius: $borderRadius;
+      width: 50%;
+
+      p {
+        line-height: 50px;
+      }
+      h1 {
+        text-shadow: 0px 1px 0px white;
+      }
+    }
+
+    .second_div_imgplace {
+      .homepage_section_img {
+        width: 500px;
+        border-radius: $borderRadius;
+      }
+    }
+  }
+}

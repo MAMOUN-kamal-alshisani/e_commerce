@@ -1,0 +1,196 @@
+@import "../../../scss_variables/variables";
+
+.profile {
+  position: $relativePosition;
+  width: $fullWidth;
+  height: 100vh;
+
+  .profile_div {
+    // max-width: 1024px;
+    height: 100vh;
+    align-items: $itemsAlignCenter;
+    @include flex(flex, center, nowrap, row);
+
+    .profile_info_container {
+      height: fit-content;
+      padding: 100px;
+      box-shadow: 0px 0px 5px 0px $primaryclr4;
+      background: $bg_color1;
+      .profile_data {
+        @include flex(flex, space-between, nowrap, row);
+
+        .img_div {
+          position: $relativePosition;
+          @include flex(flex, space-between, nowrap, column);
+          // background-color: rgba(0, 0, 0, 0.424);;
+          box-shadow: 0px 0px 1px 0px $primaryclr4;
+
+          //  background-color: aqua;
+          border-radius: $borderRadius;
+          .profile_img {
+            border-radius: $borderRadius 0px;
+          }
+          .img_formDiv {
+            width: fit-content;
+
+            form {
+              position: $absolutePosition;
+              // bottom: 80px;
+              top: 0px;
+              right: 1px;
+
+              .inputLabel {
+                padding: 10px;
+                color: rgb(48, 93, 111);
+                font-size: $fontSizeXlarge;
+                cursor: $pointer;
+
+                &:hover {
+                  color: rgb(17, 34, 41);
+                }
+              }
+              .imgInput {
+                // background-color: #3ab1eb
+              }
+            }
+          }
+          .data_div {
+            @include flex(flex, space-between, nowrap, row);
+            color: black;
+            //  border-bottom: 1px solid white;
+
+            padding: 10px;
+
+            b {
+            }
+          }
+        }
+
+        .info_div {
+          border-radius: 0px 6px;
+          background-color: $bg_color1;
+          // background-color: #3ab1eb;
+          box-shadow: 0px 0px 1px 0px $primaryclr4;
+          @include flex(flex, flex-start, nowrap, column);
+          font-size: $fontSizeLarge;
+          gap: 20px;
+          width: 400px;
+          // background-color: rgba(0, 0, 0, 0.424);
+          .data_div {
+            @include flex(flex, space-between, nowrap, row);
+            color: black;
+            // border-bottom: 1px solid white;
+            padding: 10px;
+          }
+
+          .updateProfileBtn {
+            @include flex(flex, center, nowrap, row);
+            padding: $paddingFive;
+            gap: 10px;
+            border: $bordertr;
+            background-color: rgb(61, 133, 162);
+            color: $bg_color1;
+            cursor: $pointer;
+            height: 30px;
+            font-size: medium;
+
+            border-bottom-left-radius: 6px;
+            border-bottom-right-radius: 6px;
+
+            &:hover {
+              background-color: rgb(54, 145, 181);
+            }
+            svg {
+              path {
+                stroke: $bg_color1;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// .profile {
+//   height: 100vh;
+//   margin-bottom: 130px;
+//   .profile_div {
+//    @include flex(flex, center, nowrap, row);
+
+//     .profile_form {
+// border-radius:6px ;
+
+//       @include flex(flex, unset, nowrap, column);
+//       margin-right: 100px;
+//       background-color: rgba(0, 0, 0, 0.355);
+//       width: 300px;
+//       padding: 10px;
+// border: 1px solid steelblue;
+//       h3 {
+//         text-align: center;
+//         color: white
+//       }
+//       .profile_form_input_div {
+//         @include flex(flex, center, nowrap, column);
+//         margin-top: 20px;
+// gap:5px;
+
+//         input{
+//             height: 30px;
+
+//             &:focus{
+// border: transparent;
+//               outline: 2px solid #1faff7;
+//             }
+//         }
+//       }
+
+//   .form_btn{
+//     align-content: center;
+//     margin-top: 20px;
+//  border-radius: 6px;
+
+//     height: 30px;
+//     background-color: #3ab1eb;
+//     border: grey;
+//     color: aliceblue;
+//     cursor: pointer;
+//     font-size: large;
+//     transition: ease-in-out 1s;
+//     &:hover {
+//       box-shadow: 0px 0px 5px 0px white;
+//       background-color: #1faff7;
+//     }
+//   }
+// }
+
+// .profile_info_container {
+// @include flex(flex, center, wrap, row);
+
+// .info_div {
+// background-color: white;
+//       background-color: rgba(255, 255, 255, 0.772);
+
+// height: fit-content;
+//         box-shadow: 0px 0px 2px 0px grey;
+//         @include flex(flex, unset, nowrap, column);
+//         gap: 30px;
+//         .data_div {
+//   margin-left: 20px;
+
+// span {
+//   padding: 15px;
+//   color: dodgerblue;
+//   font-size: large;
+//   letter-spacing: 1px;
+// }
+// .profile_img {
+//   width: 200px;
+//   height: 200px;
+// }
+//         }
+//       }
+//     }
+//   }
+// }
