@@ -9,25 +9,21 @@ const ContactDetails = db.define("ContactD", {
   },
   fullName: {
     type: Sequelize.DataTypes.STRING,
-default: ''
+
   },
   phone: {
     type: Sequelize.DataTypes.STRING,
-    default: ''
   },
 
   birthDate:{
     type: Sequelize.DataTypes.STRING,
-    default: ''
   },
 
   city: {
     type: Sequelize.DataTypes.STRING,
-    default: ''
   },
   address: {
     type: Sequelize.DataTypes.STRING,
-    default: ''
   },
 
   photo: {

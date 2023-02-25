@@ -7,11 +7,11 @@ const {
   deleteItem,
   updateItem,
 } = require("../controllers/itemFn");
-const verifyToken = require('../middlewares/verfyToken')
+const {verifyToken,verifyAdmin} = require('../middlewares/verfyToken')
 itemRoute.get("/item",/*verifyToken,*/ getAllItems);
 itemRoute.get("/item/:id", getItem);
-itemRoute.post("/item" ,createItem);
-itemRoute.delete("/item/:id",/* verifyToken,*/deleteItem);
-itemRoute.put("/item/:id", /*verifyToken,*/updateItem);
+itemRoute.post("/item" ,verifyAdmin,createItem);
+itemRoute.delete("/item/:id",verifyAdmin,/* verifyToken,*/deleteItem);
+itemRoute.put("/item/:id",verifyAdmin ,/*verifyToken,*/updateItem);
 
 module.exports = itemRoute;

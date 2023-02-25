@@ -1,12 +1,12 @@
 const { db } = require("../db/db");
 const Sequelize = require("sequelize");
-const ContactDetails = require('./contactD')
+const ContactDetails = require("./contactD");
 const User = db.define("User", {
-    id: {
-      type: Sequelize.DataTypes.INTEGER,
-      autoIncrement:true,
-      primaryKey:true
-    },
+  id: {
+    type: Sequelize.DataTypes.INTEGER,
+    autoIncrement: true,
+    primaryKey: true,
+  },
   Username: {
     type: Sequelize.DataTypes.STRING,
     allowNull: false,
@@ -32,7 +32,13 @@ const User = db.define("User", {
       min: 6,
     },
   },
+
+  isAdmin: {
+    type: Sequelize.DataTypes.BOOLEAN,
+    allowNull: false,
+    defaultValue: false,
+  },
 });
-User.hasOne(ContactDetails)
-ContactDetails.belongsTo(User)
+User.hasOne(ContactDetails);
+ContactDetails.belongsTo(User);
 module.exports = User;

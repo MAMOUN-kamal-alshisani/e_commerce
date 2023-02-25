@@ -8,12 +8,12 @@ const {
   UpdateUser,
 } = require("../controllers/userFn");
 
-const verifyToken = require("../middlewares/verfyToken");
+const {verifyToken,verifyAdmin} = require("../middlewares/verfyToken");
 
-userRoute.get("/users", verifyToken, getAllUsers);
-userRoute.get("/user/:id", verifyToken, getUser);
-userRoute.post("/users", verifyToken, createUser);
-userRoute.delete("/user/:id", verifyToken, deleteUser);
-userRoute.put("/user/:id", verifyToken, UpdateUser);
+userRoute.get("/users", verifyAdmin, getAllUsers);
+userRoute.get("/user/:id", verifyAdmin, getUser);
+userRoute.post("/users", verifyAdmin, createUser);
+userRoute.delete("/user/:id", verifyAdmin, deleteUser);
+userRoute.put("/user/:id", verifyAdmin, UpdateUser);
 
 module.exports = userRoute;

@@ -8,15 +8,15 @@ const {
   updateContact,
   getUserContact,
 } = require("../controllers/contactD_Fn");
-const verifyToken = require("../middlewares/verfyToken");
+const {verifyToken,verifyAdmin} = require("../middlewares/verfyToken");
 
 
 contactRoute.get("/contact", /*verifyToken,*/ getAllContacts);
 contactRoute.get("/contact/:id", /*verifyToken,*/ getContact);
 contactRoute.get("/contacted/:UserId", getUserContact);
 
-contactRoute.post("/contact/:userId", createContact);
-contactRoute.delete("/contact/:id", /*verifyToken,*/ deleteContact);
-contactRoute.put("/contact/:UserId", updateContact);
+contactRoute.post("/contact/:userId",verifyToken ,createContact);
+contactRoute.delete("/contact/:id",verifyToken ,/*verifyToken,*/ deleteContact);
+contactRoute.put("/contact/:UserId",verifyToken ,updateContact);
 
 module.exports = contactRoute;

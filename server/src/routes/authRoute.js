@@ -2,12 +2,12 @@ const express = require("express");
 const authRoute = express.Router();
 const {signup,signin} = require("../controllers/authFn");
 // const validator = require("../middlewares/inputValidate");
-const { body, validationResult, checkSchema } = require("express-validator");
+const { body} = require("express-validator");
 
 authRoute.post(
   "/signup",
   [
-    body('Username').trim().notEmpty().withMessage("Username cannot be empty!"),
+    body('Username').trim().notEmpty().withMessage("username cannot be empty!"),
     body("Email").trim().isEmail().withMessage("input must be a valid email!"),
     // password must be at least 5 chars long
     body("Password")

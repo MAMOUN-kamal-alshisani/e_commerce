@@ -1,14 +1,27 @@
 const server = require("../../../index");
 const { db } = require("../../db/db");
-
+// const jwt = require('jsonwebtoken')
 const request = require("supertest");
-
-describe("GET /users , get users", () => {
+// const token='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjc3MjI3NDkzfQ.g7ODs_WsMpi8YL8WrS-5Qj-EQSHVlFJhSgTYhOComX8'
+// const token = 'eyJpZCI6MSwiaWF0IjoxNjc3MjI3NDkzfQ'
+describe("GET /users, get users", () => {
   it("return status 200", async () => {
-    await request(server).get("/users").expect(200);
+    // const jwtSpy = jest.spyOn(jwt, 'verify');
+    // jwtSpy.mockReturnValue('Some decoded token');
+    // await request(server).get("/users")
+    // .auth('token',token).expect(200)
+//     const res = await request(server)
+//     .get('/verify-access-token')
+//     .set('access-token', 'somerandomjwttoken')
+//     .send({});
+
+expect(res.status).toEqual(200);
+    await request(server).get("/users").expect(200)
+
+    
   });
   it("return status 404", async () => {
-    await request(server).get("/use").expect(404);
+    await request(server).get("/user").expect(404);
   });
 });
 
