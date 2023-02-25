@@ -18,11 +18,11 @@ function ProfileMd({ setUserData, user, setShowModal }) {
     try {
       setIsLoading(true);
       const getcontact = await axios.get(
-        `http://localhost:4000/contacted/${user.id}`
+        `${process.env.REACT_APP_BASE_URL}/contacted/${user.id}`
       );
       ///// if user info doesnt exist then create one
       if (!getcontact?.data) {
-        await axios.post(`http://localhost:4000/contact/${user.id}`, {
+        await axios.post(`${process.env.REACT_APP_BASE_URL}/contact/${user.id}`, {
           fullName: formInput.fullName,
           city: formInput.city,
           birthDate: formInput.birthDate,
@@ -32,7 +32,7 @@ function ProfileMd({ setUserData, user, setShowModal }) {
         setIsLoading(false);
         //// if user info already exists then update
       } else {
-        await axios.put(`http://localhost:4000/contact/${user.id}`, {
+        await axios.put(`${process.env.REACT_APP_BASE_URL}/contact/${user.id}`, {
           fullName: formInput.fullName,
           city: formInput.city,
           birthDate: formInput.birthDate,

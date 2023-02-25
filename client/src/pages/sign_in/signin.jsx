@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch} from "react-redux";
 import { authActions } from "../../store/slices/authSlice";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-           
 
 function SignIn() {
   const navigate = useNavigate();
@@ -18,18 +17,13 @@ const [errorSpinner,setErrorSpinner] = useState(false)
 
   const dispatch = useDispatch();
 
-  // const auth = useSelector((state, action) => {
-  //   console.log(state.auth);
-  // });
-
-
 const errorEmail = document.querySelector('.emailError_div')
 const errorPassword= document.querySelector('.passowrdError_div')
 
 
   const signin = async () => {
     setIsLoading(true)
-    const url = "http://localhost:4000/signin";
+    const url = `${process.env.REACT_APP_BASE_URL}/signin`;
     try {
       setIsLoading(false)
       const user = await axios.post(url, {

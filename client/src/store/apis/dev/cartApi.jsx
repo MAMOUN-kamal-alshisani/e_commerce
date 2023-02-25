@@ -1,6 +1,4 @@
-
-
-
+/// for future dev
 
 // import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 

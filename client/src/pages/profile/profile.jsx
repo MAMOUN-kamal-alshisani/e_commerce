@@ -18,7 +18,7 @@ function Profile() {
     try {
       const getUserData = async (user) => {
         const getcontact = await axios.get(
-          `http://localhost:4000/contacted/${user.id}`
+          `${process.env.REACT_APP_BASE_URL}/contacted/${user.id}`
         );
 
         setUserData(getcontact.data);

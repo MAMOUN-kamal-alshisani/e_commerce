@@ -25,7 +25,7 @@ function SignUp() {
   const signup = async () => {
     // setIsLoading(true);
     try {
-      const url = "http://localhost:4000/signup";
+      const url = `${process.env.REACT_APP_BASE_URL}/signup`;
 
       const user = await axios.post(
         url,
@@ -35,7 +35,6 @@ function SignUp() {
           Password: password,
         } /*{withCredentials:true}*/
       );
-      // state.user =user.data.user, state.token = user.data.token
       localStorage.setItem(
         "user",
         JSON.stringify({
@@ -52,45 +51,33 @@ function SignUp() {
       );
 
       navigate("/");
-      // setIsLoading(false);
     } catch (err) {
-      // setIsLoading(false);
       setErrorSpinner(true);
       setError(err);
       console.log(err);
-
-      // if(err.response.data.errors[0].msg.includes('username') /*|| err.response.data.includes('username')*/){
-      //     errorUsername.textContent =err.response.data.errors[0].msg /*|| err.response.data*/
-      //   }
-
-      // console.log(err.response.data.errors[0].msg);
     }
-
-    // console.log(User);
   };
 
   if (error) {
-  
-
     if (error?.response.data.errors[0].msg.includes("password")) {
-      errorEmail.textContent =''
-      errorUsername.textContent =''
+      errorEmail.textContent = "";
+      errorUsername.textContent = "";
       setTimeout(() => {
         setErrorSpinner(false);
         errorPassword.textContent = error.response.data.errors[0].msg;
       }, 3000);
     } else if (error.response.data.errors[0].msg.includes("email")) {
-      errorPassword.textContent =''
-      errorUsername.textContent =''
-  
+      errorPassword.textContent = "";
+      errorUsername.textContent = "";
+
       setTimeout(() => {
         setErrorSpinner(false);
         errorEmail.textContent = error.response.data.errors[0].msg;
       }, 3000);
     } else if (error.response.data.errors[0].msg.includes("username")) {
-      errorPassword.textContent =''
-      errorEmail.textContent =''
-  
+      errorPassword.textContent = "";
+      errorEmail.textContent = "";
+
       setTimeout(() => {
         setErrorSpinner(false);
         errorUsername.textContent = error.response.data.errors[0].msg;
@@ -160,7 +147,6 @@ function SignUp() {
                 onClick={signup}
                 className={"input_submit"}
               >
-         
                 <div>
                   submit!
                   {errorSpinner && (

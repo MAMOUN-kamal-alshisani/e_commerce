@@ -2,7 +2,6 @@ import "./scss/shop.css";
 import Header from "../../components/header/header";
 import Pagination from "../../components/pagination/pagination";
 import { useFetchItemsQuery } from "../../store/apis/itemApi";
-// import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { cartActions } from "../../store/slices/cartSlice";
 import { useDispatch } from "react-redux";
@@ -60,7 +59,7 @@ function Shop({ item }) {
     dispatch(cartActions.addToCart(cart));
   };
 
-  
+
   if (error) {
     return "error fetching data";
   }
