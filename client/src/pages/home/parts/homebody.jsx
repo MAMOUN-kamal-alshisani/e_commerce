@@ -22,8 +22,8 @@ function HomeBody({ cardItem }) {
 
                 <h3 className="card_name">{data.name}</h3>
                 <div className="itemDetails">
-                  <h4 className="card_h3">${data.price}</h4>
-                  <h4 className="card_Stock"> Stock left: {data.stock}</h4>
+                  <p className="card_price">${data.price}</p>
+                  <p className="card_Stock"> Stock left: {data.stock}</p>
                 </div>
                 {/* <h3>{data.stock}</h3> */}
               </div>

@@ -69,6 +69,26 @@
   border: transparent;
   outline: 1px solid rgb(181, 178, 178);
 }
+.signup_div .form_div .sign_form .form_input_div .input_submit .loading_icon {
+  animation: rotateIcon 3s;
+}
+@keyframes rotateIcon {
+  0% {
+    rotate: 0;
+  }
+  25% {
+    rotate: 90deg;
+  }
+  50% {
+    rotate: 180deg;
+  }
+  90% {
+    rotate: 360deg;
+  }
+  100% {
+    display: none;
+  }
+}
 .signup_div .form_div .login_div {
   display: flex;
   justify-content: center;

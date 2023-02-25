@@ -1,13 +1,14 @@
 import "./scss/header.css";
 import NavBar from "../navbar/navbar";
-import HeaderCards from "../headerCards/headerCards";
-import { useNavigate, Link, Router } from "react-router-dom";
+import HeaderImg from "./parts/headerImg";
+import { useNavigate, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BsFillPersonFill } from "react-icons/bs";
 import { useState } from "react";
-function Header({ type, item }) {
+function Header({ type }) {
   const navigate = useNavigate();
+
   const username = useSelector((state) => {
     return state.auth.user;
   });
@@ -103,26 +104,7 @@ function Header({ type, item }) {
             </nav>
           </div>
         </div>
-        {type == "list" && (
-          <div className="backgroundImg_div">
-            <img
-              src="https://www.ti-insight.com/wp-content/uploads/2017/01/ER2017-iStock-519186052.jpg"
-              alt="background"
-              className="backgroundImg"
-            />
-
-            <div className="backgroundImgText">
-              <div className="imgText_div">
-                <h1>First Time Here? Don't Worry We Got You Covered! </h1>
-                <p>
-                  in TechShop we do our best to meet everyOnes expectations,
-                  future is in your hands with just a click now!
-                </p>
-              </div>
-            </div>
-            {type == "list" && <HeaderCards />}
-          </div>
-        )}
+        {type === "list" && <HeaderImg />}
       </header>
     </div>
   );

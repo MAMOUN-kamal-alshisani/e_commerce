@@ -2,7 +2,7 @@ import "./scss/home.css";
 import Header from "../../components/header/header";
 import { useFetchItemsQuery } from "../../store/apis/itemApi";
 import { useState, useEffect } from "react";
-import HomeBody from "./homebody";
+import HomeBody from "./parts/homebody";
 import Skeleton from "@mui/material/Skeleton";
 
 function HomePage({ item }) {
@@ -30,7 +30,7 @@ function HomePage({ item }) {
     content = (
       <div className="Home_Div">
         <div>
-          <Header type="list" />
+          {/* <Header type="list" /> */}
         </div>
         <HomeBody cardItem={cardItem} />
       </div>
@@ -38,9 +38,9 @@ function HomePage({ item }) {
   }
   return (
     <div className="Home_Div">
-      {/* <div>
+      <div>
         <Header type="list" />
-      </div> */}
+      </div>
 
       <div>{content}</div>
     </div>

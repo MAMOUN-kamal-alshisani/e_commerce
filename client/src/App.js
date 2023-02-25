@@ -13,9 +13,10 @@ function App() {
   return (
     <div className="App">
       <Router>
+{/* <Header/> */}
         <Routes>
           
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<HomePage/>} />
 
           <Route element={<RequireAuth />}>
             <Route path="/Shop" element={<Shop />} />

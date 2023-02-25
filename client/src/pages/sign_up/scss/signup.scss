@@ -66,6 +66,20 @@
             border: $bordertr;
             outline: 1px solid rgb(181, 178, 178);
           }
+
+
+          .loading_icon{
+            // transform: rotateX(90);
+            animation: rotateIcon 3s
+          }
+          
+          @keyframes rotateIcon {
+            0%   {rotate:(0)}
+            25%  {rotate:(90deg)}
+            50%  {rotate:(180deg)}
+            90% {rotate:(360deg)}
+            100% {display: none;}
+          }
         }
       }
     }

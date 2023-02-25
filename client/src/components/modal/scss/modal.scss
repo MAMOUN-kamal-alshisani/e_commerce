@@ -1,0 +1,45 @@
+@import "../../../scss_variables/variables";
+
+
+.modal_overlay{
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1;
+
+
+    .modal_wrapper{
+width: fit-content;
+    //    max-width: 500px;
+       margin: 2rem auto;
+
+
+
+       .modal_content{
+
+        position: relative;
+        background-color:#ededed;
+        border: 1px solid green;
+        background-clip: border-box;
+        border-radius: 6px;
+        padding: 5px;
+
+
+
+     .close_btn{
+
+        color: crimson;
+
+        &:hover{
+        color: red;
+
+        }
+     }
+       }
+    }
+}

@@ -1,5 +1,5 @@
 import "./scss/card.css";
-// import { useDispatch, useSelector } from "react-redux";
+
 import { TiShoppingCart } from "react-icons/ti";
 import Rating from "../../../../components/star/rating";
 import { useState } from "react";
@@ -7,11 +7,14 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 function ShopCard({ currentPosts, addToCart }) {
   const [isLoading, setIsLoading] = useState(false);
+  const [selectId, setSelectId] = useState(-1);
 
-  const addItem = (data) => {
+  const addItem = (data, id) => {
+    setSelectId(id);
     setIsLoading(true);
     setTimeout(() => {
       addToCart(data);
+
       setIsLoading(false);
     }, 3000);
   };
@@ -39,12 +42,16 @@ function ShopCard({ currentPosts, addToCart }) {
               <Rating />
             </div>
             <div className="add_btn_div">
-              <button onClick={() => addItem(data)} className="add_btn">
-                Add To Cart
-                {isLoading ? (
+              <button
+                onClick={() => addItem(data, data.id)}
+                className="add_btn"
+              >
+               
+                Add To Cart <TiShoppingCart />
+                {isLoading && selectId === data.id ? (
                   <AiOutlineLoading3Quarters className="loading_icon" />
                 ) : (
-                  <TiShoppingCart />
+                  ""
                 )}
               </button>
             </div>

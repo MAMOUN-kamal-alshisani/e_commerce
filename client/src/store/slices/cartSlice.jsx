@@ -1,5 +1,6 @@
+/*eslint-disable no-eval */
+
 import { createSlice } from "@reduxjs/toolkit";
-import { toast } from "react-toastify";
 
 const cartSlice = createSlice({
   name: "cart",
@@ -9,9 +10,6 @@ const cartSlice = createSlice({
       : [],
     cartTotalNumber: 0,
     cartTotal: 0,
-    // itemQuantity: 0,
-    // isLoading:false,
-    //  error:null
   },
   reducers: {
     addToCart(state, action) {
@@ -29,15 +27,10 @@ const cartSlice = createSlice({
             itemQuantity: state.cartData[itemIndex].itemQuantity + 1,
           };
         }
-        toast.info("Increased product quantity", {
-          position: "bottom-left",
-        });
+
       } else {
         let cartItem = { ...action.payload, itemQuantity: 1 };
         state.cartData.push(cartItem);
-        // toast.success("Product added to cart", {
-        //   position: "bottom-left",
-        // });
       }
       localStorage.setItem("cart", JSON.stringify(state.cartData));
     },
@@ -48,20 +41,12 @@ const cartSlice = createSlice({
 
       if (state.cartData[itemIndex].itemQuantity > 1) {
         state.cartData[itemIndex].itemQuantity -= 1;
-
-        //   toast.info("Decreased product quantity", {
-        //     position: "bottom-left",
-        //   });
       } else if (state.cartData[itemIndex].itemQuantity === 1) {
         const nextItems = state.cartData.filter(
           (item) => item.id !== action.payload.id
         );
 
         state.cartData = nextItems;
-
-        //   toast.error("Product removed from cart", {
-        //     position: "bottom-left",
-        //   });
       }
 
       localStorage.setItem("cart", JSON.stringify(state.cartData));
@@ -74,10 +59,6 @@ const cartSlice = createSlice({
           );
 
           state.cartData = nextItems;
-
-          // toast.error("Product removed from cart", {
-          //   position: "bottom-left",
-          // });
         }
         localStorage.setItem("cart", JSON.stringify(state.cartData));
         return state;
@@ -99,14 +80,12 @@ const cartSlice = createSlice({
           quantity: 0,
         }
       );
-      // total = parseFloat(total.toFixed(2));
       state.cartTotalNumber = quantity;
       state.cartTotal = total;
     },
     clearCart(state, action) {
       state.cartData = [];
       localStorage.setItem("cart", JSON.stringify(state.cartData));
-      // toast.error("Cart cleared", { position: "bottom-left" });
     },
   },
 });

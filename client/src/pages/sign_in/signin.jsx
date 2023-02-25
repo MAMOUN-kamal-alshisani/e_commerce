@@ -3,14 +3,19 @@ import { useState } from "react";
 import axios from "axios";
 import Header from "../../components/header/header";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { authActions } from "../../store/slices/authSlice";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+           
 
 function SignIn() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 const [isLoading,setIsLoading] = useState(false)
+const [error,setError] = useState(null)
+const [errorSpinner,setErrorSpinner] = useState(false)
+
   const dispatch = useDispatch();
 
   // const auth = useSelector((state, action) => {
@@ -47,17 +52,35 @@ const errorPassword= document.querySelector('.passowrdError_div')
       navigate("/");
       
     } catch (err) {
+      setErrorSpinner(true)
+      setError(err)
       setIsLoading(false)
-      if(err.response.data.includes('password'))
-      errorPassword.textContent =err.response.data
-      else if(err.response.data.includes('email'))
-      errorEmail.textContent =err.response.data
       console.log(err);
+      
     }
    
-
+    
   };
 
+if(error){
+
+  if(error.response.data.includes('password')){
+    setTimeout(()=>{
+      setErrorSpinner(false)
+      errorPassword.textContent =error.response.data
+    },3000)
+
+  }
+
+  else if(error.response.data.includes('email')){
+    setTimeout(()=>{
+      setErrorSpinner(false)
+      errorEmail.textContent =error.response.data
+    },3000)
+    
+  }
+    
+}
 
   if(isLoading){
 
@@ -66,7 +89,7 @@ const errorPassword= document.querySelector('.passowrdError_div')
   return (
     <div className="signup">
       <Header />
-      {}
+    
       <div className="signin_div">
         <div className="form_div">
           <h1 className="form_header">signIn</h1>
@@ -97,23 +120,26 @@ const errorPassword= document.querySelector('.passowrdError_div')
                 placeholder={"Enter password"}
               />
             </div>
+         
             <div className="passowrdError_div"></div>
 
             <div className="form_input_div">
-              <input
+              <button
                 type={"submit"}
                 onClick={signin}
                 className={"input_submit"}
-              />
+              > <div>submit! {errorSpinner && <AiOutlineLoading3Quarters className="loading_icon" />}</div></button>
+           
+
             </div>
           </form>
           {/* /*<HiArrowSmRight className="arrowIcon"/>*/}
           <div className="login_div">
             <p>Dont have an account?</p>
           </div>
-          <a onClick={() => navigate("/signup")} className={"login_tag"}>
+          <span onClick={() => navigate("/signup")} className={"login_tag"}>
             signUp Now!
-          </a>
+          </span>
         </div>
       </div>
     </div>

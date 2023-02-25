@@ -32,6 +32,7 @@
       cursor: $pointer;
 
       .container {
+        width: 300px;
         border-radius:$borderRadius;
         transition: $transition;
 
@@ -41,11 +42,14 @@
         }
 
         .img_cn {
-
+          width: $fullWidth;
           .cardImg {
             width: $fullWidth;
+            // width: 250px;
+            height: 250px;
             border-radius: $borderRadius;
-            object-fit: fill;
+          object-fit: contain;
+           
           }
         }
         .card_title {
@@ -60,7 +64,7 @@
         .itemDetails {
           @include flex(flex, space-between, nowrap, row);
 
-          .card_h3 {
+          .card_price {
             color: $primaryclr3;
             padding: $paddingFive;
           }

@@ -1,4 +1,4 @@
-@import "../../../scss_variables/variables";
+@import "../../../../scss_variables/variables";
 
 .form_container {
   z-index: 1;
@@ -14,6 +14,27 @@
     width: 300px;
     padding: 10px;
     border: 1px solid steelblue;
+
+
+.close_div{
+  @include flex(flex, flex-end, nowrap, column);
+  align-items: flex-end;
+  .close_btn{
+
+    svg{
+      font-size: $fontSizeXlarge;
+// background-color: black;
+  color: black;
+transition: $transition;
+
+  &:hover{
+    color: red;
+  }
+    }
+  }
+}
+
+
     h3 {
       text-align: $itemsAlignCenter;
       color: $bg_color1;
@@ -63,6 +84,25 @@
         box-shadow: 0px 0px 5px 0px $bg_color1;
         background-color: #1faff7;
       }
+
+
+
+      .loadSpinner{
+ animation: rotateIcon 3s
+
+      }
+@keyframes rotateIcon {
+  0%   {rotate:(0)}
+  25%  {rotate:(90deg)}
+  50%  {rotate:(180deg)}
+  75%{
+    rotate:(270deg)
+  }
+  100% {rotate:(360deg)}
+  // 100% {display: none;}
+}
+
+
     }
   }
 }

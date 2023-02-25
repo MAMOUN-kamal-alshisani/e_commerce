@@ -3,76 +3,103 @@ import { useState } from "react";
 import axios from "axios";
 import Header from "../../components/header/header";
 import { useNavigate } from "react-router-dom";
-import { useDispatch,useSelector } from "react-redux";
-import {authActions} from '../../store/slices/authSlice'
+import { useDispatch } from "react-redux";
+import { authActions } from "../../store/slices/authSlice";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+
 function SignUp() {
-  const dispatch = useDispatch()
-const [isLoading,setIsLoading]= useState(false)
-// const auth = useSelector((state,action)=>{
+  const dispatch = useDispatch();
+  // const [isLoading, setIsLoading] = useState(false);
 
-//   console.log(state.auth);
-// })
-  const errorEmail = document.querySelector('.emailError_div')
-  const errorPassword= document.querySelector('.passowrdError_div')
-  const errorUsername= document.querySelector('.usernameError_div')
+  const errorEmail = document.querySelector(".emailError_div");
+  const errorPassword = document.querySelector(".passowrdError_div");
+  const errorUsername = document.querySelector(".usernameError_div");
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+  const [errorSpinner, setErrorSpinner] = useState(false);
 
   const signup = async () => {
-//     errorPassword.innerHTML = ""
-// errorEmail.innerHTML = ""
-// errorUsername.innerHTML =""
+    // setIsLoading(true);
+    try {
+      const url = "http://localhost:4000/signup";
 
+      const user = await axios.post(
+        url,
+        {
+          Username: username,
+          Email: email,
+          Password: password,
+        } /*{withCredentials:true}*/
+      );
+      // state.user =user.data.user, state.token = user.data.token
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          valid: true,
+          user: user.data.user,
+          token: user.data.token,
+        })
+      );
+      dispatch(
+        authActions.setCredentials({
+          user: user.data.user,
+          token: user.data.token,
+        })
+      );
 
-try{
-  const url = "http://localhost:4000/signup";
+      navigate("/");
+      // setIsLoading(false);
+    } catch (err) {
+      // setIsLoading(false);
+      setErrorSpinner(true);
+      setError(err);
+      console.log(err);
 
-  const user = await axios.post(url, {
-    Username: username,
-    Email: email,
-    Password: password,
-  },/*{withCredentials:true}*/);
-  // state.user =user.data.user, state.token = user.data.token
-  localStorage.setItem('user',JSON.stringify({
-    valid:true,
-    user:user.data.user,
-    token:user.data.token
-  }))
-  dispatch(authActions.setCredentials({user:user.data.user,token:user.data.token}))
+      // if(err.response.data.errors[0].msg.includes('username') /*|| err.response.data.includes('username')*/){
+      //     errorUsername.textContent =err.response.data.errors[0].msg /*|| err.response.data*/
+      //   }
 
-  navigate('/')
- 
-}catch(err){
- 
-  if(err?.response?.data?.errors[0].msg?.includes('password') /*|| err.response.data.includes('password')*/)
-  
-  {
-    errorPassword.textContent =err.response.data.errors[0].msg /*|| err.response.data*/
-  }
-   
-  else if(err.response.data.errors[0].msg.includes('email') /* || err.response.data.includes('email')*/){
-    errorEmail.textContent =err.response.data.errors[0].msg /*|| err.response.data*/
-
-  }
-  else if(err.response.data.errors[0].msg.includes('username') /*|| err.response.data.includes('username')*/){
-    errorUsername.textContent =err.response.data.errors[0].msg /*|| err.response.data*/
-  }
-  else{
-    console.log(err);
-  }
-  // console.log(err.response.data.errors[0].msg);
-}
+      // console.log(err.response.data.errors[0].msg);
+    }
 
     // console.log(User);
   };
 
-if(isLoading){
+  if (error) {
+  
 
-  return 'sdasd'
-}
+    if (error?.response.data.errors[0].msg.includes("password")) {
+      errorEmail.textContent =''
+      errorUsername.textContent =''
+      setTimeout(() => {
+        setErrorSpinner(false);
+        errorPassword.textContent = error.response.data.errors[0].msg;
+      }, 3000);
+    } else if (error.response.data.errors[0].msg.includes("email")) {
+      errorPassword.textContent =''
+      errorUsername.textContent =''
+  
+      setTimeout(() => {
+        setErrorSpinner(false);
+        errorEmail.textContent = error.response.data.errors[0].msg;
+      }, 3000);
+    } else if (error.response.data.errors[0].msg.includes("username")) {
+      errorPassword.textContent =''
+      errorEmail.textContent =''
+  
+      setTimeout(() => {
+        setErrorSpinner(false);
+        errorUsername.textContent = error.response.data.errors[0].msg;
+      }, 2000);
+    }
+  }
+  // if (isLoading) {
+  //   return <h1>'loading please wait...'</h1>;
+  // }
   return (
     <div className="signup">
       <Header />
@@ -111,7 +138,7 @@ if(isLoading){
                 placeholder={"Enter email"}
               />
             </div>
-  <div className="emailError_div"></div>
+            <div className="emailError_div"></div>
             <div className="form_input_div">
               {/* <label htmlFor="password">password: </label> */}
               <input
@@ -125,29 +152,35 @@ if(isLoading){
                 placeholder={"Enter password"}
               />
             </div>
-   <div className="passowrdError_div"></div>
+            <div className="passowrdError_div"></div>
 
             <div className="form_input_div">
-              <input type={"submit"} onClick={signup} className={'input_submit'}/>
+              <button
+                type={"submit"}
+                onClick={signup}
+                className={"input_submit"}
+              >
+         
+                <div>
+                  submit!
+                  {errorSpinner && (
+                    <AiOutlineLoading3Quarters className="loading_icon" />
+                  )}
+                </div>
+              </button>
             </div>
           </form>
-          {/* /*<HiArrowSmRight className="arrowIcon"/>*/ }
-        <div className="login_div">
-          <p>already have an account?</p>
+          {/* /*<HiArrowSmRight className="arrowIcon"/>*/}
+          <div className="login_div">
+            <p>already have an account?</p>
+          </div>
+          <span onClick={() => navigate("/signin")} className={"login_tag"}>
+            Login Now!
+          </span>
         </div>
-        <a  onClick={()=>navigate("/signin")} className={'login_tag'}>Login Now!</a>
-
-        </div>
-
-
       </div>
     </div>
   );
 }
 
 export default SignUp;
-
-
-
-
- 
