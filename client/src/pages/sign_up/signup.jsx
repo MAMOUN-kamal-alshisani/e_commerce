@@ -43,14 +43,14 @@ function SignUp() {
           token: user.data.token,
         })
       );
-      dispatch(
+       dispatch(
         authActions.setCredentials({
           user: user.data.user,
           token: user.data.token,
         })
       );
 
-      navigate("/");
+     return navigate("/");
     } catch (err) {
       setErrorSpinner(true);
       setError(err);
@@ -107,7 +107,7 @@ function SignUp() {
                 value={username}
                 className="input_text"
                 onChange={(e) =>
-                  setUsername((state) => (state = e.target.value))
+                  setUsername(e.target.value)
                 }
                 placeholder={"Enter username"}
               />
@@ -121,7 +121,7 @@ function SignUp() {
                 name={"email"}
                 value={email}
                 className="input_text"
-                onChange={(e) => setEmail((state) => (state = e.target.value))}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder={"Enter email"}
               />
             </div>
@@ -134,7 +134,7 @@ function SignUp() {
                 value={password}
                 className="input_text"
                 onChange={(e) =>
-                  setPassword((state) => (state = e.target.value))
+                  setPassword( e.target.value)
                 }
                 placeholder={"Enter password"}
               />
@@ -144,7 +144,7 @@ function SignUp() {
             <div className="form_input_div">
               <button
                 type={"submit"}
-                onClick={signup}
+                onClick={()=>signup()}
                 className={"input_submit"}
               >
                 <div>
