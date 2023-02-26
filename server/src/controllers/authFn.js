@@ -10,12 +10,11 @@ function createToken(id) {
 
 async function signup(req, res) {
   /// input validation
-
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    res.status(400).json({ errors: errors.array() });
+  }
   try {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
 
     const { Username, Email, Password } = req.body;
     const genSalt = bcrypt.genSaltSync(16);
@@ -23,27 +22,29 @@ async function signup(req, res) {
 
     // const hashedPassword =
     const EmailUser = await User.findOne({ where: { Email } });
+
     if (EmailUser) {
       let errors = [];
       errors.push({ msg: "email is already in use" });
-      return res.status(500).send({ errors });
+      res.status(500).send({ errors });
+    } else {
+      const user = await User.create({
+        Username: Username,
+        Email: Email,
+        Password: hashedPassword,
+      });
+      // create jwt
+      const token = createToken(user.id);
+      // console.log(token);
+    await  res
+        .cookie("token", token, { httpOnly: true } /*{maxAge:10000}*/)
+        .status(201)
+        .send({ token: token, user: user });
+      // res.status(201).json({ user });
     }
-    const user = await User.create({
-      Username: Username,
-      Email: Email,
-      Password: hashedPassword,
-    });
-    // create jwt
-    const token = createToken(user.id);
-    // console.log(token);
-    await res
-      .cookie("token", token, { httpOnly: true } /*{maxAge:10000}*/)
-      .status(201)
-      .send({ token: token, user: user });
-    // res.status(201).json({ user });
   } catch (err) {
     console.log(err);
-    await res.status(404).send(err);
+    res.status(400).send(err);
   }
 }
 
@@ -51,15 +52,14 @@ async function signin(req, res) {
   const { Email, Password } = req.body;
 
   try {
-    const user = await User.findOne({ where: { Email } });
-
-    if (!user) await res.status(404).send("email is incorrect");
+    const user = await User.findOne({ where: { Email: Email } });
+    if (!user) return res.status(404).send("email is incorrect");
 
     const validPass = await bcrypt.compare(Password, user.Password);
-    if (!validPass) await res.status(404).send("password is incorrect");
+    if (!validPass) return res.status(404).send("password is incorrect");
 
     const token = createToken(user.id);
-    await res
+   await res
       .cookie("token", token, {
         httpOnly: true,
         maxAge: 1000 * 60 * 60 * 24,
@@ -70,9 +70,8 @@ async function signin(req, res) {
         user: { id: user.id, username: user.Username, email: user.Email },
       });
   } catch (err) {
-    console.log(err);
-
-    await res.status(404).send(err.message);
+    // console.log(err);
+    res.status(404).send(err);
   }
 }
 
