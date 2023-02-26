@@ -118,7 +118,7 @@ function Cart() {
                 {cartItems?.map((item, index) => {
                   return (
                     <div className="item_third_div" key={index}>
-                      <p>{Math.ceil(Math.abs(item?.price))} </p>
+                      <p>${Math.ceil(Math.abs(item?.price))} </p>
                     </div>
                   );
                 })}

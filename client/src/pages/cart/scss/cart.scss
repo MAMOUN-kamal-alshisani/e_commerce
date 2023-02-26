@@ -62,7 +62,7 @@
                 }
                 .remove_item_btn {
                   @include colorRelated($bordertr, $bordertr, $primaryclr5);
-                  font-size: medium;
+                  font-size: small;
                   cursor: $pointer;
 
                   transition: $transition;
