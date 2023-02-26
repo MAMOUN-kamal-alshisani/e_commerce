@@ -94,7 +94,7 @@ function SignUp() {
         <div className="form_div">
           <h1 className="form_header">signup</h1>
           <form
-            action="http://localhost:4000/signup"
+            action={`${process.env.REACT_APP_BASE_URL}/signup`}
             method="post"
             onSubmit={(e) => e.preventDefault()}
             className={"sign_form"}
