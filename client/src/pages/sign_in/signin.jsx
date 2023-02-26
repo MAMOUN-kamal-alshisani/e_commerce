@@ -11,7 +11,7 @@ function SignIn() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-const [isLoading,setIsLoading] = useState(false)
+// const [isLoading,setIsLoading] = useState(false)
 const [error,setError] = useState(null)
 const [errorSpinner,setErrorSpinner] = useState(false)
 
@@ -22,10 +22,11 @@ const errorPassword= document.querySelector('.passowrdError_div')
 
 
   const signin = async () => {
-    setIsLoading(true)
-    const url = `${process.env.REACT_APP_BASE_URL}/signin`;
+    // setIsLoading(true)
+   
     try {
-      setIsLoading(false)
+      // setIsLoading(false)
+      const url = `${process.env.REACT_APP_BASE_URL}/signin`;
       const user = await axios.post(url, {
         Email: email,
         Password: password,
@@ -48,7 +49,7 @@ const errorPassword= document.querySelector('.passowrdError_div')
     } catch (err) {
     setErrorSpinner(true)
       setError(err)
-      setIsLoading(false)
+      // setIsLoading(false)
       console.log(err);
       
     }
@@ -76,10 +77,10 @@ if(error){
     
 }
 
-  if(isLoading){
+  // if(isLoading){
 
-    return <h1>'loading please wait...'</h1> 
-  } 
+  //   return <h1>'loading please wait...'</h1> 
+  // } 
   return (
     <div className="signup">
       <Header />
@@ -119,15 +120,15 @@ if(error){
 
             <div className="form_input_div">
               <button
-                type={"submit"}
-                onClick={()=>signin()}
+                // type={"submit"}
+                onClick={signin}
                 className={"input_submit"}
               > <div>submit! {errorSpinner && <AiOutlineLoading3Quarters className="loading_icon" />}</div></button>
            
 
             </div>
           </form>
-          {/* /*<HiArrowSmRight className="arrowIcon"/>*/}
+          {/* <HiArrowSmRight className="arrowIcon"/> */}
           <div className="login_div">
             <p>Dont have an account?</p>
           </div>
