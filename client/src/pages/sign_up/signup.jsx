@@ -50,7 +50,7 @@ function SignUp() {
         })
       );
 
-     return navigate("/");
+     navigate("/");
     } catch (err) {
       setErrorSpinner(true);
       setError(err);
