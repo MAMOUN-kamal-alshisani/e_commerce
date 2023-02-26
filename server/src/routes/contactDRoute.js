@@ -15,8 +15,8 @@ contactRoute.get("/contact", /*verifyToken,*/ getAllContacts);
 contactRoute.get("/contact/:id", /*verifyToken,*/ getContact);
 contactRoute.get("/contacted/:UserId", getUserContact);
 
-contactRoute.post("/contact/:userId",verifyToken ,createContact);
+contactRoute.post("/contact/:userId" ,createContact);
 contactRoute.delete("/contact/:id",verifyToken ,/*verifyToken,*/ deleteContact);
-contactRoute.put("/contact/:UserId",verifyToken ,updateContact);
+contactRoute.put("/contact/:UserId", updateContact);
 
 module.exports = contactRoute;
