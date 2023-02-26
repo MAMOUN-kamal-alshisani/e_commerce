@@ -20,7 +20,7 @@ function Shop({ item }) {
 
   useEffect(() => {
     setfilteredItems(items);
-  }, [items]);
+  }, [items,data]);
 
   // useEffect(() => {
 

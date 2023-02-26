@@ -46,7 +46,7 @@ const errorPassword= document.querySelector('.passowrdError_div')
       navigate("/");
       
     } catch (err) {
-      setErrorSpinner(true)
+    setErrorSpinner(true)
       setError(err)
       setIsLoading(false)
       console.log(err);
@@ -96,7 +96,7 @@ if(error){
                 name={"email"}
                 value={email}
                 className="input_text"
-                onChange={(e) => setEmail((state) => (state = e.target.value))}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder={"Enter email"}
               />
             </div>
@@ -109,7 +109,7 @@ if(error){
                 value={password}
                 className="input_text"
                 onChange={(e) =>
-                  setPassword((state) => (state = e.target.value))
+                  setPassword( e.target.value)
                 }
                 placeholder={"Enter password"}
               />
@@ -120,7 +120,7 @@ if(error){
             <div className="form_input_div">
               <button
                 type={"submit"}
-                onClick={signin}
+                onClick={()=>signin()}
                 className={"input_submit"}
               > <div>submit! {errorSpinner && <AiOutlineLoading3Quarters className="loading_icon" />}</div></button>
            
