@@ -80,7 +80,7 @@
   background-color: transparent;
   border: 1px solid transparent;
   color: crimson;
-  font-size: medium;
+  font-size: small;
   cursor: pointer;
   transition: ease-in-out 1s;
 }
