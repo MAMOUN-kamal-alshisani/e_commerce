@@ -29,8 +29,8 @@ server.get("/",(req, res) => {
 });
 
 
-server.use(cors({
-  credentials: true,}));
+server.use(cors(/*{
+  credentials: true,}*/));
 server.use(morgan("tiny"));
 server.use(express.json());
 server.use(express.urlencoded({extended:true}));
