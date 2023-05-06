@@ -20,20 +20,7 @@ function Shop({ item }) {
 
   useEffect(() => {
     setfilteredItems(items);
-  }, [items,data]);
-
-  // useEffect(() => {
-
-  //   // if (items?.length <= 0) {
-  //   //   return setItems(data);
-  //   // }
-  //   if (location?.state?.search == "" || null) {
-  //     const filtered = items?.filter(
-  //       (item) => item.title == location.state.search
-  //     );
-  //     setItems(filtered);
-  //   }
-  // }, [items, data]);
+  }, [items, data]);
 
   const searchedItems = (category) => {
     // filteredItems(data);
@@ -58,7 +45,6 @@ function Shop({ item }) {
   const addToCart = (cart) => {
     dispatch(cartActions.addToCart(cart));
   };
-
 
   if (error) {
     return "error fetching data";
@@ -115,3 +101,5 @@ function Shop({ item }) {
 }
 
 export default Shop;
+
+// console.log(str1.endsWith('0'));

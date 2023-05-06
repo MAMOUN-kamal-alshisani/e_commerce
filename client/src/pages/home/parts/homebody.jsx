@@ -36,7 +36,7 @@ function HomeBody({ cardItem }) {
         <div className="second_div_textplace">
           <h1>why choose TechShop?</h1>
           <p>
-            we provide with our customers with the best experience, as well as
+            we provide our customers with the best experience, as well as
             having wide range of products and items, we are proud to say that we
             have competing prices and discounts, and we provide customers with
             high level of security when it comes to delivery and information,

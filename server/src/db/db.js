@@ -10,7 +10,7 @@ console.log('connected to database successfully!');
 }).catch(err=> console.error(err))
 
 
-sql.sync({alter:true})
+sql.sync()
   .then(() => console.log("database models have been created successfully"))
   .catch((err) => console.error(err));
 

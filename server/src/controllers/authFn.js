@@ -10,12 +10,14 @@ function createToken(id) {
 
 async function signup(req, res) {
   /// input validation
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    res.status(400).json({ errors: errors.array() });
-  }
+
   try {
 
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.status(400).json({ errors: errors.array() });
+    }
+    
     const { Username, Email, Password } = req.body;
     const genSalt = bcrypt.genSaltSync(16);
     const hashedPassword = bcrypt.hashSync(Password, genSalt);
