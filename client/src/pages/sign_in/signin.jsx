@@ -48,7 +48,7 @@ const [errorSpinner,setErrorSpinner] = useState(false)
       
     } catch (err) {
     setErrorSpinner(true)
-      setError(err)
+//       setError(err)
       // setIsLoading(false)
       console.log(err);
       
