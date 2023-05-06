@@ -58,32 +58,32 @@ function SignUp() {
     }
   };
 
-  if (error) {
-    if (error?.response.data.errors[0].msg.includes("password")) {
-      errorEmail.textContent = "";
-      errorUsername.textContent = "";
-      setTimeout(() => {
-        setErrorSpinner(false);
-        errorPassword.textContent = error.response.data.errors[0].msg;
-      }, 3000);
-    } else if (error.response.data.errors[0].msg.includes("email")) {
-      errorPassword.textContent = "";
-      errorUsername.textContent = "";
+//   if (error) {
+//     if (error?.response.data.errors[0].msg.includes("password")) {
+//       errorEmail.textContent = "";
+//       errorUsername.textContent = "";
+//       setTimeout(() => {
+//         setErrorSpinner(false);
+//         errorPassword.textContent = error.response.data.errors[0].msg;
+//       }, 3000);
+//     } else if (error.response.data.errors[0].msg.includes("email")) {
+//       errorPassword.textContent = "";
+//       errorUsername.textContent = "";
 
-      setTimeout(() => {
-        setErrorSpinner(false);
-        errorEmail.textContent = error.response.data.errors[0].msg;
-      }, 3000);
-    } else if (error.response.data.errors[0].msg.includes("username")) {
-      errorPassword.textContent = "";
-      errorEmail.textContent = "";
+//       setTimeout(() => {
+//         setErrorSpinner(false);
+//         errorEmail.textContent = error.response.data.errors[0].msg;
+//       }, 3000);
+//     } else if (error.response.data.errors[0].msg.includes("username")) {
+//       errorPassword.textContent = "";
+//       errorEmail.textContent = "";
 
-      setTimeout(() => {
-        setErrorSpinner(false);
-        errorUsername.textContent = error.response.data.errors[0].msg;
-      }, 2000);
-    }
-  }
+//       setTimeout(() => {
+//         setErrorSpinner(false);
+//         errorUsername.textContent = error.response.data.errors[0].msg;
+//       }, 2000);
+//     }
+//   }
   // if (isLoading) {
   //   return <h1>'loading please wait...'</h1>;
   // }
