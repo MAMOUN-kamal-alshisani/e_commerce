@@ -57,25 +57,25 @@ const errorPassword= document.querySelector('.passowrdError_div')
     
   };
 
-if(error){
+// if(error){
 
-  if(error.response.data.includes('password')){
-    setTimeout(()=>{
-      setErrorSpinner(false)
-      errorPassword.textContent =error.response.data
-    },3000)
+//   if(error.response.data.includes('password')){
+//     setTimeout(()=>{
+//       setErrorSpinner(false)
+//       errorPassword.textContent =error.response.data
+//     },3000)
 
-  }
+//   }
 
-  else if(error.response.data.includes('email')){
-    setTimeout(()=>{
-      setErrorSpinner(false)
-      errorEmail.textContent =error.response.data
-    },3000)
+//   else if(error.response.data.includes('email')){
+//     setTimeout(()=>{
+//       setErrorSpinner(false)
+//       errorEmail.textContent =error.response.data
+//     },3000)
     
-  }
+//   }
     
-}
+// }
 
   // if(isLoading){
 
