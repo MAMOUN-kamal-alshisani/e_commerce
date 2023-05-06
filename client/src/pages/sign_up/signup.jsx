@@ -53,7 +53,7 @@ function SignUp() {
      navigate("/");
     } catch (err) {
       setErrorSpinner(true);
-      setError(err);
+//       setError(err);
       console.log(err);
     }
   };
