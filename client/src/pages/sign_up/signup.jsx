@@ -11,15 +11,15 @@ function SignUp() {
   const dispatch = useDispatch();
   // const [isLoading, setIsLoading] = useState(false);
 
-  const errorEmail = document.querySelector(".emailError_div");
-  const errorPassword = document.querySelector(".passowrdError_div");
-  const errorUsername = document.querySelector(".usernameError_div");
+//   const errorEmail = document.querySelector(".emailError_div");
+//   const errorPassword = document.querySelector(".passowrdError_div");
+//   const errorUsername = document.querySelector(".usernameError_div");
 
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(null);
+//   const [error, setError] = useState(null);
   const [errorSpinner, setErrorSpinner] = useState(false);
 
   const signup = async () => {
