@@ -12,13 +12,13 @@ function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 // const [isLoading,setIsLoading] = useState(false)
-const [error,setError] = useState(null)
+// const [error,setError] = useState(null)
 const [errorSpinner,setErrorSpinner] = useState(false)
 
   const dispatch = useDispatch();
 
-const errorEmail = document.querySelector('.emailError_div')
-const errorPassword= document.querySelector('.passowrdError_div')
+// const errorEmail = document.querySelector('.emailError_div')
+// const errorPassword= document.querySelector('.passowrdError_div')
 
 
   const signin = async () => {
