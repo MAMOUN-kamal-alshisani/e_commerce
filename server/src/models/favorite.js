@@ -1,21 +1,21 @@
-const { db } = require("../db/db");
 const Sequelize = require("sequelize");
 const User = require("./user");
-const Cart = db.define("Cart", {
+const { db } = require("../db/db");
+
+const FavItems = db.define("Favorite", {
   id: {
     type: Sequelize.DataTypes.INTEGER,
     autoIncrement: true,
     primaryKey: true,
   },
-  cart: {
+  favorite: {
     type: Sequelize.DataTypes.ARRAY(Sequelize.DataTypes.INTEGER),
+    allowNull: true,
   },
-
   userId: {
     type: Sequelize.DataTypes.INTEGER,
   },
 });
+FavItems.belongsTo(User);
 
-Cart.belongsTo(User);
-
-module.exports = Cart;
+module.exports = FavItems;
