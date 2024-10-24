@@ -1,116 +1,117 @@
-@import "../../../scss_variables/variables";
+// @import "../../../scss_variables/variables";
 
-.profile {
-  position: $relativePosition;
-  width: $fullWidth;
-  height: 100vh;
+// .profile {
+//   position: $relativePosition;
+//   width: $fullWidth;
+//   height: 100vh;
 
-  .profile_div {
-    // max-width: 1024px;
-    height: 100vh;
-    align-items: $itemsAlignCenter;
-    @include flex(flex, center, nowrap, row);
+//   .profile_div {
+//     // max-width: 1024px;
+//     @include flex(flex, center, nowrap, row);
 
-    .profile_info_container {
-      height: fit-content;
-      padding: 100px;
-      box-shadow: 0px 0px 5px 0px $primaryclr4;
-      background: $bg_color1;
-      .profile_data {
-        @include flex(flex, space-between, nowrap, row);
+//     height: 100vh;
+//     align-items: $itemsAlignCenter;
 
-        .img_div {
-          position: $relativePosition;
-          @include flex(flex, space-between, nowrap, column);
-          // background-color: rgba(0, 0, 0, 0.424);;
-          box-shadow: 0px 0px 1px 0px $primaryclr4;
+//     .profile_info_container {
+//       height: fit-content;
+//       padding: 100px;
+//       box-shadow: 0px 0px 5px 0px $primaryclr4;
+//       background: $bg_color1;
+//       .profile_data {
+//         @include flex(flex, space-between, nowrap, row);
 
-          //  background-color: aqua;
-          border-radius: $borderRadius;
-          .profile_img {
-            border-radius: $borderRadius 0px;
-          }
-          .img_formDiv {
-            width: fit-content;
+//         .img_div {
+//           position: $relativePosition;
+//           @include flex(flex, space-between, nowrap, column);
+//           // background-color: rgba(0, 0, 0, 0.424);;
+//           box-shadow: 0px 0px 1px 0px $primaryclr4;
 
-            form {
-              position: $absolutePosition;
-              // bottom: 80px;
-              top: 0px;
-              right: 1px;
+//           //  background-color: aqua;
+//           border-radius: $borderRadius;
+//           .profile_img {
+//             border-radius: $borderRadius 0px;
+//           }
+//           .img_formDiv {
+//             width: fit-content;
 
-              .inputLabel {
-                padding: 10px;
-                color: rgb(48, 93, 111);
-                font-size: $fontSizeXlarge;
-                cursor: $pointer;
+//             form {
+//               position: $absolutePosition;
+//               // bottom: 80px;
+//               top: 0px;
+//               right: 1px;
 
-                &:hover {
-                  color: rgb(17, 34, 41);
-                }
-              }
-              .imgInput {
-                // background-color: #3ab1eb
-              }
-            }
-          }
-          .data_div {
-            @include flex(flex, space-between, nowrap, row);
-            color: black;
-            //  border-bottom: 1px solid white;
+//               .inputLabel {
+//                 padding: 10px;
+//                 color: rgb(48, 93, 111);
+//                 font-size: $fontSizeXlarge;
+//                 cursor: $pointer;
 
-            padding: 10px;
+//                 &:hover {
+//                   color: rgb(17, 34, 41);
+//                 }
+//               }
+//               .imgInput {
+//                 // background-color: #3ab1eb
+//               }
+//             }
+//           }
+//           .data_div {
+//             @include flex(flex, space-between, nowrap, row);
+//             color: black;
+//             //  border-bottom: 1px solid white;
 
-            b {
-            }
-          }
-        }
+//             padding: 10px;
 
-        .info_div {
-          border-radius: 0px 6px;
-          background-color: $bg_color1;
-          // background-color: #3ab1eb;
-          box-shadow: 0px 0px 1px 0px $primaryclr4;
-          @include flex(flex, flex-start, nowrap, column);
-          font-size: $fontSizeLarge;
-          gap: 20px;
-          width: 400px;
-          // background-color: rgba(0, 0, 0, 0.424);
-          .data_div {
-            @include flex(flex, space-between, nowrap, row);
-            color: black;
-            // border-bottom: 1px solid white;
-            padding: 10px;
-          }
+//             b {
+//             }
+//           }
+//         }
 
-          .updateProfileBtn {
-            @include flex(flex, center, nowrap, row);
-            padding: $paddingFive;
-            gap: 10px;
-            border: $bordertr;
-            background-color: rgb(61, 133, 162);
-            color: $bg_color1;
-            cursor: $pointer;
-            height: 30px;
-            font-size: medium;
+//         .info_div {
+//           border-radius: 0px 6px;
+//           background-color: $bg_color1;
+//           // background-color: #3ab1eb;
+//           box-shadow: 0px 0px 1px 0px $primaryclr4;
+//           @include flex(flex, flex-start, nowrap, column);
+//           font-size: $fontSizeLarge;
+//           gap: 20px;
+//           width: 400px;
+//           // background-color: rgba(0, 0, 0, 0.424);
+//           .data_div {
+//             @include flex(flex, space-between, nowrap, row);
+//             color: black;
+//             // border-bottom: 1px solid white;
+//             padding: 10px;
+//           }
 
-            border-bottom-left-radius: 6px;
-            border-bottom-right-radius: 6px;
+//           .updateProfileBtn {
+//             @include flex(flex, center, nowrap, row);
+//             padding: $paddingFive;
+//             gap: 10px;
+//             border: $bordertr;
+//             background-color: rgb(61, 133, 162);
+//             color: $bg_color1;
+//             cursor: $pointer;
+//             height: 30px;
+//             font-size: medium;
 
-            &:hover {
-              background-color: rgb(54, 145, 181);
-            }
-            svg {
-              path {
-                stroke: $bg_color1;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
+//             border-bottom-left-radius: 6px;
+//             border-bottom-right-radius: 6px;
+
+//             &:hover {
+//               background-color: rgb(54, 145, 181);
+//             }
+//             svg {
+//               path {
+//                 stroke: $bg_color1;
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
 
 // .profile {
 //   height: 100vh;
@@ -194,3 +195,209 @@
 //     }
 //   }
 // }
+@import "../../../scss_variables/variables";
+
+.ProfilePg {
+  @include flex(flex, center, wrap, row);
+  // max-width: 1024px;
+  .profile_pic_section {
+    @include flex(flex, flex-start, wrap, column);
+    align-content: center;
+    flex: 1;
+    padding: 100px 10px;
+
+    .profile_pic_cn {
+      .profile_pic_div {
+        width: 220px;
+        height: 200px;
+        text-align: center;
+        position: relative;
+        .profile_pic {
+          width: 220px;
+          height: 200px;
+        }
+
+        .img_upload_div {
+          position: absolute;
+          top: 0;
+          z-index: 22;
+          width: 100%;
+          height: 100%;
+       
+          &:hover{
+            backdrop-filter: blur(2px);
+            background-color: #3333335c;
+
+
+            .img_change_lbl{
+              visibility: visible;
+              cursor: pointer;
+            }
+
+          }
+          .img_change_lbl {
+            @include flex(flex, center, wrap, row);
+            height: 100%;
+            color: white;
+            font-size: x-small;
+            align-items: center;
+            gap: 3px;
+            visibility: collapse;
+
+            &:hover{
+
+            }
+            .cmr_icon{
+                font-size: x-small;
+            }
+          }
+        }
+      }
+
+      .user_dt{
+        text-align: center;
+      }
+      #user_dt_p1{
+        font-weight: 600;
+      }
+
+      #user_dt_p3{
+        color: grey
+      }
+    }
+
+    .ud_profile_pic_btn{
+      @include flex(flex, center, wrap, row);
+      align-items: center;
+      background-color:#d10024;
+      color: white;
+      padding: 5px;
+      gap: 4px;
+      border-radius: 15px 0px 15px 0px;
+      margin-top: 5px;
+      font-size: medium;
+      &:hover {
+        background-color: #bb0221;
+      }
+      .icon{
+        font-size: medium;
+        // visibility: collapse;
+        animation: rotateIcon 3s infinite;
+      }
+
+      @keyframes rotateIcon {
+        0% {
+          rotate: (0);
+        }
+        25% {
+          rotate: (90deg);
+        }
+        50% {
+          rotate: (180deg);
+        }
+        90% {
+          rotate: (360deg);
+        }
+        100% {
+          display: none;
+        }
+      }
+    
+      .load_icon{
+        visibility: visible;
+      }
+    }
+
+  }
+  .profile_details_section {
+    flex: 1.5;
+
+    padding: 20px 0px 50px;
+    // border-bottom: 1px solid ;
+    border-right: 1px solid #e2e2e2;
+    border-left: 1px solid #e2e2e2;
+    .profile_details_cn {
+      @include flex(flex, space-between, nowrap, column);
+      padding: 0 20px;
+      height: 100%;
+      .input_ct {
+        @include flex(flex, flex-start, nowrap, column);
+        padding: 10px 0;
+      }
+      input,
+      select {
+        height: 20px;
+        // margin: 5px 0px
+        padding: 5px;
+        color: #333;
+        outline: 1px solid transparent;
+        border: 1px solid #e3e5e7;
+        background-color: #f8f9fa;
+        color: rgb(0 0 0 / 49%);
+        &:focus {
+          background-color: white;
+          color: black;
+        }
+      }
+
+      select {
+        height: 30px;
+        // margin: 5px 0px
+      }
+      label {
+        padding-bottom: 5px;
+        color: #333;
+      }
+
+      .profile_name_input_cn {
+        @include flex(flex, space-between, nowrap, row);
+        gap: 20px;
+        .input_cn {
+          width: 50%;
+        }
+      }
+      .ud_btn {
+        width: 100%;
+        background-color: #d10024;
+        color: white;
+        height: 35px;
+        margin: 10px 0;
+        border-radius: 5px;
+        font-size: medium;
+        &:hover {
+          background-color: #bb0221;
+        }
+
+        .details_change_icon{
+          animation: rotateIcon 3s infinite;
+        }
+        @keyframes rotateIcon {
+          0% {
+            rotate: (0);
+          }
+          25% {
+            rotate: (90deg);
+          }
+          50% {
+            rotate: (180deg);
+          }
+          90% {
+            rotate: (360deg);
+          }
+          100% {
+            display: none;
+          }
+        }
+        
+      }
+    }
+  }
+  .display_adds_section {
+    flex: 1;
+    .add_display_cn{
+      text-align: center;
+      color: rgba(0, 0, 0, 0.467);
+      margin-top: 40px;
+    }
+  }
+}

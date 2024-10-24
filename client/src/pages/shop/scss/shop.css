@@ -1,26 +1,20 @@
-.shop .inputItem_div {
-  margin-top: 50px;
+.shop {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  flex-direction: row;
-  gap: 30px;
-}
-.shop .inputItem_div .filter_btn_div {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   flex-direction: row;
 }
-.shop .inputItem_div .filter_btn_div .filter_btn {
-  background-color: transparent;
-  border: 1px solid transparent;
-  color: royalblue;
-  cursor: pointer;
-  font-size: larger;
+.shop h1,
+.shop h2,
+.shop h3,
+.shop h4,
+.shop h5,
+.shop h6 {
+  margin: 0;
 }
-.shop .inputItem_div .filter_btn_div .filter_btn:hover {
-  color: blue;
+.shop .shopList_Container {
+  flex: 4;
+  padding-top: 50px;
 }
 .shop .shopList_Container .card_container {
   width: 100%;
@@ -28,4 +22,129 @@
   justify-content: center;
   flex-wrap: wrap;
   flex-direction: row;
+}
+.shop .shopList_Container .card_container .filter_list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 20px;
+  width: 100%;
+  margin: 20px 80px;
+}
+.shop .shopList_Container .card_container .filter_list .filter_cn {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  gap: 20px;
+}
+.shop .shopList_Container .card_container .filter_list .filter_cn .filter_link {
+  color: #4a4949;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.5;
+  text-decoration: none;
+}
+.shop .shopList_Container .card_container .filter_list .active {
+  border-bottom: 2px solid #D10024;
+  color: #4a4949;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.5;
+  text-decoration: none;
+}
+.shop .shopList_Container .card_container .card {
+  max-width: 1024px;
+}
+
+@media screen and (max-width: 1424px) {
+  .shop {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
+  }
+  .shop h1,
+  .shop h2,
+  .shop h3,
+  .shop h4,
+  .shop h5,
+  .shop h6 {
+    margin: 0;
+  }
+  .shop .shopList_Container {
+    flex: 4;
+    padding-top: 50px;
+  }
+  .shop .shopList_Container .card_container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+  .shop .shopList_Container .card_container .filter_list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+    margin: 20px 40px;
+  }
+  .shop .shopList_Container .card_container .filter_list .filter_cn {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    flex-direction: row;
+  }
+  .shop .shopList_Container .card_container .card {
+    max-width: 1024px;
+  }
+}
+@media screen and (max-width: 550px) {
+  .shop {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    flex-direction: column;
+  }
+  .shop h1,
+  .shop h2,
+  .shop h3,
+  .shop h4,
+  .shop h5,
+  .shop h6 {
+    margin: 0;
+  }
+  .shop .shopList_Container {
+    flex: 4;
+    padding-top: 50px;
+  }
+  .shop .shopList_Container .card_container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+  .shop .shopList_Container .card_container .filter_list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+    margin: 20px 40px;
+  }
+  .shop .shopList_Container .card_container .filter_list .filter_cn {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    flex-direction: row;
+  }
+  .shop .shopList_Container .card_container .card {
+    max-width: 1024px;
+  }
 }/*# sourceMappingURL=shop.css.map */

@@ -1,115 +1,377 @@
 @import "../../../scss_variables/variables";
 
-.signup_div {
+.signup {
   @include flex(flex, center, wrap, row);
   width: $fullWidth;
+  align-items: center;
   height: 100vh;
-  align-items: $itemsAlignCenter;
-  .form_div {
-    @include flex(flex, center, wrap, column);
-    align-content: $txtAlignCenter;
-    width: 600px;
-    height: 80vh;
-    min-height: fit-content;
+  // gap: 10%;
+  background-color: #f8f9fa;
+  .section_container {
+    @include flex(flex, center, nowrap, row);
+    height: 80%;
+    width: 75%;
+    border: 1px solid #e3e5e7;
+    // gap: 5%;
+    .signup_cn {
+      @include flex(flex, space-between, nowrap, column);
+      padding: 0 15px;
+      // background-color: #f8f9fa;
+      // background-image: linear-gradient(#cdcccc, rgb(240, 240, 240));
+      background-color: white;
+      // width: 50%;
+      // background: url("https://cutewallpaper.org/21/red-tech-wallpaper/Images-of-Red-Tech-Wallpaper-SpaceHero.jpg");
+      // flex: 1;
+      // width: $fullWidth;
+      // height: 50%;
+      width: 50%;
+      align-items: $itemsAlignCenter;
 
-    background-image: linear-gradient(royalblue, rgb(52, 52, 152));
-    border-radius: $borderRadius;
+      .home_name_div {
+        @include flex(flex, space-between, nowrap, row);
+        // padding: 0px 15px;
+        width: 100%;
+        h3:first-child {
+          letter-spacing: 4.5px;
+          &::first-letter {
+            // background-color: #e10c0c;
+            // letter-spacing: 0px;
+            color: #d10024;
+            // padding: 5px 10px;
+            border-radius: 50%;
+          }
+        }
+      }
+      .form_div {
+        @include flex(flex, center, nowrap, column);
+        align-content: $itemsAlignCenter;
+        padding: 10px;
+        margin: auto 0;
+        // width: 600px;
+        // height: 80vh;
+        // background-color: #2196f3;
+        // background-color: #3f51b5;
+        // background-image: linear-gradient(#D10024, rgb(38, 38, 41));
+        border-radius: $borderRadius;
 
-    box-shadow: 0px 0px 1px 0px rgb(102, 98, 98);
+        // box-shadow: 0px 0px 1px 0px $primaryclr4;
 
-    .form_header {
-      font-family: "Courier New", Courier, monospace;
-      text-align: $txtAlignCenter;
-      color: $bg_color1;
-      letter-spacing: 1px;
-    }
+        .form_header {
+          font-family: "Courier New", Courier, monospace;
+          text-align: $txtAlignCenter;
+          // color: red;
+          letter-spacing: 1px;
+          margin: 0;
+        }
 
-    .sign_form {
-      .form_input_div {
-        margin-top: 20px;
+        .sign_form {
+          .form_input_div {
+            margin-top: 20px;
 
-        .input_text {
-          @include flex(flex, center, wrap, column);
+            .input_text {
+              @include flex(flex, center, wrap, column);
 
-          width: 300px;
-          height: 25px;
-          padding: $paddingFive;
-          border: 1px solid #00bcd4;
-          font-size: $fontSizeLarge;
-          &:focus {
-            border: $bordertr;
-            outline: 1px solid $primaryclr5;
+              width: 300px;
+              height: 25px;
+              padding: $paddingFive;
+              border: 1px solid grey;
+              font-size: $fontSizeLarge;
+              background: rgba(255, 255, 255, 0.08);
+              &:focus {
+                border: $bordertr;
+                outline: 1px solid crimson;
+              }
+            }
+
+            .input_submit {
+              @include flex(flex, center, wrap, column);
+              align-content: $itemsAlignCenter;
+              width: 310px;
+              height: 30px;
+              padding: 20px;
+              background-color: #d10024;
+              border: $primaryclr4;
+              color: $bg_color1;
+              cursor: $pointer;
+              font-size: $fontSizeLarge;
+              transition: $transition;
+              &:hover {
+                box-shadow: 0px 0px 5px 0px $bg_color1;
+                background-color: #bf0c2a;
+              }
+
+              &:focus {
+                border: $bordertr;
+                outline: 1px solid rgb(181, 178, 178);
+              }
+              .btn_txt_cn{
+              @include flex(flex, center, nowrap, row);
+              gap: 5px;
+                .loading_icon {
+                  // transform: rotateX(90);
+                  font-size: medium;
+                  animation: rotateIcon 4s infinite;
+                }
+
+                @keyframes rotateIcon {
+                  0% {
+                    rotate: (0);
+                  }
+                  25% {
+                    rotate: (90deg);
+                  }
+                  50% {
+                    rotate: (180deg);
+                  }
+                  90% {
+                    rotate: (360deg);
+                  }
+                  100% {
+                    display: none;
+                  }
+                }
+              }
+           
+
+
+            }
           }
         }
 
-        .input_submit {
-          @include flex(flex, center, wrap, column);
-          align-content: $itemsAlignCenter;
-          width: 310px;
-          height: 35px;
-          padding: 20px;
+        // .login_div {
+        //   @include flex(flex, center, wrap, row);
+        // }
 
-          background-color: #3ab1eb;
-          // background-color: #673ab7;
-          color: $bg_color1;
-          border: 1px solid $primaryclr4;
-
+        .usernameError_div {
+          padding: $paddingFive;
+          padding-top: 10px;
+          color: $primaryclr3;
+        }
+        .usernameError_div:empty {
+          display: none;
+        }
+        .emailError_div {
+          padding: $paddingFive;
+          padding-top: 10px;
+          color: $primaryclr3;
+        }
+        .emailError_div:empty {
+          display: none;
+        }
+        .passowrdError_div {
+          padding: $paddingFive;
+          padding-top: 10px;
+          color: $primaryclr3;
+        }
+        .passowrdError_div:empty {
+          display: none;
+        }
+      }
+    }
+    .alternative_choice_cn {
+      @include flex(flex, center, wrap, row);
+      flex:1;
+      width: unset;
+      background: url("https://www.wallpaperflare.com/static/903/815/781/nature-landscape-trees-forest-wallpaper.jpg");
+      background-size: cover;
+      // background-color: #D10024;
+      color: #f8f9fa;
+      align-items: $itemsAlignCenter;
+      .log_in_out_div {
+        @include flex(flex, center, wrap, column);
+        align-items: $itemsAlignCenter;
+        text-align: center;
+        h1 {
+          margin: 0;
+        }
+        .signup_tag {
+          @include flex(flex, center, wrap, row);
           cursor: $pointer;
-          font-size: $fontSizeLarge;
           transition: $transition;
           &:hover {
-            box-shadow: 0px 0px 5px 0px $bg_color1;
-            background-color: #1faff7;
-          }
-
-          &:focus {
-            border: $bordertr;
-            outline: 1px solid rgb(181, 178, 178);
-          }
-
-
-          .loading_icon{
-            // transform: rotateX(90);
-            animation: rotateIcon 3s
-          }
-          
-          @keyframes rotateIcon {
-            0%   {rotate:(0)}
-            25%  {rotate:(90deg)}
-            50%  {rotate:(180deg)}
-            90% {rotate:(360deg)}
-            100% {display: none;}
+            color: red;
           }
         }
       }
     }
+  }
+}
 
-    .login_div {
+
+@media screen and (max-width:850px) {
+  
+  .signup {
+    @include flex(flex, center, wrap, row);
+    width: $fullWidth;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8f9fa;
+    .section_container {
       @include flex(flex, center, wrap, row);
-    }
-    .login_tag {
-      @include flex(flex, center, wrap, row);
-      cursor: $pointer;
-      transition: $transition;
-      &:hover {
-        color: cornsilk;
+      height: 75%;
+      width: 95%;
+      border: 1px solid #e3e5e7;
+      .signup_cn {
+        @include flex(flex, space-between, nowrap, column);
+        padding: 0 15px;
+        flex: 1;
+        width: unset;
+        align-items: $itemsAlignCenter;
+        background-color: white;
+  
+        .home_name_div {
+          @include flex(flex, space-between, nowrap, row);
+          width: 100%;
+          h3:first-child {
+            letter-spacing: 4.5px;
+            &::first-letter {
+              color: #d10024;
+              border-radius: 50%;
+            }
+          }
+        }
+        .form_div {
+          @include flex(flex, center, nowrap, column);
+          align-content: $itemsAlignCenter;
+          padding: 10px;
+          margin: auto 0;
+          border-radius: $borderRadius;
+          .form_header {
+            font-family: "Courier New", Courier, monospace;
+            text-align: $txtAlignCenter;
+            letter-spacing: 1px;
+            margin: 0;
+          }
+  
+          .sign_form {
+            .form_input_div {
+              margin-top: 20px;
+              .input_text {
+                @include flex(flex, center, wrap, column);
+                width: 90%;
+                height: 25px;
+                padding: $paddingFive;
+                border: 1px solid grey;
+                font-size: $fontSizeLarge;
+                background: rgba(255, 255, 255, 0.08);
+                &:focus {
+                  border: $bordertr;
+                  outline: 1px solid crimson;
+                }
+              }
+  
+              .input_submit {
+                @include flex(flex, center, wrap, column);
+                align-content: $itemsAlignCenter;
+                width: 310px;
+                height: 30px;
+                padding: 20px;
+                background-color: #d10024;
+                border: $primaryclr4;
+                color: $bg_color1;
+                cursor: $pointer;
+                font-size: $fontSizeLarge;
+                transition: $transition;
+                &:hover {
+                  box-shadow: 0px 0px 5px 0px $bg_color1;
+                  background-color: #bf0c2a;
+                }
+  
+                &:focus {
+                  border: $bordertr;
+                  outline: 1px solid rgb(181, 178, 178);
+                }
+                .btn_txt_cn{
+                @include flex(flex, center, nowrap, row);
+                gap: 5px;
+                  .loading_icon {
+                    // transform: rotateX(90);
+                    font-size: medium;
+                    animation: rotateIcon 4s infinite;
+                  }
+  
+                  @keyframes rotateIcon {
+                    0% {
+                      rotate: (0);
+                    }
+                    25% {
+                      rotate: (90deg);
+                    }
+                    50% {
+                      rotate: (180deg);
+                    }
+                    90% {
+                      rotate: (360deg);
+                    }
+                    100% {
+                      display: none;
+                    }
+                  }
+                }
+             
+  
+  
+              }
+            }
+          }
+  
+          // .login_div {
+          //   @include flex(flex, center, wrap, row);
+          // }
+  
+          .usernameError_div {
+            padding: $paddingFive;
+            padding-top: 10px;
+            color: $primaryclr3;
+          }
+          .usernameError_div:empty {
+            display: none;
+          }
+          .emailError_div {
+            padding: $paddingFive;
+            padding-top: 10px;
+            color: $primaryclr3;
+          }
+          .emailError_div:empty {
+            display: none;
+          }
+          .passowrdError_div {
+            padding: $paddingFive;
+            padding-top: 10px;
+            color: $primaryclr3;
+          }
+          .passowrdError_div:empty {
+            display: none;
+          }
+        }
+      }
+      .alternative_choice_cn {
+        @include flex(flex, center, wrap, row);
+        width: 50%;
+        // width: 50%;
+        background: url("https://www.wallpaperflare.com/static/903/815/781/nature-landscape-trees-forest-wallpaper.jpg");
+        background-size: cover;
+        // background-color: #D10024;
+        color: #f8f9fa;
+        align-items: $itemsAlignCenter;
+        .log_in_out_div {
+          @include flex(flex, center, wrap, column);
+          align-items: $itemsAlignCenter;
+          h1 {
+            margin: 0;
+            text-align: center
+          }
+          .signup_tag {
+            @include flex(flex, center, wrap, row);
+            cursor: $pointer;
+            transition: $transition;
+            &:hover {
+              color: red;
+            }
+          }
+        }
       }
     }
-
-    .usernameError_div {
-      padding: $paddingFive;
-      padding-top: 10px;
-      color: $primaryclr3;
-    }
-    .emailError_div {
-      padding: $paddingFive;
-      padding-top: 10px;
-      color: $primaryclr3;
-    }
-    .passowrdError_div {
-      padding: $paddingFive;
-      padding-top: 10px;
-      color: $primaryclr3;
-    }
   }
+
 }

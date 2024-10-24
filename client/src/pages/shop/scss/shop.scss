@@ -1,31 +1,182 @@
 @import "../../../scss_variables/variables";
 
 .shop {
-    // margin-top: 50px;
-  .inputItem_div {
-    margin-top: 50px;
-    @include flex(flex, center, wrap, row);
-    gap: 30px;
+  // margin-top: 50px;
+  @include flex(flex, center, nowrap, row);
 
-    .filter_btn_div {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+  }
+  // .inputItem_div {
+  //   margin-top: 50px;
+  //   @include flex(flex, center, wrap, row);
+  //   gap: 30px;
+
+  //   .filter_btn_div {
+  //     @include flex(flex, center, wrap, row);
+
+  //     .filter_btn {
+  //       @include colorRelated(transparent, transparent, $primaryclr1);
+  //       cursor: $pointer;
+  //       font-size: larger;
+
+  //       &:hover {
+  //         color: $primaryclr2;
+  //       }
+  //     }
+  //   }
+  // }
+
+  .shopList_Container {
+    flex: 4;
+    padding-top: 50px;
+
+    .card_container {
+      width: $fullWidth;
       @include flex(flex, center, wrap, row);
 
-      .filter_btn {
-        @include colorRelated(transparent, transparent, $primaryclr1);
-        cursor: $pointer;
-        font-size: larger;
+      .filter_list {
+        @include flex(flex, space-between, wrap, row);
+        gap: 20px;
+        width: 100%;
+        margin: 20px 80px;
+        // border-bottom: 2px solid #e2e2e2;
+        .filter_cn {
+          @include flex(flex, space-between, nowrap, row);
+          gap: 20px;
+          .filter_link{
+            color: #4a4949;
+            font-weight: 400;
+            font-size: 17px;
+            line-height: 1.5;
+            text-decoration: none;
+        }
+          }
+          .active{
+            border-bottom: 2px solid #D10024;
+            color: #4a4949;
+            font-weight: 400;
+            font-size: 17px;
+            line-height: 1.5;
+            text-decoration: none;
+          }
+  
 
-        &:hover {
-          color: $primaryclr2;
+        .filter_btn_container {
+
+          // flex: 0;
+          // background-color: white;
+        }
+      }
+      .card {
+        max-width: 1024px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1424px) {
+  .shop {
+    @include flex(flex, center, nowrap, row);
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin: 0;
+    }
+
+    .shopList_Container {
+      flex: 4;
+      padding-top: 50px;
+
+      .card_container {
+        width: $fullWidth;
+        @include flex(flex, center, wrap, row);
+
+        .filter_list {
+          @include flex(flex, space-between, wrap, row);
+          gap: 20px;
+          width: 100%;
+          margin: 20px 40px;
+
+          .filter_cn {
+            @include flex(flex, space-between, nowrap, row);
+          }
+          .filter_product_type {
+          }
+          .filter_btn_container {
+            // flex: 0;
+            // background-color: white;
+
+            button {
+              // border: 1px solid #e2e2e2;
+              // color: #00bcd4;
+            }
+          }
+        }
+        .card {
+          max-width: 1024px;
         }
       }
     }
   }
+}
 
-  .shopList_Container {
-    .card_container {
-      width: $fullWidth;
-      @include flex(flex, center, wrap, row);
+
+
+
+@media screen and (max-width: 550px) {
+  .shop {
+    @include flex(flex, center, nowrap, column);
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin: 0;
+    }
+
+    .shopList_Container {
+      flex: 4;
+      padding-top: 50px;
+
+      .card_container {
+        width: $fullWidth;
+        @include flex(flex, center, wrap, row);
+
+        .filter_list {
+          @include flex(flex, space-between, wrap, row);
+          gap: 20px;
+          width: 100%;
+          margin: 20px 40px;
+
+          .filter_cn {
+            @include flex(flex, space-between, nowrap, row);
+          }
+          .filter_product_type {
+          }
+          .filter_btn_container {
+            // flex: 0;
+            // background-color: white;
+
+            button {
+              // border: 1px solid #e2e2e2;
+              // color: #00bcd4;
+            }
+          }
+        }
+        .card {
+          max-width: 1024px;
+        }
+      }
     }
   }
 }

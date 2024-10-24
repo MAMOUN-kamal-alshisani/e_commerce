@@ -3,24 +3,77 @@
 .nav_div {
   @include flex(flex, center, wrap, column);
   height: 5vh;
-  background-color: #3f51b5;
+  min-height: 35px;
+  background-color: #D10024;
   color: $bg_color1;
 
   .navbar_container {
     @include flex(flex, unset, wrap, row);
     gap: 20px;
-
-    .navbar_text {
-      font-size: $fontSizeLarge;
-    }
+    flex: 1;
+   align-items: center;
     .navbar_icons {
       padding-left: $paddingFive;
-      // font-size: larger;
-      // color: red;
       .icon_tag {
         font-size: $fontSizeLarger;
         color: $bg_color1;
       }
     }
   }
+  .navbar_text {
+    @include flex(flex, center, wrap, row);
+    align-items: center;
+    flex: 1;
+  }
+  .search_site {
+    @include flex(flex, flex-end, wrap, row);
+    align-items: center;
+    padding: 5px;
+    text-align: end;
+    flex: 1;
+    svg {
+      font-size: $fontSizeLarger;
+    }
+  }
+}
+
+
+@media screen and (max-width:400px) {
+  .nav_div {
+    @include flex(flex, center, wrap, column);
+    height: fit-content;
+    min-height: 35px;
+    background-color: #D10024;
+    color: $bg_color1;
+  
+    .navbar_container {
+      @include flex(flex, unset, wrap, row);
+      gap: 20px;
+      flex: 1;
+     align-items: center;
+      .navbar_icons {
+        padding-left: $paddingFive;
+        .icon_tag {
+          font-size: $fontSizeLarger;
+          color: $bg_color1;
+        }
+      }
+    }
+    .navbar_text {
+      @include flex(flex, center, wrap, row);
+      align-items: center;
+      flex: 1;
+    }
+    .search_site {
+      @include flex(flex, flex-end, wrap, row);
+      align-items: center;
+      padding: 5px;
+      text-align: end;
+      flex: 1;
+      svg {
+        font-size: $fontSizeLarger;
+      }
+    }
+  }
+  
 }
