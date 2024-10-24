@@ -14,13 +14,12 @@
     font-size: $fontSizeLarger;
     border: 1px solid $bordertr;
     background: $bordertr;
-            padding:$paddingFive;
-    margin-left:10px;
-
+    padding: $paddingFive;
+    margin-left: 10px;
     .pageLink {
-    cursor: $pointer;
-font-size: $fontSizeLarge;
-transition: $transition;
+      cursor: $pointer;
+      font-size: $fontSizeLarge;
+      transition: $transition;
       color: $primaryclr2;
       &:hover {
         color: $primaryclr3;

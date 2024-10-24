@@ -1,65 +1,85 @@
 import "./scss/footer.css";
-
+import { FaFacebook } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
+import { FaGithubSquare } from "react-icons/fa";
+import { FaWhatsappSquare } from "react-icons/fa";
+import { MdOutlineMail } from "react-icons/md";
 function Footer() {
   return (
     <footer className="footer">
-      <div className="footer_container">
-        <div className="items_div">
-          <div className="firstDiv">
-            <h1 className="firstDiv_header">TechShop</h1>
-            <p>
-              E-commerce originated in a standard for the exchange of business
-              documents, such as orders or invoices, between suppliers and their
-              business customers, TechShop was put on motion under the intent of 
-              providing customers with best products effeciently.
-              {/* Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero
-              animi obcaecati nihil incidunt fuga hic itaque velit at
-              consequuntur, iste repellat, quaerat possimus, quae id tempora
-              expedita molestiae eligendi ipsam. */}
-            </p>
+      <section className="footerSn">
+        <div className="siteDesc_block">
+          E-commerce originated in a standard for the exchange of business
+          documents, such as orders or invoices, between suppliers and their
+          business customers, TechShop was put on motion under the intent of
+          providing customers with best products effeciently.
+        </div>
+        <div className="footerIcon_block">
+          <div className="iconCn_cn">
+            <a
+              href="https://m.me/mamoun.bursi"
+              target={"_blank"}
+              rel={"noopener noreferrer"}
+              className="links"
+            >
+              <FaFacebook id="facebook" className="footer_icon " />
+            </a>
+            <a
+              href="  https://www.linkedin.com/in/mamounalshishani-350277210/"
+              target={"_blank"}
+              rel={"noopener noreferrer"}
+              className="links"
+            >
+              <FaLinkedin id="linkedin" className="footer_icon" />
+            </a>
+            <a
+              href="https://github.com/MAMOUN-kamal-alshisani?tab=repositories"
+              target={"_blank"}
+              rel={"noopener noreferrer"}
+              className="links"
+            >
+              <FaGithubSquare id="github" className="footer_icon" />
+            </a>
+            <a
+              href="https://api.whatsapp.com/send?phone+962786833117"
+              target={"_blank"}
+              rel={"noopener noreferrer"}
+              className="links"
+            >
+              <FaWhatsappSquare
+                id="whatsapp"
+                className="footer_icon"
+                target={"_blank"}
+                rel={"noopener noreferrer"}
+              />
+            </a>
+            <a
+              href="mailto:mamoun.bursi@yahoo.com"
+              target={"_blank"}
+              rel={"noopener noreferrer"}
+              className="links"
+            >
+              <MdOutlineMail id="mail" className="footer_icon" />
+            </a>
           </div>
-
-          <div className="secondDiv">
-            <h1>About us</h1>
-
-            <ul className="footer_list">
-              <li className="footer_item">
-                <a href="!#" className="footer_linktag">
-                  Careers
-                </a>
-              </li>
-              <li className="footer_item">
-                <a href="!#" className="footer_linktag">
-                  Our_Store
-                </a>
-              </li>
-              <li className="footer_item">
-                <a href="!#" className="footer_linktag">
-                  Our_Care
-                </a>
-              </li>
-              <li className="footer_item">
-                <a href="!#" className="footer_linktag">
-                  Terms&Conditions
-                </a>
-              </li>
-              <li className="footer_item">
-                <a href="!#" className="footer_linktag">
-                  PrivacyPolicy
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div className="thirdDiv">
-            <h1>Contact Us</h1>
-            <p>as-sukhnah/az-zarqa-jordan</p>
-            <p>Email: mamoun.bursi@yahoo.com</p>
-            <p>Phone: 0778713407</p>
-            <p></p>
+          <div className="siteInfo_block">
+            <h1 id="h1-s">TechStore</h1>
+            <p id="p-s">Copyright &copy; Mamoun Alshishani</p>
           </div>
         </div>
-      </div>
+
+        <div className="newsLetter_block">
+          <h3 id="h3-n">TechStore Newsletters</h3>
+          <div className="email_cn">
+            <input
+              type="text"
+              placeholder="Your email address"
+              className="email_input"
+            />
+            <button className="newsletter_btn">Sign-Up</button>
+          </div>
+        </div>
+      </section>
     </footer>
   );
 }

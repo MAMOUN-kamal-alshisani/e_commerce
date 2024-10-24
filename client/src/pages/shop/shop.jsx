@@ -1,50 +1,32 @@
 import "./scss/shop.css";
-import Header from "../../components/header/header";
 import Pagination from "../../components/pagination/pagination";
-import { useFetchItemsQuery } from "../../store/apis/itemApi";
+import {
+  useFetchItemsQuery,
+  useFetchAllLatestItemsQuery,
+} from "../../store/apis/itemApi";
+
 import { useState, useEffect } from "react";
-import { cartActions } from "../../store/slices/cartSlice";
-import { useDispatch } from "react-redux";
 import Skeleton from "@mui/material/Skeleton";
-import ShopCard from "./parts/shopcard/shopcard";
+import Card from "./parts/shopcard/card";
+import Nav from "./parts/nav/nav";
 
 function Shop({ item }) {
   const { data, error, isLoading } = useFetchItemsQuery(item);
-  // const location = useLocation();
-  const dispatch = useDispatch();
-
+  const latestItems = useFetchAllLatestItemsQuery();
+  const [activateLink, setActivateLink] = useState(null);
   const [items] = useState(data);
-  const [filteredItems, setfilteredItems] = useState([]);
-
-  const allCategories = ["All", ...new Set(data?.map((item) => item.title))];
+  const [filteredItems, setFilteredItems] = useState(items);
 
   useEffect(() => {
-    setfilteredItems(items);
-  }, [items, data]);
+    setFilteredItems(data);
+  }, [data]);
 
-  const searchedItems = (category) => {
-    // filteredItems(data);
-    if (category === "All") {
-      setfilteredItems(data);
-      return;
-    }
-
-    const filtered = data?.filter((item) => item.title === category);
-    setfilteredItems(filtered);
-    return;
-  };
-
-  //// pagination code!!
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(8);
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = filteredItems?.slice(indexOfFirstPost, indexOfLastPost);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-  const addToCart = (cart) => {
-    dispatch(cartActions.addToCart(cart));
-  };
 
   if (error) {
     return "error fetching data";
@@ -60,35 +42,91 @@ function Shop({ item }) {
       </>
     );
   }
-
-  // if (location.state.search !== "" && null) {
-  //       const filtered = data?.filter(
-  //         (item) => item.title == location.state.search
-  //       );
-  //       setfilteredItems(filtered);
-  // }
+  const itemsFilterHandler = (e, index) => {
+    e.persist();
+    setActivateLink(index);
+    const filterID = e.target.id;
+    let filteration = "";
+    switch (filterID) {
+      case "all":
+        setFilteredItems(data);
+        return;
+      case "Electronics":
+        filteration = data.filter((item) => item.category === "Electronics");
+        setFilteredItems(filteration);
+        return;
+      case "Accessories":
+        filteration = data.filter((item) => item.category === "Accessories");
+        setFilteredItems(filteration);
+        return;
+      case "Latest":
+        filteration = latestItems.data;
+        setFilteredItems(filteration);
+        break;
+      default:
+        return setFilteredItems(data);
+    }
+  };
   return (
     <div className="shop">
-      <Header />
-
-      <div className="inputItem_div">
-        {allCategories?.map((category, i) => (
-          <div className="filter_btn_div" key={i}>
-            <button
-              onClick={() => searchedItems(category)}
-              className="filter_btn"
-            >
-              {category}
-            </button>
-          </div>
-        ))}
-      </div>
-      <br />
-      <br />
+      <Nav
+        setFilteredItems={setFilteredItems}
+        items={data}
+        setActivateLink={setActivateLink}
+      />
 
       <div className="shopList_Container">
         <div className="card_container">
-          <ShopCard currentPosts={currentPosts} addToCart={addToCart} />
+          <div className="filter_list">
+
+            <div className="filter_product_type filter_cn">
+              <button
+                id="all"
+                className={` ${activateLink === 1 ? "active" : "filter_link"}`}
+                onClick={(e) => itemsFilterHandler(e, 1)}
+              >
+                All Products
+              </button>
+
+              <button
+                id="Electronics"
+                className={`${activateLink === 2 ? "active" : "filter_link"}`}
+                onClick={(e) => itemsFilterHandler(e, 2)}
+              >
+                Electronics
+              </button>
+              <button
+                id="Accessories"
+                className={` ${activateLink === 3 ? "active" : "filter_link"}`}
+                onClick={(e) => itemsFilterHandler(e, 3)}
+              >
+                Accessories
+              </button>
+            </div>
+
+            <div className="filter_btn_container filter_cn">
+              <button
+                className={` ${activateLink === 4 ? "active" : "filter_link"}`}
+                onClick={() => setActivateLink(4)}
+              >
+                Best seller
+              </button>
+              <button
+                id="Latest"
+                className={`${activateLink === 5 ? "active" : "filter_link"}`}
+                onClick={(e) => itemsFilterHandler(e, 5)}
+              >
+                Latest
+              </button>
+              <button
+                onClick={() => setActivateLink(6)}
+                className={` ${activateLink === 6 ? "active" : "filter_link"}`}
+              >
+                Recommended
+              </button>
+            </div>
+          </div>
+          <Card currentPosts={currentPosts} />
         </div>
         <Pagination
           postsPerPage={postsPerPage}
@@ -102,4 +140,3 @@ function Shop({ item }) {
 
 export default Shop;
 
-// console.log(str1.endsWith('0'));

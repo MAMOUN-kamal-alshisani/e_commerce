@@ -1,3 +1,4 @@
 {
-    "BracketHighlighter.enableExtension": false
+    "BracketHighlighter.enableExtension": false,
+    "CodeGPT.apiKey": "CodeGPT Plus Beta"
 }

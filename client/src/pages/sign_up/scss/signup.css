@@ -1,36 +1,66 @@
-.signup_div {
+.signup {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   flex-direction: row;
   width: 100%;
-  height: 100vh;
   align-items: center;
+  height: 100vh;
+  background-color: #f8f9fa;
 }
-.signup_div .form_div {
+.signup .section_container {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  height: 80%;
+  width: 75%;
+  border: 1px solid #e3e5e7;
+}
+.signup .section_container .signup_cn {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  padding: 0 15px;
+  background-color: white;
+  width: 50%;
+  align-items: center;
+}
+.signup .section_container .signup_cn .home_name_div {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  width: 100%;
+}
+.signup .section_container .signup_cn .home_name_div h3:first-child {
+  letter-spacing: 4.5px;
+}
+.signup .section_container .signup_cn .home_name_div h3:first-child::first-letter {
+  color: #d10024;
+  border-radius: 50%;
+}
+.signup .section_container .signup_cn .form_div {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
   flex-direction: column;
   align-content: center;
-  width: 600px;
-  height: 80vh;
-  min-height: -moz-fit-content;
-  min-height: fit-content;
-  background-image: linear-gradient(royalblue, rgb(52, 52, 152));
+  padding: 10px;
+  margin: auto 0;
   border-radius: 6px;
-  box-shadow: 0px 0px 1px 0px rgb(102, 98, 98);
 }
-.signup_div .form_div .form_header {
+.signup .section_container .signup_cn .form_div .form_header {
   font-family: "Courier New", Courier, monospace;
   text-align: center;
-  color: white;
   letter-spacing: 1px;
+  margin: 0;
 }
-.signup_div .form_div .sign_form .form_input_div {
+.signup .section_container .signup_cn .form_div .sign_form .form_input_div {
   margin-top: 20px;
 }
-.signup_div .form_div .sign_form .form_input_div .input_text {
+.signup .section_container .signup_cn .form_div .sign_form .form_input_div .input_text {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -38,39 +68,48 @@
   width: 300px;
   height: 25px;
   padding: 5px;
-  border: 1px solid #00bcd4;
+  border: 1px solid grey;
   font-size: large;
+  background: rgba(255, 255, 255, 0.08);
 }
-.signup_div .form_div .sign_form .form_input_div .input_text:focus {
+.signup .section_container .signup_cn .form_div .sign_form .form_input_div .input_text:focus {
   border: transparent;
   outline: 1px solid crimson;
 }
-.signup_div .form_div .sign_form .form_input_div .input_submit {
+.signup .section_container .signup_cn .form_div .sign_form .form_input_div .input_submit {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   flex-direction: column;
   align-content: center;
   width: 310px;
-  height: 35px;
+  height: 30px;
   padding: 20px;
-  background-color: #3ab1eb;
+  background-color: #d10024;
+  border: grey;
   color: white;
-  border: 1px solid grey;
   cursor: pointer;
   font-size: large;
   transition: ease-in-out 1s;
 }
-.signup_div .form_div .sign_form .form_input_div .input_submit:hover {
+.signup .section_container .signup_cn .form_div .sign_form .form_input_div .input_submit:hover {
   box-shadow: 0px 0px 5px 0px white;
-  background-color: #1faff7;
+  background-color: #bf0c2a;
 }
-.signup_div .form_div .sign_form .form_input_div .input_submit:focus {
+.signup .section_container .signup_cn .form_div .sign_form .form_input_div .input_submit:focus {
   border: transparent;
   outline: 1px solid rgb(181, 178, 178);
 }
-.signup_div .form_div .sign_form .form_input_div .input_submit .loading_icon {
-  animation: rotateIcon 3s;
+.signup .section_container .signup_cn .form_div .sign_form .form_input_div .input_submit .btn_txt_cn {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  gap: 5px;
+}
+.signup .section_container .signup_cn .form_div .sign_form .form_input_div .input_submit .btn_txt_cn .loading_icon {
+  font-size: medium;
+  animation: rotateIcon 4s infinite;
 }
 @keyframes rotateIcon {
   0% {
@@ -89,13 +128,54 @@
     display: none;
   }
 }
-.signup_div .form_div .login_div {
+.signup .section_container .signup_cn .form_div .usernameError_div {
+  padding: 5px;
+  padding-top: 10px;
+  color: red;
+}
+.signup .section_container .signup_cn .form_div .usernameError_div:empty {
+  display: none;
+}
+.signup .section_container .signup_cn .form_div .emailError_div {
+  padding: 5px;
+  padding-top: 10px;
+  color: red;
+}
+.signup .section_container .signup_cn .form_div .emailError_div:empty {
+  display: none;
+}
+.signup .section_container .signup_cn .form_div .passowrdError_div {
+  padding: 5px;
+  padding-top: 10px;
+  color: red;
+}
+.signup .section_container .signup_cn .form_div .passowrdError_div:empty {
+  display: none;
+}
+.signup .section_container .alternative_choice_cn {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   flex-direction: row;
+  flex: 1;
+  width: unset;
+  background: url("https://www.wallpaperflare.com/static/903/815/781/nature-landscape-trees-forest-wallpaper.jpg");
+  background-size: cover;
+  color: #f8f9fa;
+  align-items: center;
 }
-.signup_div .form_div .login_tag {
+.signup .section_container .alternative_choice_cn .log_in_out_div {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.signup .section_container .alternative_choice_cn .log_in_out_div h1 {
+  margin: 0;
+}
+.signup .section_container .alternative_choice_cn .log_in_out_div .signup_tag {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -103,21 +183,197 @@
   cursor: pointer;
   transition: ease-in-out 1s;
 }
-.signup_div .form_div .login_tag:hover {
-  color: cornsilk;
-}
-.signup_div .form_div .usernameError_div {
-  padding: 5px;
-  padding-top: 10px;
+.signup .section_container .alternative_choice_cn .log_in_out_div .signup_tag:hover {
   color: red;
 }
-.signup_div .form_div .emailError_div {
-  padding: 5px;
-  padding-top: 10px;
-  color: red;
-}
-.signup_div .form_div .passowrdError_div {
-  padding: 5px;
-  padding-top: 10px;
-  color: red;
+
+@media screen and (max-width: 850px) {
+  .signup {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8f9fa;
+  }
+  .signup .section_container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    height: 75%;
+    width: 95%;
+    border: 1px solid #e3e5e7;
+  }
+  .signup .section_container .signup_cn {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    padding: 0 15px;
+    flex: 1;
+    width: unset;
+    align-items: center;
+    background-color: white;
+  }
+  .signup .section_container .signup_cn .home_name_div {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    width: 100%;
+  }
+  .signup .section_container .signup_cn .home_name_div h3:first-child {
+    letter-spacing: 4.5px;
+  }
+  .signup .section_container .signup_cn .home_name_div h3:first-child::first-letter {
+    color: #d10024;
+    border-radius: 50%;
+  }
+  .signup .section_container .signup_cn .form_div {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-content: center;
+    padding: 10px;
+    margin: auto 0;
+    border-radius: 6px;
+  }
+  .signup .section_container .signup_cn .form_div .form_header {
+    font-family: "Courier New", Courier, monospace;
+    text-align: center;
+    letter-spacing: 1px;
+    margin: 0;
+  }
+  .signup .section_container .signup_cn .form_div .sign_form .form_input_div {
+    margin-top: 20px;
+  }
+  .signup .section_container .signup_cn .form_div .sign_form .form_input_div .input_text {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 90%;
+    height: 25px;
+    padding: 5px;
+    border: 1px solid grey;
+    font-size: large;
+    background: rgba(255, 255, 255, 0.08);
+  }
+  .signup .section_container .signup_cn .form_div .sign_form .form_input_div .input_text:focus {
+    border: transparent;
+    outline: 1px solid crimson;
+  }
+  .signup .section_container .signup_cn .form_div .sign_form .form_input_div .input_submit {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+    width: 310px;
+    height: 30px;
+    padding: 20px;
+    background-color: #d10024;
+    border: grey;
+    color: white;
+    cursor: pointer;
+    font-size: large;
+    transition: ease-in-out 1s;
+  }
+  .signup .section_container .signup_cn .form_div .sign_form .form_input_div .input_submit:hover {
+    box-shadow: 0px 0px 5px 0px white;
+    background-color: #bf0c2a;
+  }
+  .signup .section_container .signup_cn .form_div .sign_form .form_input_div .input_submit:focus {
+    border: transparent;
+    outline: 1px solid rgb(181, 178, 178);
+  }
+  .signup .section_container .signup_cn .form_div .sign_form .form_input_div .input_submit .btn_txt_cn {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    gap: 5px;
+  }
+  .signup .section_container .signup_cn .form_div .sign_form .form_input_div .input_submit .btn_txt_cn .loading_icon {
+    font-size: medium;
+    animation: rotateIcon 4s infinite;
+  }
+  @keyframes rotateIcon {
+    0% {
+      rotate: 0;
+    }
+    25% {
+      rotate: 90deg;
+    }
+    50% {
+      rotate: 180deg;
+    }
+    90% {
+      rotate: 360deg;
+    }
+    100% {
+      display: none;
+    }
+  }
+  .signup .section_container .signup_cn .form_div .usernameError_div {
+    padding: 5px;
+    padding-top: 10px;
+    color: red;
+  }
+  .signup .section_container .signup_cn .form_div .usernameError_div:empty {
+    display: none;
+  }
+  .signup .section_container .signup_cn .form_div .emailError_div {
+    padding: 5px;
+    padding-top: 10px;
+    color: red;
+  }
+  .signup .section_container .signup_cn .form_div .emailError_div:empty {
+    display: none;
+  }
+  .signup .section_container .signup_cn .form_div .passowrdError_div {
+    padding: 5px;
+    padding-top: 10px;
+    color: red;
+  }
+  .signup .section_container .signup_cn .form_div .passowrdError_div:empty {
+    display: none;
+  }
+  .signup .section_container .alternative_choice_cn {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 50%;
+    background: url("https://www.wallpaperflare.com/static/903/815/781/nature-landscape-trees-forest-wallpaper.jpg");
+    background-size: cover;
+    color: #f8f9fa;
+    align-items: center;
+  }
+  .signup .section_container .alternative_choice_cn .log_in_out_div {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+  }
+  .signup .section_container .alternative_choice_cn .log_in_out_div h1 {
+    margin: 0;
+    text-align: center;
+  }
+  .signup .section_container .alternative_choice_cn .log_in_out_div .signup_tag {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    cursor: pointer;
+    transition: ease-in-out 1s;
+  }
+  .signup .section_container .alternative_choice_cn .log_in_out_div .signup_tag:hover {
+    color: red;
+  }
 }/*# sourceMappingURL=signup.css.map */

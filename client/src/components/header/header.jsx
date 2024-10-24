@@ -1,110 +1,88 @@
 import "./scss/header.css";
 import NavBar from "../navbar/navbar";
-import HeaderImg from "./parts/headerImg";
-import { useNavigate, Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BsFillPersonFill } from "react-icons/bs";
-import { useState } from "react";
-function Header({ type }) {
-  const navigate = useNavigate();
-
-  const username = useSelector((state) => {
-    return state.auth.user;
-  });
-
-  const [searchInput, setSearchInput] = useState("");
-
-  const searchHandler = () => {
-    navigate("/Shop", {
-      state: {
-        search: searchInput,
-      },
-    });
-    console.log(navigate);
-  };
-
+import { FcLike } from "react-icons/fc";
+import { useFetchCartCountQuery } from "../../store/apis/cartApi";
+import { useFetchFavCountQuery } from "../../store/apis/favApi";
+import Cookies from "universal-cookie";
+function Header({ showMd, setShowMd }) {
+  const cookie = new Cookies() 
+  const user = cookie.get('user')
+  const { data, isError } = useFetchCartCountQuery(user);
+  const userFavoriteItemsCount = useFetchFavCountQuery(user);
   const logOutHandler = () => {
-    localStorage.removeItem("user");
+  cookie.remove('user')
     window.location.reload(true);
   };
 
   return (
-    <div className="header_container">
+    <div className="header_cn">
       <NavBar />
       <header>
-        <div className="headerDiv">
-          <div className="upper_container">
-            <div className="siteName_div">
-              <Link to={"/"} className="siteName_Link">
-                <p>TechShop</p>
-              </Link>
-            </div>
+        <div className="header_links_cn">
+          <nav className="siteName_nav">
+            <Link to={"/"} className="Link siteName_Link">
+              <p>TechStore</p>
+            </Link>
+          </nav>
 
-            <div className="input_div">
-              <form onSubmit={(e) => e.preventDefault()}>
-                <input
-                  type="text"
-                  name="search"
-                  placeholder="search for item"
-                  className="header_search"
-                  value={searchInput}
-                  onChange={(e) => setSearchInput(e.target.value)}
-                />
+          <nav className="main_nav">
+            <Link to={"/"} className="Link link-tag">
+              Home
+            </Link>
+            <Link to={"/Shop"} className="Link link-tag">
+              Shop
+            </Link>
+            <Link to={"/Blog"} className="Link link-tag">
+              Blog
+            </Link>
+          </nav>
 
-                <input
-                  type="submit"
-                  value={"search"}
-                  className="form_submit"
-                  onClick={searchHandler}
-                />
-              </form>
-            </div>
-            <div className="links_div">
-              <nav>
-                {!username ? (
-                  <Link to={"/signin"} className="Link">
-                    Login
-                  </Link>
-                ) : (
-                  <Link className="Link logout" onClick={logOutHandler}>
-                    Logout
-                  </Link>
-                )}
-
-                <Link to={"/signup"} className="Link">
-                  Register
+          <div className="page_nav_div">
+            <nav className="tags_nav2">
+              {!user ? (
+                <Link to={"/Signin"} className="Link">
+                  Login
                 </Link>
-              </nav>
-            </div>
-          </div>
+              ) : (
+                <Link className="Link logout" onClick={logOutHandler}>
+                  Logout
+                </Link>
+              )}{" "}
+              /{" "}
+              <Link to={"/Signup"} className="Link">
+                Register
+              </Link>
+            </nav>
 
-          <div className="buttom_contianer">
-            <nav>
-              <div className="buttom_tags-1">
-                <div className="tags_Div_Nav1">
-                  <Link to={"/"} className="Link link-tag">
-                    Home
-                  </Link>
-                  <Link to={"/Shop"} className="Link link-tag">
-                    Shop
-                  </Link>
-                </div>
+            <nav className="tags_nav3">
+              <Link to={"/Profile"} className="Link link-icon">
+                <BsFillPersonFill className="personal_items_icon" />
+              </Link>
 
-                <div className="tags_Div_Nav2">
-                  <Link to={"/Profile"} className="Link link-icon">
-                    <BsFillPersonFill className="bottom_icon " />
-                  </Link>
-
-                  <Link to={"/Cart"} className="Link link-icon">
-                    <AiOutlineShoppingCart className="bottom_icon" />
-                  </Link>
-                </div>
-              </div>
+              <Link to={"/Cart"} className="Link link-icon">
+                <AiOutlineShoppingCart className="personal_items_icon" />
+                <sup className="count_icon">
+                  {!isError && data?.count ? data.count : "0"}
+                </sup>
+              </Link>
+              <button
+                onClick={() => setShowMd(!showMd)}
+                className="fav_btn link-icon"
+              >
+                <FcLike className="personal_items_icon" />
+                <sup className="count_icon">
+                  {!userFavoriteItemsCount.isError &&
+                  userFavoriteItemsCount?.data?.count
+                    ? userFavoriteItemsCount.data.count
+                    : "0"}
+                </sup>
+              </button>
             </nav>
           </div>
         </div>
-        {type === "list" && <HeaderImg />}
       </header>
     </div>
   );

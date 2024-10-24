@@ -1,105 +1,2208 @@
 @import "../../../scss_variables/variables";
 
-.homepage_container {
-  margin-top: 160px;
-  max-width: 1424px;
-  width: $fullWidth;
-
-  .featured_items {
-    @include flex(flex, space-between, nowrap, row);
-    align-items: center;
-    gap: 10px;
-    margin-left: 80px;
-    border-bottom: 1px solid rgb(61, 114, 154);
-   margin-bottom: 20px;
-
-    .featured_items_link {
-      text-decoration: none;
-      color: $primaryclr1;
-     
-      &:hover {
-        color: $primaryclr2;
-      }
-    }
+.HomePg {
+  height: 100%;
+  position: relative;
+  .product_status_md {
+    visibility: collapse;
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    z-index: 100;
+    border-radius: 6px;
+    background-color: black;
+    padding: 15px;
+    width: 250px;
+    text-align: center;
+    color: white;
+    border: 1px solid white;
   }
+  .header_img_sn {
 
-  .first_card_div {
-    @include flex(flex, center, wrap, row);
-    margin-left: 80px;
+    .img_cr {
+      position: relative;
+      background: url("https://www.teahub.io/photos/full/105-1056710_dark-tech-hd-wallpaper-data-src-w-full.jpg");
+      height: 650px;
+      min-width: fit-content;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      filter: brightness(95%);
+      .img_text {
+        position: absolute;
+        bottom: 50%;
+        transform: translateY(50%);
+        margin-left: 10%;
 
-    .card {
-      @include flex(flex, center, wrap, row);
-      cursor: $pointer;
-
-      .container {
-        width: 300px;
-        border-radius:$borderRadius;
-        transition: $transition;
-
-        &:hover {
-          box-shadow: 0px 0px 5px 0px white;
-          background-color: rgba(238, 226, 226, 0.176);
+        h1 {
+          font-size: 32px;
+          color: white;
+          width: 20%;
+        }
+        p {
+          color: #f44336;
         }
 
-        .img_cn {
-          width: $fullWidth;
-          .cardImg {
-            width: $fullWidth;
-            // width: 250px;
-            height: 250px;
-            border-radius: $borderRadius;
-          object-fit: contain;
-           
-          }
-        }
-        .card_title {
-          text-align: $txtAlignCenter;
-          color: $primaryclr3;
-        }
-        .card_name {
-          padding: $paddingFive;
-          text-align: $txtAlignCenter;
-        }
-
-        .itemDetails {
-          @include flex(flex, space-between, nowrap, row);
-
-          .card_price {
-            color: $primaryclr3;
-            padding: $paddingFive;
-          }
-          .card_Stock {
-            color: $primaryclr4;
-            padding: $paddingFive;
+        .img_btn {
+          background-color: #d10024;
+          padding: 10px 20px;
+          color: white;
+          &:hover {
+            background-color: #bf0c2a;
           }
         }
       }
     }
   }
-
-  .homepage_second_div {
-    border-top: 1px solid $primaryclr4;
-    padding-top: 20px;
-    margin:50px 100px;
-    @include flex(flex, space-around, nowrap, row);
-
-    .second_div_textplace {
-      font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-      border-radius: $borderRadius;
-      width: 50%;
-
-      p {
-        line-height: 50px;
+  .main_offer_sn {
+    @include flex(flex, center, nowrap, row);
+    gap: 5px;
+    margin: 5px auto;
+    padding: 0px 5px;
+    .offer_card {
+      position: relative;
+      flex: 1;
+      height: 150px;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+        filter: grayscale(1);
       }
       h1 {
-        text-shadow: 0px 1px 0px white;
+        position: absolute;
+        bottom: 0px;
+        color: white;
+        margin-bottom: 0;
+        padding: 10px;
+        width: 90%;
+        background: linear-gradient(transparent, black);
+        font-size: 22px;
+      }
+    }
+  }
+  .product_header {
+    text-align: center;
+    font-size: 32px;
+    .product_header_span {
+      color: #d10024;
+      padding: 10px;
+      font-size: 32px;
+    }
+  }
+
+  .product_header::first-letter {
+    background-color: #d10024;
+    color: white;
+    padding: 10px;
+    // font-size: xx-large;//
+  }
+  .featured_products_sn {
+    margin: 80px auto;
+    max-width: 1128px;
+    // padding: 0 5px;
+    .production_cn {
+      @include flex(flex, center, nowrap, row);
+      align-items: center;
+      position: relative;
+      .product_header {
+        display: inline;
+        align-items: center;
+        font-size: 32px;
+        .product_header_span {
+          color: #d10024;
+          padding: 10px;
+          font-size: 32px;
+        }
+      }
+
+      .product_link {
+        // border-bottom: 1px solid red;
+
+        .product_btn {
+          @include flex(flex, unset, nowrap, row);
+          align-items: center;
+          position: absolute;
+          bottom: 25%;
+          right: 0;
+          font-weight: 500;
+          font-size: 16px;
+          transform: translateY(-50%);
+          // border-bottom: 1px solid red;
+          // border-bottom: 1px solid #d10024;
+          &:hover {
+            transform: scale(1.1);
+            transform: translateY(-50%);
+          }
+          &:hover .arrow_icon {
+            visibility: visible;
+          }
+          .arrow_icon {
+            visibility: collapse;
+          }
+        }
       }
     }
 
-    .second_div_imgplace {
-      .homepage_section_img {
-        width: 500px;
-        border-radius: $borderRadius;
+    .product_header::first-letter {
+      background-color: #d10024;
+      color: white;
+      padding: 10px;
+      // font-size: xx-large;
+      margin: 0;
+    }
+    .cards_cn {
+      @include flex(flex, space-between, wrap, row);
+      gap: 10px;
+      .featured_product_card {
+        width: 250px;
+        &:hover .img_cn .product_shop_add {
+          visibility: visible;
+        }
+        .img_cn {
+          position: relative;
+          width: 250px;
+          height: 200px !important;
+          img {
+            width: inherit;
+            height: inherit !important;
+            object-fit: contain;
+          }
+          .product_shop_add {
+            @include flex(flex, space-between, nowrap, row);
+            position: absolute;
+            bottom: 0px;
+            width: 100%;
+            visibility: collapse;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.467));
+
+            .cart_btn,
+            .like_btn {
+              @include flex(flex, unset, nowrap, row);
+              align-items: center;
+              margin-bottom: 5px;
+
+              .like_marked {
+                path {
+                  fill: #d10024 !important;
+                }
+              }
+              &:hover {
+                svg path {
+                  fill: #d10024;
+                }
+              }
+              svg {
+                background-color: white;
+                font-size: 18px;
+                border-radius: 50%;
+                padding: 10px;
+                border: 1px solid #d10024;
+                path {
+                  fill: grey;
+                }
+              }
+            }
+            .view_btn {
+              @include flex(flex, unset, nowrap, row);
+              align-items: center;
+              margin-bottom: 5px;
+              &:hover {
+                svg path {
+                  color: #d10024;
+                }
+              }
+              svg {
+                background-color: white;
+                font-size: 18px;
+                border-radius: 50%;
+                padding: 10px;
+                border: 1px solid #d10024;
+                path {
+                  color: grey;
+                }
+              }
+            }
+          }
+        }
+
+        .product_info {
+          @include flex(flex, center, nowrap, column);
+          padding: 22px 0px;
+          align-items: center;
+          text-align: center;
+          gap: 10px;
+          letter-spacing: 1px;
+          .product_title {
+            font-size: 16px;
+            font-weight: 600;
+            font-family: "Montserrat";
+            margin: 0;
+          }
+          .product_name {
+            font-weight: 300;
+            font-family: Arial, Helvetica, sans-serif;
+          }
+          .product_price {
+            font-family: "Roboto Condensed";
+          }
+          h5,
+          p {
+            color: #292621;
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+  .product_deals_sn {
+    background: url("https://www.reviewsed.com/wp-content/uploads/2020/01/Gaming-Tech-Gadgets.jpg");
+    margin: 80px auto;
+    max-width: 1124px;
+    padding: 0px 5px;
+    .product_deals_text {
+      width: fit-content;
+      background-color: #1f13138e;
+      padding: 10px 15px;
+      color: white;
+      backdrop-filter: blur(5px);
+
+      h1 {
+        color: white;
+      }
+      p:first-child {
+        color: #f44336;
+      }
+      p:last-child {
+        color: #f44336;
+      }
+    }
+  }
+
+  .Latest_products_sn {
+    margin: 80px auto;
+    max-width: 1124px;
+    .production_cn {
+      @include flex(flex, center, nowrap, row);
+      align-items: center;
+      position: relative;
+      .product_header {
+        display: inline;
+        align-items: center;
+        font-size: 32px;
+        .product_header_span {
+          color: #d10024;
+          padding: 10px;
+          font-size: 32px;
+        }
+      }
+      .product_link {
+        .product_btn {
+          @include flex(flex, unset, nowrap, row);
+          align-items: center;
+          position: absolute;
+          right: 0;
+          bottom: 25%;
+          transform: translateY(-50%);
+          // border-bottom: 1px solid #d10024;
+          font-weight: 500;
+          font-size: 16px;
+          &:hover {
+            transform: scale(1.1);
+            transform: translateY(-50%);
+          }
+          &:hover .arrow_icon {
+            visibility: visible;
+          }
+          .arrow_icon {
+            visibility: collapse;
+          }
+        }
+      }
+    }
+    .cards_cn {
+      @include flex(flex, space-between, wrap, row);
+      .latest_product_card {
+        width: 250px;
+        &:hover .img_cn .product_shop_add {
+          visibility: visible;
+        }
+        .img_cn {
+          position: relative;
+          width: 250px;
+          height: 200px !important;
+          img {
+            width: inherit;
+            height: inherit !important;
+            object-fit: contain;
+          }
+          .product_shop_add {
+            @include flex(flex, space-between, nowrap, row);
+            position: absolute;
+            bottom: 0px;
+            width: 100%;
+            visibility: collapse;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.467));
+            .cart_btn,
+            .like_btn {
+              @include flex(flex, unset, nowrap, row);
+              align-items: center;
+              margin-bottom: 5px;
+              &:hover {
+                svg path {
+                  fill: #d10024;
+                }
+              }
+              svg {
+                background-color: white;
+                font-size: 18px;
+                border-radius: 50%;
+                padding: 10px;
+                border: 1px solid #d10024;
+                path {
+                  fill: grey;
+                }
+              }
+            }
+            .view_btn {
+              @include flex(flex, unset, nowrap, row);
+              align-items: center;
+              margin-bottom: 5px;
+              &:hover {
+                svg path {
+                  color: #d10024;
+                }
+              }
+              svg {
+                background-color: white;
+                font-size: 18px;
+                border-radius: 50%;
+                padding: 10px;
+                border: 1px solid #d10024;
+                path {
+                  color: grey;
+                }
+              }
+            }
+          }
+        }
+
+        .product_info {
+          @include flex(flex, center, nowrap, column);
+          padding: 22px 0px;
+          align-items: center;
+          gap: 10px;
+          letter-spacing: 1px;
+          .product_title {
+            font-size: 16px;
+            font-weight: 600;
+            font-family: "Montserrat";
+            margin: 0;
+          }
+          .product_name {
+            font-weight: 300;
+            font-family: Arial, Helvetica, sans-serif;
+          }
+          .product_price {
+            font-family: "Roboto Condensed";
+          }
+          h5,
+          p {
+            color: #292621;
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .shop_product_deal_sn {
+    margin: 80px auto;
+    max-width: 1124px;
+    .shop_product_deals_text {
+      @include flex(flex, space-between, nowrap, row);
+      height: 350px;
+      .deals_first_section {
+        background-color: #f8f9fa;
+        color: black;
+        padding: 10px;
+        border: 1px solid #ccc;
+        flex: 1;
+        h1 {
+        }
+        #deals_first_para {
+          text-decoration: underline;
+        }
+        #deals_second_para {
+        }
+        .shop_product_btn {
+          text-decoration: underline;
+          font-weight: 600;
+          font-size: 18px;
+          margin: 20px 0px;
+          color: #d10024;
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+      }
+
+      .deals_second_section {
+        flex: 1;
+        width: 50%;
+        .deals_background_img {
+          object-fit: contain;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  .news_sn {
+    @include flex(flex, center, nowrap, column);
+    background-color: white;
+    align-items: center;
+    margin: 80px 0px;
+    // padding: 20px;
+    .news_Header {
+      text-align: center;
+      font-size: xx-large;
+      &::first-letter {
+        background-color: #d10024;
+        color: white;
+        padding: 10px;
+        font-size: xx-large;
+      }
+      .header_span {
+        color: #d10024;
+        font-size: xx-large;
+        &::first-letter {
+          color: white;
+          padding: 10px;
+          font-size: xx-large;
+        }
+      }
+    }
+    .blog_cn {
+      @include flex(flex, space-between, nowrap, row);
+      // max-width: 1124px;
+      gap: 15px;
+      margin: 0 5px;
+
+      .news_blog {
+        // @include flex(flex, space-between, nowrap, column);
+        // align-items: flex-start;
+        flex: 1;
+        max-width: 350px;
+        .news_blog_img {
+          max-width: 350px;
+          height: 300px;
+        }
+
+        .news_blog_title {
+          font-size: 22px;
+          line-height: 1.4;
+          margin-bottom: 12px;
+          font-weight: 500;
+        }
+        .news_blog_desc {
+          color: grey;
+        }
+
+        .news_blog_btn {
+          text-decoration: underline;
+          font-weight: 600;
+          font-size: 18px;
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+  }
+  @keyframes loadSpin {
+    0% {
+      transform: rotateZ(none);
+    }
+    25% {
+      transform: rotateZ(90deg);
+    }
+    50% {
+      transform: rotateZ(120deg);
+    }
+    75% {
+      transform: rotateZ(240deg);
+    }
+    100% {
+      transform: rotateZ(360deg);
+    }
+  }
+  .load_icon {
+    animation: loadSpin;
+    animation-duration: 5s;
+    animation-iteration-count: 5;
+  }
+  .cart_btn:disabled {
+    svg {
+      background-color: #e2e2e2 !important;
+    }
+  }
+}
+
+@media screen and (max-width: 1160px) {
+  .HomePg {
+    height: 100%;
+    position: relative;
+    .product_status_md {
+      visibility: collapse;
+      position: fixed;
+      top: 10px;
+      right: 20px;
+      z-index: 100;
+      border-radius: 6px;
+      background-color: black;
+      padding: 15px;
+      width: 250px;
+      text-align: center;
+      color: white;
+      border: 1px solid white;
+    }
+    .header_img_sn {
+      .img_cr {
+        position: relative;
+        background: url("https://www.teahub.io/photos/full/105-1056710_dark-tech-hd-wallpaper-data-src-w-full.jpg");
+        height: 650px;
+        min-width: fit-content;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        filter: brightness(95%);
+        .img_text {
+          position: absolute;
+          bottom: 50%;
+          transform: translateY(50%);
+          margin-left: 10%;
+
+          h1 {
+            font-size: 32px;
+            color: white;
+            width: 20%;
+          }
+          p {
+            color: #f44336;
+          }
+
+          .img_btn {
+            background-color: #d10024;
+            padding: 10px 20px;
+            color: white;
+            &:hover {
+              background-color: #bf0c2a;
+            }
+          }
+        }
+      }
+    }
+    .main_offer_sn {
+      @include flex(flex, center, nowrap, row);
+      gap: 5px;
+      margin: 5px auto;
+      padding: 0px 5px;
+      .offer_card {
+        position: relative;
+        flex: 1;
+        height: 150px;
+        overflow: hidden;
+        img {
+          width: 100%;
+          height: 100%;
+          filter: grayscale(1);
+        }
+        h1 {
+          position: absolute;
+          bottom: 0px;
+          color: white;
+          margin-bottom: 0;
+          padding: 10px;
+          width: 90%;
+          background: linear-gradient(transparent, black);
+          font-size: 18px;
+        }
+      }
+    }
+    .product_header {
+      text-align: center;
+      // font-size: xx-large;
+      .product_header_span {
+        color: #d10024;
+        padding: 10px;
+        font-size: 22px;
+      }
+    }
+
+    .product_header::first-letter {
+      background-color: #d10024;
+      color: white;
+      padding: 10px;
+      // font-size: xx-large;
+    }
+    .featured_products_sn {
+      margin: 80px 5px;
+      max-width: 1124px;
+      .production_cn {
+        @include flex(flex, center, nowrap, row);
+        align-items: center;
+        position: relative;
+        .product_header {
+          display: inline;
+          align-items: center;
+          font-size: 32px;
+          .product_header_span {
+            color: #d10024;
+            padding: 10px;
+            font-size: 32px;
+          }
+        }
+        .product_link {
+          .product_btn {
+            @include flex(flex, unset, nowrap, row);
+            align-items: center;
+            position: absolute;
+            right: 0;
+            bottom: 25%;
+            transform: translateY(-50%);
+
+            // border-bottom: 1px solid #d10024;
+            font-weight: 500;
+            font-size: 16px;
+            &:hover {
+              transform: scale(1.1);
+              transform: translateY(-50%);
+            }
+            &:hover .arrow_icon {
+              visibility: visible;
+            }
+            .arrow_icon {
+              visibility: collapse;
+            }
+          }
+        }
+      }
+
+      .product_header::first-letter {
+        background-color: #d10024;
+        color: white;
+        padding: 10px;
+        // font-size: xx-large;
+        margin: 0;
+      }
+      .cards_cn {
+        @include flex(flex, space-between, wrap, row);
+        gap: 10px;
+        .featured_product_card {
+          width: 250px;
+          &:hover .img_cn .product_shop_add {
+            visibility: visible;
+          }
+          .img_cn {
+            position: relative;
+            width: 250px;
+            height: 200px !important;
+            img {
+              width: inherit;
+              height: inherit !important;
+              object-fit: contain;
+            }
+            .product_shop_add {
+              @include flex(flex, space-between, nowrap, row);
+              position: absolute;
+              bottom: 0px;
+              width: 100%;
+              visibility: collapse;
+              background: linear-gradient(transparent, rgba(0, 0, 0, 0.467));
+
+              .cart_btn,
+              .like_btn {
+                @include flex(flex, unset, nowrap, row);
+                align-items: center;
+                margin-bottom: 5px;
+
+                .like_marked {
+                  path {
+                    fill: #d10024 !important;
+                  }
+                }
+                &:hover {
+                  svg path {
+                    fill: #d10024;
+                  }
+                }
+                svg {
+                  background-color: white;
+                  font-size: 18px;
+                  border-radius: 50%;
+                  padding: 10px;
+                  border: 1px solid #d10024;
+                  path {
+                    fill: grey;
+                  }
+                }
+              }
+              .view_btn {
+                @include flex(flex, unset, nowrap, row);
+                align-items: center;
+                margin-bottom: 5px;
+                &:hover {
+                  svg path {
+                    color: #d10024;
+                  }
+                }
+                svg {
+                  background-color: white;
+                  font-size: 18px;
+                  border-radius: 50%;
+                  padding: 10px;
+                  border: 1px solid #d10024;
+                  path {
+                    color: grey;
+                  }
+                }
+              }
+            }
+          }
+
+          .product_info {
+            @include flex(flex, center, nowrap, column);
+            padding: 22px 0px;
+            align-items: center;
+            text-align: center;
+            gap: 10px;
+            letter-spacing: 1px;
+            .product_title {
+              font-size: 16px;
+              font-weight: 600;
+              font-family: "Montserrat";
+              margin: 0;
+            }
+            .product_name {
+              font-weight: 300;
+              font-family: Arial, Helvetica, sans-serif;
+            }
+            .product_price {
+              font-family: "Roboto Condensed";
+            }
+            h5,
+            p {
+              color: #292621;
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
+    .product_deals_sn {
+      background: url("https://www.reviewsed.com/wp-content/uploads/2020/01/Gaming-Tech-Gadgets.jpg");
+      margin: 80px 5px;
+      max-width: 1124px;
+      padding: 0px 5px;
+      background-size: cover;
+
+      .product_deals_text {
+        width: fit-content;
+        background-color: #1f13138e;
+        padding: 10px 15px;
+        color: white;
+        backdrop-filter: blur(5px);
+
+        h1 {
+          color: white;
+        }
+        p:first-child {
+          color: #f44336;
+        }
+        p:last-child {
+          color: #f44336;
+        }
+      }
+    }
+
+    .Latest_products_sn {
+      margin: 80px 5px;
+      max-width: 1124px;
+      .production_cn {
+        @include flex(flex, center, nowrap, row);
+        align-items: center;
+        position: relative;
+        .product_header {
+          display: inline;
+          align-items: center;
+          font-size: 32px;
+          .product_header_span {
+            color: #d10024;
+            padding: 10px;
+            font-size: 32px;
+          }
+        }
+        .product_link {
+          .product_btn {
+            @include flex(flex, unset, nowrap, row);
+            align-items: center;
+            position: absolute;
+            right: 0;
+            bottom: 25%;
+            transform: translateY(-50%);
+            // border-bottom: 1px solid #d10024;
+            font-weight: 500;
+            font-size: 16px;
+            &:hover {
+              transform: scale(1.1);
+              transform: translateY(-50%);
+            }
+            &:hover .arrow_icon {
+              visibility: visible;
+            }
+            .arrow_icon {
+              visibility: collapse;
+            }
+          }
+        }
+      }
+      .cards_cn {
+        @include flex(flex, space-between, wrap, row);
+        .latest_product_card {
+          width: 250px;
+          &:hover .img_cn .product_shop_add {
+            visibility: visible;
+          }
+          .img_cn {
+            position: relative;
+            width: 250px;
+            height: 200px !important;
+            img {
+              width: inherit;
+              height: inherit !important;
+              object-fit: contain;
+            }
+            .product_shop_add {
+              @include flex(flex, space-between, nowrap, row);
+              position: absolute;
+              bottom: 0px;
+              width: 100%;
+              visibility: collapse;
+              background: linear-gradient(transparent, rgba(0, 0, 0, 0.467));
+              .cart_btn,
+              .like_btn {
+                @include flex(flex, unset, nowrap, row);
+                align-items: center;
+                margin-bottom: 5px;
+                &:hover {
+                  svg path {
+                    fill: #d10024;
+                  }
+                }
+                svg {
+                  background-color: white;
+                  font-size: 18px;
+                  border-radius: 50%;
+                  padding: 10px;
+                  border: 1px solid #d10024;
+                  path {
+                    fill: grey;
+                  }
+                }
+              }
+              .view_btn {
+                @include flex(flex, unset, nowrap, row);
+                align-items: center;
+                margin-bottom: 5px;
+                &:hover {
+                  svg path {
+                    color: #d10024;
+                  }
+                }
+                svg {
+                  background-color: white;
+                  font-size: 18px;
+                  border-radius: 50%;
+                  padding: 10px;
+                  border: 1px solid #d10024;
+                  path {
+                    color: grey;
+                  }
+                }
+              }
+            }
+          }
+
+          .product_info {
+            @include flex(flex, center, nowrap, column);
+            padding: 22px 0px;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 1px;
+            .product_title {
+              font-size: 16px;
+              font-weight: 600;
+              font-family: "Montserrat";
+              margin: 0;
+            }
+            .product_name {
+              font-weight: 300;
+              font-family: Arial, Helvetica, sans-serif;
+            }
+            .product_price {
+              font-family: "Roboto Condensed";
+            }
+            h5,
+            p {
+              color: #292621;
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
+
+    .shop_product_deal_sn {
+      margin: 80px 5px;
+      padding: 0px 5px;
+      max-width: 1124px;
+      .shop_product_deals_text {
+        @include flex(flex, space-between, nowrap, row);
+        height: 350px;
+
+        .deals_first_section {
+          background-color: #f8f9fa;
+          color: black;
+          padding: 10px;
+          border: 1px solid #ccc;
+          flex: 1;
+          h1 {
+          }
+          #deals_first_para {
+            text-decoration: underline;
+          }
+          #deals_second_para {
+          }
+          .shop_product_btn {
+            text-decoration: underline;
+            font-weight: 600;
+            font-size: 18px;
+            margin: 20px 0px;
+            color: #d10024;
+            &:hover {
+              transform: scale(1.1);
+            }
+          }
+        }
+
+        .deals_second_section {
+          flex: 1;
+          width: 50%;
+          .deals_background_img {
+            object-fit: contain;
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+
+    .news_sn {
+      @include flex(flex, center, nowrap, column);
+      background-color: white;
+      align-items: center;
+      margin: 80px 0px;
+      // padding: 20px;
+      .news_Header {
+        text-align: center;
+        font-size: xx-large;
+        &::first-letter {
+          background-color: #d10024;
+          color: white;
+          padding: 10px;
+          font-size: xx-large;
+        }
+        .header_span {
+          color: #d10024;
+          font-size: xx-large;
+          &::first-letter {
+            color: white;
+            padding: 10px;
+            font-size: xx-large;
+          }
+        }
+      }
+      .blog_cn {
+        @include flex(flex, space-between, nowrap, row);
+        // max-width: 1124px;
+        text-wrap: pretty;
+        margin: 0 5px;
+        gap: 5px;
+
+        .news_blog {
+          @include flex(flex, space-between, nowrap, column);
+          // align-items: flex-start;
+          flex: 1;
+
+          max-width: 100%;
+          .news_blog_img {
+            max-width: 100%;
+            height: 300px;
+          }
+          .news_blog_title {
+            font-size: 22px;
+            line-height: 1.4;
+            margin-bottom: 12px;
+            font-weight: 500;
+          }
+          .news_blog_desc {
+            color: grey;
+          }
+          .news_blog_btn {
+            text-decoration: underline;
+            font-weight: 600;
+            font-size: 18px;
+            &:hover {
+              transform: scale(1.1);
+            }
+          }
+        }
+      }
+    }
+    @keyframes loadSpin {
+      0% {
+        transform: rotateZ(none);
+      }
+      25% {
+        transform: rotateZ(90deg);
+      }
+      50% {
+        transform: rotateZ(120deg);
+      }
+      75% {
+        transform: rotateZ(240deg);
+      }
+      100% {
+        transform: rotateZ(360deg);
+      }
+    }
+    .load_icon {
+      animation: loadSpin;
+      animation-duration: 5s;
+      animation-iteration-count: 5;
+    }
+    .cart_btn:disabled {
+      svg {
+        background-color: #e2e2e2 !important;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .HomePg {
+    height: 100%;
+    position: relative;
+    .product_status_md {
+      visibility: collapse;
+      position: fixed;
+      top: 10px;
+      right: 20px;
+      z-index: 100;
+      border-radius: 6px;
+      background-color: black;
+      padding: 15px;
+      width: 250px;
+      text-align: center;
+      color: white;
+      border: 1px solid white;
+    }
+    .header_img_sn {
+      .img_cr {
+        position: relative;
+        background: url("https://www.teahub.io/photos/full/105-1056710_dark-tech-hd-wallpaper-data-src-w-full.jpg");
+        height: 650px;
+        min-width: fit-content;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        filter: brightness(95%);
+        .img_text {
+          position: absolute;
+          bottom: 50%;
+          transform: translateY(50%);
+          margin-left: 10%;
+
+          h1 {
+            font-size: 26px;
+            color: white;
+            width: 20%;
+          }
+          p {
+            color: #f44336;
+          }
+
+          .img_btn {
+            background-color: #d10024;
+            padding: 10px 20px;
+            color: white;
+            &:hover {
+              background-color: #bf0c2a;
+            }
+          }
+        }
+      }
+    }
+    .main_offer_sn {
+      @include flex(flex, center, nowrap, column);
+      gap: 5px;
+      margin: 5px 5px;
+      padding: 0px 5px;
+      .offer_card {
+        position: relative;
+        flex: 1;
+        height: 150px;
+        overflow: hidden;
+        img {
+          width: 100%;
+          height: 150px;
+          filter: grayscale(1);
+        }
+        h1 {
+          position: absolute;
+          bottom: 0px;
+          color: white;
+          margin-bottom: 0;
+          padding: 10px;
+          width: 100%;
+          background: linear-gradient(transparent, black);
+          font-size: 18px;
+        }
+      }
+    }
+    .product_header {
+      text-align: center;
+      font-size: 24px;
+      .product_header_span {
+        color: #d10024;
+        padding: 10px;
+        font-size: 24px;
+      }
+    }
+
+    .product_header::first-letter {
+      background-color: #d10024;
+      color: white;
+      padding: 10px;
+      // font-size: xx-large;
+    }
+    .featured_products_sn {
+      margin: 80px 5px;
+      max-width: 620px;
+      .production_cn {
+        @include flex(flex, center, nowrap, row);
+        align-items: center;
+        position: relative;
+        .product_header {
+          display: inline;
+          align-items: center;
+          font-size: 24px;
+          .product_header_span {
+            color: #d10024;
+            padding: 10px;
+            font-size: 24px;
+          }
+        }
+
+        .shop_link {
+          .product_btn {
+            @include flex(flex, unset, nowrap, row);
+            align-items: center;
+            position: absolute;
+            right: 0;
+            bottom: 25%;
+            transform: translateY(-50%);
+            // border-bottom: 1px solid #d10024;
+            font-weight: 500;
+            font-size: 16px;
+            &:hover {
+              transform: scale(1.1);
+              transform: translateY(-50%);
+            }
+            &:hover .arrow_icon {
+              visibility: visible;
+            }
+            .arrow_icon {
+              visibility: collapse;
+            }
+          }
+        }
+      }
+
+      .product_header::first-letter {
+        background-color: #d10024;
+        color: white;
+        padding: 10px;
+        // font-size: xx-large;
+        margin: 0;
+      }
+      .cards_cn {
+        @include flex(flex, center, wrap, row);
+        gap: 10px;
+        .featured_product_card {
+          width: 250px;
+          &:hover .img_cn .product_shop_add {
+            visibility: visible;
+          }
+          .img_cn {
+            position: relative;
+            width: 250px;
+            height: 200px !important;
+            img {
+              width: inherit;
+              height: inherit !important;
+              object-fit: contain;
+            }
+            .product_shop_add {
+              @include flex(flex, space-between, nowrap, row);
+              position: absolute;
+              bottom: 0px;
+              width: 100%;
+              visibility: collapse;
+              background: linear-gradient(transparent, rgba(0, 0, 0, 0.467));
+
+              .cart_btn,
+              .like_btn {
+                @include flex(flex, unset, nowrap, row);
+                align-items: center;
+                margin-bottom: 5px;
+
+                .like_marked {
+                  path {
+                    fill: #d10024 !important;
+                  }
+                }
+                &:hover {
+                  svg path {
+                    fill: #d10024;
+                  }
+                }
+                svg {
+                  background-color: white;
+                  font-size: 18px;
+                  border-radius: 50%;
+                  padding: 10px;
+                  border: 1px solid #d10024;
+                  path {
+                    fill: grey;
+                  }
+                }
+              }
+              .view_btn {
+                @include flex(flex, unset, nowrap, row);
+                align-items: center;
+                margin-bottom: 5px;
+                &:hover {
+                  svg path {
+                    color: #d10024;
+                  }
+                }
+                svg {
+                  background-color: white;
+                  font-size: 18px;
+                  border-radius: 50%;
+                  padding: 10px;
+                  border: 1px solid #d10024;
+                  path {
+                    color: grey;
+                  }
+                }
+              }
+            }
+          }
+
+          .product_info {
+            @include flex(flex, center, nowrap, column);
+            padding: 22px 0px;
+            align-items: center;
+            text-align: center;
+            gap: 10px;
+            letter-spacing: 1px;
+            .product_title {
+              font-size: 16px;
+              font-weight: 600;
+              font-family: "Montserrat";
+              margin: 0;
+            }
+            .product_name {
+              font-weight: 300;
+              font-family: Arial, Helvetica, sans-serif;
+            }
+            .product_price {
+              font-family: "Roboto Condensed";
+            }
+            h5,
+            p {
+              color: #292621;
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
+    .product_deals_sn {
+      background: url("https://www.reviewsed.com/wp-content/uploads/2020/01/Gaming-Tech-Gadgets.jpg");
+      margin: 80px 5px;
+      max-width: 620px;
+      padding: 0px 5px;
+      background-size: cover;
+
+      .product_deals_text {
+        width: fit-content;
+        background-color: #1f13138e;
+        padding: 10px 15px;
+        color: white;
+        backdrop-filter: blur(5px);
+
+        h1 {
+          color: white;
+          font-size: 24px;
+        }
+        p:first-child {
+          color: #f44336;
+        }
+        p:last-child {
+          color: #f44336;
+        }
+      }
+    }
+
+    .Latest_products_sn {
+      margin: 80px auto;
+      max-width: 620px;
+      .production_cn {
+        @include flex(flex, center, nowrap, row);
+        align-items: center;
+        position: relative;
+        .product_header {
+          display: inline;
+          align-items: center;
+          font-size: 24px;
+          .product_header_span {
+            color: #d10024;
+            padding: 10px;
+            font-size: 24px;
+          }
+        }
+        .product_link {
+          .product_btn {
+            @include flex(flex, unset, nowrap, row);
+            align-items: center;
+            position: absolute;
+            right: 0;
+            bottom: 25%;
+            transform: translateY(-50%);
+            // border-bottom: 1px solid #d10024;
+            font-weight: 500;
+            font-size: 16px;
+            &:hover {
+              transform: scale(1.1);
+              transform: translateY(-50%);
+            }
+            &:hover .arrow_icon {
+              visibility: visible;
+            }
+            .arrow_icon {
+              visibility: collapse;
+            }
+          }
+        }
+      }
+      .cards_cn {
+        @include flex(flex, center, wrap, row);
+        .latest_product_card {
+          width: 250px;
+          &:hover .img_cn .product_shop_add {
+            visibility: visible;
+          }
+          .img_cn {
+            position: relative;
+            width: 250px;
+            height: 200px !important;
+            img {
+              width: inherit;
+              height: inherit !important;
+              object-fit: contain;
+            }
+            .product_shop_add {
+              @include flex(flex, space-between, nowrap, row);
+              position: absolute;
+              bottom: 0px;
+              width: 100%;
+              visibility: collapse;
+              background: linear-gradient(transparent, rgba(0, 0, 0, 0.467));
+              .cart_btn,
+              .like_btn {
+                @include flex(flex, unset, nowrap, row);
+                align-items: center;
+                margin-bottom: 5px;
+                &:hover {
+                  svg path {
+                    fill: #d10024;
+                  }
+                }
+                svg {
+                  background-color: white;
+                  font-size: 18px;
+                  border-radius: 50%;
+                  padding: 10px;
+                  border: 1px solid #d10024;
+                  path {
+                    fill: grey;
+                  }
+                }
+              }
+              .view_btn {
+                @include flex(flex, unset, nowrap, row);
+                align-items: center;
+                margin-bottom: 5px;
+                &:hover {
+                  svg path {
+                    color: #d10024;
+                  }
+                }
+                svg {
+                  background-color: white;
+                  font-size: 18px;
+                  border-radius: 50%;
+                  padding: 10px;
+                  border: 1px solid #d10024;
+                  path {
+                    color: grey;
+                  }
+                }
+              }
+            }
+          }
+
+          .product_info {
+            @include flex(flex, center, nowrap, column);
+            padding: 22px 0px;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 1px;
+            .product_title {
+              font-size: 16px;
+              font-weight: 600;
+              font-family: "Montserrat";
+              margin: 0;
+            }
+            .product_name {
+              font-weight: 300;
+              font-family: Arial, Helvetica, sans-serif;
+            }
+            .product_price {
+              font-family: "Roboto Condensed";
+            }
+            h5,
+            p {
+              color: #292621;
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
+
+    .shop_product_deal_sn {
+      margin: 80px 5px;
+      padding: 0px 5px;
+      max-width: 1124px;
+      .shop_product_deals_text {
+        @include flex(flex, space-between, nowrap, row);
+        height: 350px;
+
+        .deals_first_section {
+          background-color: #f8f9fa;
+          color: black;
+          padding: 10px;
+          border: 1px solid #ccc;
+          flex: 1;
+          h1 {
+          }
+          #deals_first_para {
+            text-decoration: underline;
+          }
+          #deals_second_para {
+          }
+          .shop_product_btn {
+            text-decoration: underline;
+            font-weight: 600;
+            font-size: 18px;
+            margin: 20px 0px;
+            color: #d10024;
+            &:hover {
+              transform: scale(1.1);
+            }
+          }
+        }
+
+        .deals_second_section {
+          flex: 1;
+          width: 50%;
+          .deals_background_img {
+            object-fit: contain;
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+
+    .news_sn {
+      @include flex(flex, center, nowrap, column);
+      background-color: white;
+      align-items: center;
+      margin: 80px 0px;
+      // padding: 20px;
+      .news_Header {
+        text-align: center;
+        font-size: xx-large;
+        &::first-letter {
+          background-color: #d10024;
+          color: white;
+          padding: 10px;
+          font-size: xx-large;
+        }
+        .header_span {
+          color: #d10024;
+          font-size: xx-large;
+          &::first-letter {
+            color: white;
+            padding: 10px;
+            font-size: xx-large;
+          }
+        }
+      }
+      .blog_cn {
+        @include flex(flex, space-between, nowrap, row);
+        // max-width: 1124px;
+        text-wrap: pretty;
+        margin: 0 5px;
+        gap: 5px;
+
+        .news_blog {
+          @include flex(flex, space-between, nowrap, column);
+          // align-items: flex-start;
+          flex: 1;
+
+          max-width: 100%;
+          .news_blog_img {
+            max-width: 100%;
+            height: 250px;
+          }
+          .news_blog_title {
+            font-size: 16px;
+            line-height: 1.4;
+            margin-bottom: 12px;
+            font-weight: 500;
+          }
+          .news_blog_desc {
+            color: grey;
+          }
+          .news_blog_btn {
+            text-decoration: underline;
+            font-weight: 600;
+            font-size: 12px;
+            &:hover {
+              transform: scale(1.1);
+            }
+          }
+        }
+      }
+    }
+    @keyframes loadSpin {
+      0% {
+        transform: rotateZ(none);
+      }
+      25% {
+        transform: rotateZ(90deg);
+      }
+      50% {
+        transform: rotateZ(120deg);
+      }
+      75% {
+        transform: rotateZ(240deg);
+      }
+      100% {
+        transform: rotateZ(360deg);
+      }
+    }
+    .load_icon {
+      animation: loadSpin;
+      animation-duration: 5s;
+      animation-iteration-count: 5;
+    }
+    .cart_btn:disabled {
+      svg {
+        background-color: #e2e2e2 !important;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .HomePg {
+    height: 100%;
+    position: relative;
+    .product_status_md {
+      visibility: collapse;
+      position: fixed;
+      top: 10px;
+      right: 20px;
+      z-index: 100;
+      border-radius: 6px;
+      background-color: black;
+      padding: 15px;
+      width: 250px;
+      text-align: center;
+      color: white;
+      border: 1px solid white;
+    }
+    .header_img_sn {
+      .img_cr {
+        position: relative;
+        background: url("https://www.teahub.io/photos/full/105-1056710_dark-tech-hd-wallpaper-data-src-w-full.jpg");
+        height: 650px;
+        min-width: fit-content;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        filter: brightness(95%);
+        .img_text {
+          position: absolute;
+          bottom: 50%;
+          transform: translateY(50%);
+          margin-left: 10%;
+
+          h1 {
+            font-size: 24px;
+            color: white;
+            width: 20%;
+          }
+          p {
+            color: #f44336;
+          }
+
+          .img_btn {
+            background-color: #d10024;
+            padding: 10px 20px;
+            color: white;
+            &:hover {
+              background-color: #bf0c2a;
+            }
+          }
+        }
+      }
+    }
+    .main_offer_sn {
+      @include flex(flex, center, nowrap, column);
+      gap: 5px;
+      margin: 5px 5px;
+      padding: 0px 5px;
+      .offer_card {
+        position: relative;
+        flex: 1;
+        height: 150px;
+        overflow: hidden;
+        img {
+          width: 100%;
+          height: 150px;
+          filter: grayscale(1);
+        }
+        h1 {
+          position: absolute;
+          bottom: 0px;
+          color: white;
+          margin-bottom: 0;
+          padding: 10px;
+          width: 100%;
+          background: linear-gradient(transparent, black);
+          font-size: 18px;
+        }
+      }
+    }
+    .product_header {
+      text-align: center;
+      font-size: 24px;
+      .product_header_span {
+        color: #d10024;
+        padding: 10px;
+        font-size: 24px;
+      }
+    }
+
+    .product_header::first-letter {
+      background-color: #d10024;
+      color: white;
+      padding: 10px;
+      // font-size: xx-large;
+    }
+    .featured_products_sn {
+      margin: 80px 5px;
+      max-width: 480px;
+      .production_cn {
+        @include flex(flex, center, nowrap, row);
+        align-items: center;
+        position: relative;
+        .product_header {
+          display: inline;
+          align-items: center;
+          font-size: 24px;
+          .product_header_span {
+            color: #d10024;
+            padding: 10px;
+            font-size: 24px;
+          }
+        }
+
+        .product_link {
+          text-decoration: none;
+          .product_btn {
+            @include flex(flex, center, nowrap, row);
+            align-items: center;
+            position: unset;
+            right: 0;
+            bottom: 0%;
+            transform: translateY(0%);
+            // border-bottom: 1px solid #d10024;
+            font-weight: 500;
+            font-size: 12px;
+            &:hover {
+              transform: scale(1.1);
+              transform: translateY(0%);
+            }
+            &:hover .arrow_icon {
+              visibility: visible;
+            }
+            .arrow_icon {
+              visibility: collapse;
+            }
+          }
+        }
+      }
+
+      .product_header::first-letter {
+        background-color: #d10024;
+        color: white;
+        padding: 10px;
+        // font-size: xx-large;
+        margin: 0;
+      }
+      .cards_cn {
+        @include flex(flex, center, wrap, row);
+        gap: 10px;
+        .featured_product_card {
+          width: 250px;
+          &:hover .img_cn .product_shop_add {
+            visibility: visible;
+          }
+          .img_cn {
+            position: relative;
+            width: 250px;
+            height: 200px !important;
+            img {
+              width: inherit;
+              height: inherit !important;
+              object-fit: contain;
+            }
+            .product_shop_add {
+              @include flex(flex, space-between, nowrap, row);
+              position: absolute;
+              bottom: 0px;
+              width: 100%;
+              visibility: collapse;
+              background: linear-gradient(transparent, rgba(0, 0, 0, 0.467));
+
+              .cart_btn,
+              .like_btn {
+                @include flex(flex, unset, nowrap, row);
+                align-items: center;
+                margin-bottom: 5px;
+
+                .like_marked {
+                  path {
+                    fill: #d10024 !important;
+                  }
+                }
+                &:hover {
+                  svg path {
+                    fill: #d10024;
+                  }
+                }
+                svg {
+                  background-color: white;
+                  font-size: 18px;
+                  border-radius: 50%;
+                  padding: 10px;
+                  border: 1px solid #d10024;
+                  path {
+                    fill: grey;
+                  }
+                }
+              }
+              .view_btn {
+                @include flex(flex, unset, nowrap, row);
+                align-items: center;
+                margin-bottom: 5px;
+                &:hover {
+                  svg path {
+                    color: #d10024;
+                  }
+                }
+                svg {
+                  background-color: white;
+                  font-size: 18px;
+                  border-radius: 50%;
+                  padding: 10px;
+                  border: 1px solid #d10024;
+                  path {
+                    color: grey;
+                  }
+                }
+              }
+            }
+          }
+
+          .product_info {
+            @include flex(flex, center, nowrap, column);
+            padding: 22px 0px;
+            align-items: center;
+            text-align: center;
+            gap: 10px;
+            letter-spacing: 1px;
+            .product_title {
+              font-size: 16px;
+              font-weight: 600;
+              font-family: "Montserrat";
+              margin: 0;
+            }
+            .product_name {
+              font-weight: 300;
+              font-family: Arial, Helvetica, sans-serif;
+            }
+            .product_price {
+              font-family: "Roboto Condensed";
+            }
+            h5,
+            p {
+              color: #292621;
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
+    .product_deals_sn {
+      background: url("https://www.reviewsed.com/wp-content/uploads/2020/01/Gaming-Tech-Gadgets.jpg");
+      margin: 80px 5px;
+      max-width: 620px;
+      padding: 0px 5px;
+      background-size: cover;
+
+      .product_deals_text {
+        width: fit-content;
+        background-color: #1f13138e;
+        padding: 10px 15px;
+        color: white;
+        backdrop-filter: blur(5px);
+
+        h1 {
+          color: white;
+          font-size: 24px;
+        }
+        p:first-child {
+          color: #f44336;
+        }
+        p:last-child {
+          color: #f44336;
+        }
+      }
+    }
+
+    .Latest_products_sn {
+      margin: 80px auto;
+      max-width: 620px;
+      .production_cn {
+        @include flex(flex, center, nowrap, row);
+        align-items: center;
+        position: relative;
+        .product_header {
+          display: inline;
+          align-items: center;
+          font-size: 24px;
+          .product_header_span {
+            color: #d10024;
+            padding: 10px;
+            font-size: 24px;
+          }
+        }
+        .product_link {
+          text-decoration: none;
+          .product_btn {
+            @include flex(flex, center, nowrap, row);
+            align-items: center;
+            position: unset;
+            right: 0;
+            bottom: 0%;
+            transform: translateY(0%);
+            // border-bottom: 1px solid #d10024;
+            font-weight: 500;
+            font-size: 12px;
+            &:hover {
+              transform: scale(1.1);
+              transform: translateY(0%);
+            }
+            &:hover .arrow_icon {
+              visibility: visible;
+            }
+            .arrow_icon {
+              visibility: collapse;
+            }
+          }
+        }
+      }
+      .cards_cn {
+        @include flex(flex, center, wrap, row);
+        .latest_product_card {
+          width: 250px;
+          &:hover .img_cn .product_shop_add {
+            visibility: visible;
+          }
+          .img_cn {
+            position: relative;
+            width: 250px;
+            height: 200px !important;
+            img {
+              width: inherit;
+              height: inherit !important;
+              object-fit: contain;
+            }
+            .product_shop_add {
+              @include flex(flex, space-between, nowrap, row);
+              position: absolute;
+              bottom: 0px;
+              width: 100%;
+              visibility: collapse;
+              background: linear-gradient(transparent, rgba(0, 0, 0, 0.467));
+              .cart_btn,
+              .like_btn {
+                @include flex(flex, unset, nowrap, row);
+                align-items: center;
+                margin-bottom: 5px;
+                &:hover {
+                  svg path {
+                    fill: #d10024;
+                  }
+                }
+                svg {
+                  background-color: white;
+                  font-size: 18px;
+                  border-radius: 50%;
+                  padding: 10px;
+                  border: 1px solid #d10024;
+                  path {
+                    fill: grey;
+                  }
+                }
+              }
+              .view_btn {
+                @include flex(flex, unset, nowrap, row);
+                align-items: center;
+                margin-bottom: 5px;
+                &:hover {
+                  svg path {
+                    color: #d10024;
+                  }
+                }
+                svg {
+                  background-color: white;
+                  font-size: 18px;
+                  border-radius: 50%;
+                  padding: 10px;
+                  border: 1px solid #d10024;
+                  path {
+                    color: grey;
+                  }
+                }
+              }
+            }
+          }
+
+          .product_info {
+            @include flex(flex, center, nowrap, column);
+            padding: 22px 0px;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 1px;
+            .product_title {
+              font-size: 16px;
+              font-weight: 600;
+              font-family: "Montserrat";
+              margin: 0;
+            }
+            .product_name {
+              font-weight: 300;
+              font-family: Arial, Helvetica, sans-serif;
+            }
+            .product_price {
+              font-family: "Roboto Condensed";
+            }
+            h5,
+            p {
+              color: #292621;
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
+
+    .shop_product_deal_sn {
+      margin: 80px 5px;
+      padding: 0px 5px;
+      max-width: 1124px;
+      .shop_product_deals_text {
+        @include flex(flex, space-between, nowrap, row);
+        height: 350px;
+
+        .deals_first_section {
+          background-color: #f8f9fa;
+          color: black;
+          padding: 10px;
+          border: 1px solid #ccc;
+          flex: 1;
+          h1 {
+          }
+          #deals_first_para {
+            text-decoration: underline;
+          }
+          #deals_second_para {
+          }
+          .shop_product_btn {
+            // text-decoration: underline;
+            font-weight: 600;
+            font-size: 18px;
+            margin: 20px 0px;
+            color: #d10024;
+            &:hover {
+              transform: scale(1.1);
+            }
+          }
+        }
+
+        .deals_second_section {
+          flex: 1;
+          width: 50%;
+          .deals_background_img {
+            object-fit: contain;
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+
+    .news_sn {
+      @include flex(flex, center, nowrap, column);
+      background-color: white;
+      align-items: center;
+      margin: 80px 0px;
+      // padding: 20px;
+      .news_Header {
+        text-align: center;
+        font-size: xx-large;
+        &::first-letter {
+          background-color: #d10024;
+          color: white;
+          padding: 10px;
+          font-size: xx-large;
+        }
+        .header_span {
+          color: #d10024;
+          font-size: xx-large;
+          &::first-letter {
+            color: white;
+            padding: 10px;
+            font-size: xx-large;
+          }
+        }
+      }
+      .blog_cn {
+        @include flex(flex, space-between, nowrap, row);
+        // max-width: 1124px;
+        text-wrap: pretty;
+        margin: 0 5px;
+        gap: 5px;
+
+        .news_blog {
+          @include flex(flex, space-between, nowrap, column);
+          // align-items: flex-start;
+          flex: 1;
+
+          max-width: 100%;
+          .news_blog_img {
+            max-width: 100%;
+            height: 200px;
+          }
+          .news_blog_title {
+            font-size: 14px;
+            line-height: 1.4;
+            margin-bottom: 12px;
+            font-weight: 500;
+          }
+          .news_blog_desc {
+            color: grey;
+            font-size: 12px;
+          }
+          .news_blog_btn {
+            text-decoration: underline;
+            font-weight: 600;
+            font-size: 12px;
+            &:hover {
+              transform: scale(1.1);
+            }
+          }
+        }
+      }
+    }
+    @keyframes loadSpin {
+      0% {
+        transform: rotateZ(none);
+      }
+      25% {
+        transform: rotateZ(90deg);
+      }
+      50% {
+        transform: rotateZ(120deg);
+      }
+      75% {
+        transform: rotateZ(240deg);
+      }
+      100% {
+        transform: rotateZ(360deg);
+      }
+    }
+    .load_icon {
+      animation: loadSpin;
+      animation-duration: 5s;
+      animation-iteration-count: 5;
+    }
+    .cart_btn:disabled {
+      svg {
+        background-color: #e2e2e2 !important;
       }
     }
   }

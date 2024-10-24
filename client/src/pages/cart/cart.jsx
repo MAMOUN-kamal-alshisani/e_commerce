@@ -1,166 +1,157 @@
-/*eslint-disable no-eval */
 import "./scss/cart.css";
-import Header from "../../components/header/header";
-import { useDispatch, useSelector } from "react-redux";
-import { cartActions } from "../../store/slices/cartSlice";
 import { useEffect, useState } from "react";
-import Modal from "../../components/modal/Modal";
+import {
+  useFetchCartQuery,
+  useFetchCartCountQuery,
+  useRemoveFromCartMutation,
+  useDecreaseUserCartMutation,
+  useIncreaseUserCartMutation,
+} from "../../store/apis/cartApi";
+import { IoBagRemoveOutline } from "react-icons/io5";
 import { CgSpinner } from "react-icons/cg";
-
+import Cookies from "universal-cookie";
 function Cart() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-
-  const dispatch = useDispatch();
-  const cartItems = JSON.parse(localStorage?.getItem("cart"));
-
-  const cart = useSelector((state) => {
-    return state?.cart;
-  });
-  // console.log(cart);
-  const handleMinusQuantity = (item) => {
-    dispatch(cartActions.decreaseQuantity(item));
-  };
-  const handleBlusQuantity = (item) => {
-    dispatch(cartActions.addToCart(item));
-  };
-  const handleRemoveItem = (item) => {
-    dispatch(cartActions.removeFromCart(item));
-  };
-  const checkoutHandler = () => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      return setShowModal(!showModal);
-    }, 3000);
-  };
+  const user = new Cookies().get("user");
+  const [shippingCountry, setShippingCountry] = useState("");
+  const [shippingCost, setShippingCost] = useState(0);
+  const { data, isLoading } = useFetchCartQuery(user);
+  const [removeItem] = useRemoveFromCartMutation();
+  const [decreaseOneCartItem] = useDecreaseUserCartMutation();
+  const [increaseOneCartItem] = useIncreaseUserCartMutation();
+  const cartQuantity = useFetchCartCountQuery(user);
+  const [totalCartPrice, setTotalCartPrice] = useState([]);
   useEffect(() => {
-    dispatch(cartActions.getTotals());
-  }, [cart, dispatch]);
+    switch (shippingCountry) {
+      case "Jordan":
+        return setShippingCost(0);
+      case "UnitedStates":
+        return setShippingCost(100);
+      case "Japan":
+        return setShippingCost(40);
+      case "Dubai":
+        return setShippingCost(70);
+      default:
+        return setShippingCost(0);
+    }
+  }, [shippingCountry]);
 
+  useEffect(() => {
+    setTotalCartPrice([]);
+    data?.map((item) => {
+       return setTotalCartPrice((prev) => [
+          ...prev,
+          eval(Number(item?.item?.price) + "*" + item?.quantity)
+        ]);
+    });
+  }, [data, decreaseOneCartItem, increaseOneCartItem]);
   return (
-    <>
-      <Header />
+    <div className="cart" data-testid="main_container">
+      <div className="cart_cn">
+        <section className="cart_items_section">
+          <table>
+            <thead>
+              <tr className="label_header_cn">
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>price</th>
+                <th>Total</th>
+                <th>remove</th>
+              </tr>
+            </thead>
 
-      <div className="cart" data-testid="main_container">
-        <div className="cart_cr">
-          <div className="cart_item_pt1">
-            <h1>Shopping Cart</h1>
-            <h1>{cartItems?.length} Items </h1>
-          </div>
-
-          <div className="cart_list">
-            <div className="cart_item_pt2">
-              <h3>Product Details</h3>
-
-              <div className="product_details_div" data-testid="listItemContainer">
-                {/* <h2>Product Details</h2> */}
-                {cartItems?.map((item, index) => {
-                  return (
-                    <div className="item_card" key={index}>
+            <tbody>
+              {data?.map((item, index) => {
+                return (
+                  <tr className="cards_row" key={item.item.id + index}>
+                    <td className="item_card">
                       <div className="card_list">
-                        <div className="cardImg_div">
+                        <div className="cardImg_cn">
                           <img
-                            src={item?.img[0]}
+                            src={item.item?.img[0]}
                             alt="pic"
-                            style={{ width: "150px", height: "120px" }}
                           />
                         </div>
 
-                        <div className="cart_item_info_div">
-                          <h4 className="cart_name">{item?.name}</h4>
-                          <h5 className="cart_title">{item?.title}</h5>
-
-                          <button
-                            onClick={() => handleRemoveItem(item)}
-                            className="remove_item_btn"
-                          >
-                            Remove
-                          </button>
+                        <div className="cart_item_info_cn">
+                          <h4 className="cart_name">{item?.item?.name}</h4>
                         </div>
                       </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-            <div className="cart_item_pt3">
-              <h3>Quantity</h3>
-              
-              <div className="product_details_div">
-                {cartItems?.map((item, index) => {
-                  return (
-                    <div className="item_second_div" key={index}>
+                    </td>
+
+                    <td className="item_quantity_cn">
                       <button
-                        onClick={() => handleMinusQuantity(item)}
+                        onClick={() =>
+                          decreaseOneCartItem({ user, item: item?.item })
+                        }
                         className="item_btn symbol-btn"
                       >
                         -
                       </button>
                       <button className="item_btn quantity-btn">
-                        {item.itemQuantity}
+                        {item?.quantity}
                       </button>
                       <button
-                        onClick={() => handleBlusQuantity(item)}
+                        onClick={() =>
+                          increaseOneCartItem({ user, item: item?.item })
+                        }
                         className="item_btn symbol-btn"
-                        data-testid ="counter"
+                        data-testid="counter"
                       >
                         +
                       </button>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-            <div className="cart_item_pt4">
-              <h3>price</h3>
-              <div className="product_details_div">
-                {cartItems?.map((item, index) => {
-                  return (
-                    <div className="item_third_div" key={index}>
-                      <p>${Math.ceil(Math.abs(item?.price))} </p>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
+                    </td>
 
-            <div className="cart_item_pt5">
-              <h3>Total</h3>
-              <div className="product_details_div">
-                {cartItems?.map((item, index) => {
-                  return (
-                    <div className="item_forth_div" key={index}>
+                    <td className="item_price_cn">
+                      ${Math.round(Number(item?.item?.price))}
+                    </td>
+
+                    <td className="item_total_cn">
                       <p>
-                        {/* { allTotalsPrice.push(Math.ceil(eval(item.price + "*" + item.itemQuantity)))} */}
-                        ${Math.ceil(eval(item.price + "*" + item.itemQuantity))}
+                        $
+                        {Math.round(
+                          eval(Number(item?.item?.price) + "*" + item?.quantity)
+                        )}
                       </p>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
+                    </td>
 
-        <div className="cart_form_section">
+                    <td className="item_remove_cn">
+                      <button
+                        onClick={() => removeItem({ user, item: item?.item })}
+                        className="remove_item_btn"
+                      >
+                        <IoBagRemoveOutline />
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </section>
+
+        <section className="cart_form_section">
           <div className="summary_div">
             <h1>Order Summary</h1>
           </div>
 
           <div className="ship_details_pt1">
-            <h3>Items {cartItems?.length}</h3>
-            <h3>${cart.cartTotal}</h3>
+            <span className="details_label">Items Quantity </span>
+            <span>{cartQuantity?.data?.count}</span>
           </div>
 
           <div className="ship_details_pt2">
             <div className="ship_input">
-              <label htmlFor="Shipping">Shipping</label>
-              <input
-                type="text"
-                name="Shipping"
-                placeholder="starting Delivery at $5.00"
-              />
+              <label htmlFor="shipping">Shipping</label>
+              <select
+                name="shipping"
+                id="shipping_select"
+                onChange={(e) => setShippingCountry(e.target.value)}
+              >
+                <option value="Jordan">Jordan</option>
+                <option value="UnitedStates">United States</option>
+                <option value="Japan"> Japan</option>
+                <option value="Dubai"> Dubai</option>
+              </select>
             </div>
             <div className="ship_input">
               <label htmlFor="Shipping">PROMO CODE</label>
@@ -175,47 +166,27 @@ function Cart() {
             </div>
           </div>
           <div className="ship_details_pt3">
-            <span>Total Cost</span>
-            <span>${cart.cartTotal}</span>
+            <span className="details_label">Items Cost</span>
+            <span>${Math.round(eval(totalCartPrice.join("+")))}</span>
+          </div>
+          <div className="ship_details_pt4">
+            <span className="details_label">shipping</span>
+            <span>${shippingCost}</span>
+          </div>
+          <div className="ship_details_pt5">
+            <span className="details_label">Total</span>
+            <span>
+              ${Math.round(eval(totalCartPrice.join("+") + "+" + shippingCost))}
+            </span>
           </div>
           <div className="checkout_div">
-            <button className="checkout_btn" onClick={checkoutHandler}>
-              CheckOut {isLoading && <CgSpinner className="CgSpinner"/>}
+            <button className="checkout_btn">
+              CheckOut {isLoading && <CgSpinner className="CgSpinner" />}
             </button>
-
-            <Modal onShow={showModal} onClose={() => setShowModal(false)}>
-              <div className="checkout_data_container">
-                <p>cart items have successfully been placed on order list!</p>
-
-                <img
-                  src="https://tse1.mm.bing.net/th?id=OIP.l5Qqm9adevg4VKQ1SERzNgHaDA&pid=Api&P=0"
-                  alt="checkout"
-                  className="cart_checkout_img"
-                />
-                <div className="checkout_data">
-                  <div className="itemHeader">ordered Cart Items:</div>
-                  <ol>
-                    {cart?.cartData?.map((item, index) => {
-                      return (
-                        <li className="checkout_list_items" key={item.id}>
-                          <div className="item_div">
-                            <span>{item?.name}</span>
-                            <span>price: ${item?.price}</span>
-                          </div>
-                        </li>
-                      );
-                    })}
-                  </ol>
-                  <div className="checkout_total_div">
-                    <h5>Total of ( ${cart.cartTotal} )</h5>
-                  </div>
-                </div>
-              </div>
-            </Modal>
           </div>
-        </div>
+        </section>
       </div>
-    </>
+    </div>
   );
 }
 

@@ -1,42 +1,72 @@
-// import Header from "./components/header/header";
-import Footer from "./components/footer/footer";
+
 import SignUp from "./pages/sign_up/signup";
-import HomePage from "./pages/home/homepg";
+import Home from "./pages/home/home";
+import Layout from "./components/layout/layout";
 import Shop from "./pages/shop/shop";
 import SignIn from "./pages/sign_in/signin";
 import Cart from "./pages/cart/cart";
 import Profile from "./pages/profile/profile";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Blog from './pages/blog/blog'
+import Product from "./pages/product/product";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RequireAuth from "./store/requireAuth";
-import './index.css'
+import "./index.css";
+const router = createBrowserRouter([
+  {
+    element: <Layout />,
+
+    children: [
+      { path: "/", element: <Home /> },
+      { path: "/Shop", element: <Shop /> },
+
+      {
+        path: "/Profile",
+        element: (
+          // <RequireAuth>
+         <Profile />
+          // </RequireAuth>  
+        ),
+      },
+      {
+        path: "/Cart",
+        element: (
+          // <RequireAuth>
+          <Cart />
+          // </RequireAuth>
+        ),
+      },
+      {
+        path: "/Blog",
+        element: (
+        //  <RequireAuth>
+            <Blog />
+          // </RequireAuth>
+        ),
+      },
+
+      {
+        path: "/Product/:id",
+        element: (
+        // <RequireAuth>
+            <Product />
+        //  </RequireAuth>
+        ),
+      },
+    ],
+  },
+  {
+    path: "/Signin",
+    element: <SignIn />,
+  },
+  {
+    path: "/Signup",
+    element: <SignUp />,
+  },
+]);
 function App() {
   return (
     <div className="App">
-      <Router>
-{/* <Header/> */}
-        <Routes>
-          
-          <Route path="/" element={<HomePage/>} />
-
-          <Route element={<RequireAuth />}>
-            <Route path="/Shop" element={<Shop />} />
-          </Route>
-
-          <Route element={<RequireAuth />}>
-            <Route path="/Cart" element={<Cart />} />
-          </Route>
-
-          <Route element={<RequireAuth />}>
-            <Route path="/Profile" element={<Profile />} />
-          </Route>
-
-          <Route path="/Signin" element={<SignIn />} />
-          <Route path="/Signup" element={<SignUp />} />
-          
-        </Routes>
-      </Router>
-
-      <Footer />
+      <RouterProvider router={router} />
     </div>
   );
 }
