@@ -1,7 +1,6 @@
 const express = require("express");
 const authRoute = express.Router();
 const {signup,signin} = require("../controllers/authFn");
-// const validator = require("../middlewares/inputValidate");
 const { body} = require("express-validator");
 
 authRoute.post(

@@ -8,9 +8,9 @@ const {
   UpdateUser,
 } = require("../controllers/userFn");
 
-const {verifyToken,verifyAdmin} = require("../middlewares/verfyToken");
+const { verifyToken, verifyAdmin } = require("../middlewares/verfyToken");
 
-userRoute.get("/users", verifyAdmin, getAllUsers);
+userRoute.get("/users", /*verifyAdmin,*/ getAllUsers);
 userRoute.get("/user/:id", verifyAdmin, getUser);
 userRoute.post("/users", verifyAdmin, createUser);
 userRoute.delete("/user/:id", verifyAdmin, deleteUser);

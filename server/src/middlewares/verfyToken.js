@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
-require('dotenv').config()
+require("dotenv").config();
 
 async function verifyToken(req, res, next) {
   const token = req.cookies.token;
@@ -23,8 +23,7 @@ async function verifyToken(req, res, next) {
   }
 }
 
-async function verifyAdmin(req,res,next){
-   
+async function verifyAdmin(req, res, next) {
   const token = req.cookies.token;
 
   if (!token) {
@@ -35,20 +34,17 @@ async function verifyAdmin(req,res,next){
     const validToken = jwt.verify(token, process.env.SECRET);
 
     if (validToken) {
-      req.user =await User.findOne({ where: { id: validToken.id } });
+      req.user = await User.findOne({ where: { id: validToken.id } });
 
-      if(req.user.isAdmin){
+      if (req.user.isAdmin) {
         next();
-      }else if(!req.user.isAdmin){
-
-        // console.log('you are not authorized!');
-        res.status(401).send('you are not authorized!')
+      } else if (!req.user.isAdmin) {
+        res.status(401).send("you are not authorized!");
       }
-      
     }
   } catch (err) {
     res.send(err.message);
     console.log(err);
   }
 }
-module.exports = {verifyToken,verifyAdmin};
+module.exports = { verifyToken, verifyAdmin };

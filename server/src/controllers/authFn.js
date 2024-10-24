@@ -1,5 +1,5 @@
 const User = require("../models/user");
-const { validationResult } = require("express-validator");
+// const { validationResult } = require("express-validator");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
@@ -9,24 +9,15 @@ function createToken(id) {
 }
 
 async function signup(req, res) {
-  /// input validation
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    res.status(400).json({ errors: errors.array() });
-  }
   try {
-
     const { Username, Email, Password } = req.body;
     const genSalt = bcrypt.genSaltSync(16);
     const hashedPassword = bcrypt.hashSync(Password, genSalt);
-
-    // const hashedPassword =
     const EmailUser = await User.findOne({ where: { Email } });
 
     if (EmailUser) {
-      let errors = [];
-      errors.push({ msg: "email is already in use" });
-      res.status(500).send({ errors });
+
+      res.status(500).send({ msg: "email is already in use" });
     } else {
       const user = await User.create({
         Username: Username,
@@ -35,12 +26,11 @@ async function signup(req, res) {
       });
       // create jwt
       const token = createToken(user.id);
-      // console.log(token);
+      console.log(token);
     await  res
         .cookie("token", token, { httpOnly: true } /*{maxAge:10000}*/)
         .status(201)
         .send({ token: token, user: user });
-      // res.status(201).json({ user });
     }
   } catch (err) {
     console.log(err);
@@ -50,11 +40,9 @@ async function signup(req, res) {
 
 async function signin(req, res) {
   const { Email, Password } = req.body;
-
   try {
     const user = await User.findOne({ where: { Email: Email } });
     if (!user) return res.status(404).send("email is incorrect");
-
     const validPass = await bcrypt.compare(Password, user.Password);
     if (!validPass) return res.status(404).send("password is incorrect");
 
@@ -70,7 +58,6 @@ async function signin(req, res) {
         user: { id: user.id, username: user.Username, email: user.Email },
       });
   } catch (err) {
-    // console.log(err);
     res.status(404).send(err);
   }
 }

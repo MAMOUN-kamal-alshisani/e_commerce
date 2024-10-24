@@ -4,8 +4,8 @@ const Sequelize = require("sequelize");
 const ItemsData = db.define("Item", {
   id: {
     type: Sequelize.DataTypes.INTEGER,
-    autoIncrement:true,
-    primaryKey:true
+    autoIncrement: true,
+    primaryKey: true,
   },
   title: {
     type: Sequelize.DataTypes.STRING,
@@ -14,7 +14,6 @@ const ItemsData = db.define("Item", {
       notEmpty: true,
     },
   },
-
   name: {
     type: Sequelize.DataTypes.STRING,
     allowNull: false,
@@ -22,9 +21,15 @@ const ItemsData = db.define("Item", {
       notEmpty: true,
     },
   },
-
-  desc: {
+  category: {
     type: Sequelize.DataTypes.STRING,
+    allowNull: true,
+    validate: {
+      notEmpty: false,
+    },
+  },
+  desc: {
+    type: Sequelize.DataTypes.CHAR(1000),
     allowNull: false,
     unique: true,
     validate: {
@@ -38,7 +43,6 @@ const ItemsData = db.define("Item", {
       notEmpty: true,
     },
   },
-
   stock: {
     type: Sequelize.DataTypes.INTEGER,
     allowNull: false,
@@ -46,13 +50,26 @@ const ItemsData = db.define("Item", {
       notEmpty: true,
     },
   },
-
   img: {
     type: Sequelize.DataTypes.ARRAY(Sequelize.DataTypes.STRING),
     allowNull: false,
     validate: {
       notEmpty: true,
     },
+  },
+  recommended: {
+    type: Sequelize.DataTypes.INTEGER,
+    allowNull: true,
+  },
+  featured: {
+    type: Sequelize.DataTypes.BOOLEAN,
+    allowNull: true,
+    defaultValue: false,
+  },
+  exclusive: {
+    type: Sequelize.DataTypes.BOOLEAN,
+    allowNull: false,
+    defaultValue: false,
   },
 });
 
