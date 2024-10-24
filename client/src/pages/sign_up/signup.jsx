@@ -59,12 +59,11 @@ function SignUp() {
     errorPassword,
   ]);
 
+
   useEffect(() => {
-    // console.log(error);
     if (error !== null) {
       return (errorEmail.textContent = error?.response?.data?.msg);
     }
-
     setTimeout(() => {
       return (errorEmail.textContent = "");
     }, 4000);
