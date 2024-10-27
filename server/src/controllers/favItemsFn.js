@@ -13,9 +13,14 @@ async function getFavItems(req, res) {
 async function getUserFavItemsIds(req, res) {
   try {
     const userId = req.params.userId;
-    const favItems = await FavItems.findOne({ where: { userId: userId } });
-    let filterdIDs = favItems.favorite.filter((id) => id !== null);
-    res.status(200).send(filterdIDs);
+    if(userId !== undefined){
+      const favItems = await FavItems.findOne({ where: { userId: userId } });
+      let filterdIDs = favItems.favorite.filter((id) => id !== null);
+      res.status(200).send(filterdIDs);
+    }
+  else{
+    res.status(404).send(filterdIDs);
+  }
   } catch (err) {
     console.log(err);
     res.status(404).send(err.message);
