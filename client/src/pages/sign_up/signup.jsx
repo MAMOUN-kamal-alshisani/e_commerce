@@ -1,29 +1,22 @@
 import "./scss/signup.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import Header from "../../components/header/header";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { authActions } from "../../store/slices/authSlice";
+import { useNavigate, Link } from "react-router-dom";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { FaHome } from "react-icons/fa";
 
 function SignUp() {
-  const dispatch = useDispatch();
-  // const [isLoading, setIsLoading] = useState(false);
-
-//   const errorEmail = document.querySelector(".emailError_div");
-//   const errorPassword = document.querySelector(".passowrdError_div");
-//   const errorUsername = document.querySelector(".usernameError_div");
-
+  const errorEmail = document.querySelector(".emailError_div");
+  const errorPassword = document.querySelector(".passowrdError_div");
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-//   const [error, setError] = useState(null);
-  const [errorSpinner, setErrorSpinner] = useState(false);
+  const [ConfirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState(null);
+  const [LoadSpinner, setLoadSpinner] = useState(false);
 
-  const signup = async () => {
-    // setIsLoading(true);
+  const signUpHandler = async () => {
     try {
       const url = `${process.env.REACT_APP_BASE_URL}/signup`;
 
@@ -33,137 +26,137 @@ function SignUp() {
           Username: username,
           Email: email,
           Password: password,
-        } /*{withCredentials:true}*/
+        }
       );
-      localStorage.setItem(
-        "user",
-        JSON.stringify({
-          valid: true,
-          user: user.data.user,
-          token: user.data.token,
-        })
-      );
-       dispatch(
-        authActions.setCredentials({
-          user: user.data.user,
-          token: user.data.token,
-        })
-      );
-
-     navigate("/");
+    
+      setLoadSpinner(true)
+      setTimeout(()=>{
+         setLoadSpinner(false)
+      navigate("/signin");
+      },4000)
     } catch (err) {
-      setErrorSpinner(true);
-//       setError(err);
+      setError(err);
       console.log(err);
     }
   };
+  useEffect(() => {
+    const signUpBtn = document.querySelector(".input_submit");
+    if (password !== "" && ConfirmPassword !== "") {
+      if (password !== ConfirmPassword) {
+        signUpBtn.disabled = true;
+        errorPassword.textContent = "Entered Passwords don't match";
+        setTimeout(() => {
+          errorPassword.textContent = "";
+          signUpBtn.disabled = false;
+        }, 6000);
+      }
+    }
+  }, [
+    setPassword,
+    setConfirmPassword,
+    password,
+    ConfirmPassword,
+    errorPassword,
+  ]);
 
-//   if (error) {
-//     if (error?.response.data.errors[0].msg.includes("password")) {
-//       errorEmail.textContent = "";
-//       errorUsername.textContent = "";
-//       setTimeout(() => {
-//         setErrorSpinner(false);
-//         errorPassword.textContent = error.response.data.errors[0].msg;
-//       }, 3000);
-//     } else if (error.response.data.errors[0].msg.includes("email")) {
-//       errorPassword.textContent = "";
-//       errorUsername.textContent = "";
 
-//       setTimeout(() => {
-//         setErrorSpinner(false);
-//         errorEmail.textContent = error.response.data.errors[0].msg;
-//       }, 3000);
-//     } else if (error.response.data.errors[0].msg.includes("username")) {
-//       errorPassword.textContent = "";
-//       errorEmail.textContent = "";
-
-//       setTimeout(() => {
-//         setErrorSpinner(false);
-//         errorUsername.textContent = error.response.data.errors[0].msg;
-//       }, 2000);
-//     }
-//   }
-  // if (isLoading) {
-  //   return <h1>'loading please wait...'</h1>;
-  // }
+  useEffect(() => {
+    if (error !== null) {
+      return (errorEmail.textContent = error?.response?.data?.msg);
+    }
+    setTimeout(() => {
+      return (errorEmail.textContent = "");
+    }, 4000);
+  }, [error, setError,errorEmail]);
   return (
     <div className="signup">
-      <Header />
-      <div className="signup_div">
-        <div className="form_div">
-          <h1 className="form_header">signup</h1>
-          <form
-            action={`${process.env.REACT_APP_BASE_URL}/signup`}
-            method="post"
-            onSubmit={(e) => e.preventDefault()}
-            className={"sign_form"}
-          >
-            <div className="form_input_div">
-              {/* <label htmlFor="username">username: </label> */}
-              <input
-                type="text"
-                name={"username"}
-                value={username}
-                className="input_text"
-                onChange={(e) =>
-                  setUsername(e.target.value)
-                }
-                placeholder={"Enter username"}
-              />
-            </div>
-            <div className="usernameError_div"></div>
-
-            <div className="form_input_div">
-              {/* <label htmlFor="email">email: </label> */}
-              <input
-                type="email"
-                name={"email"}
-                value={email}
-                className="input_text"
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder={"Enter email"}
-              />
-            </div>
-            <div className="emailError_div"></div>
-            <div className="form_input_div">
-              {/* <label htmlFor="password">password: </label> */}
-              <input
-                type="password"
-                name={"password"}
-                value={password}
-                className="input_text"
-                onChange={(e) =>
-                  setPassword( e.target.value)
-                }
-                placeholder={"Enter password"}
-              />
-            </div>
-            <div className="passowrdError_div"></div>
-
-            <div className="form_input_div">
-              <button
-                type={"submit"}
-                onClick={()=>signup()}
-                className={"input_submit"}
-              >
-                <div>
-                  submit!
-                  {errorSpinner && (
-                    <AiOutlineLoading3Quarters className="loading_icon" />
-                  )}
-                </div>
-              </button>
-            </div>
-          </form>
-          {/* /*<HiArrowSmRight className="arrowIcon"/>*/}
-          <div className="login_div">
-            <p>already have an account?</p>
+      <div className="section_container">
+        <section className="signup_cn">
+          <div className="home_name_div">
+            <h3>
+              T<span>echStore</span>
+            </h3>
+            <h3>
+              <Link to={"/"}>
+                <FaHome />
+              </Link>
+            </h3>
           </div>
-          <span onClick={() => navigate("/signin")} className={"login_tag"}>
-            Login Now!
-          </span>
-        </div>
+          <div className="form_div">
+            <h1 className="form_header">Sign Up</h1>
+
+            <form onSubmit={(e) => e.preventDefault()} className={"sign_form"}>
+              <div className="form_input_div">
+                <input
+                  type="text"
+                  name={"username"}
+                  value={username}
+                  className="input_text"
+                  onChange={(e) => setUsername(e.target.value)}
+                  placeholder={"Enter username"}
+                />
+              </div>
+              <div className="usernameError_div"></div>
+              <div className="form_input_div">
+                <input
+                  type="email"
+                  name={"email"}
+                  value={email}
+                  className="input_text"
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder={"Enter email"}
+                />
+              </div>
+              <div className="emailError_div"></div>
+              <div className="form_input_div">
+                <input
+                  type="password"
+                  name={"password"}
+                  value={password}
+                  className="input_text"
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder={"Enter password"}
+                />
+              </div>
+              <div className="form_input_div">
+                <input
+                  type="password"
+                  name={"password"}
+                  value={ConfirmPassword}
+                  className="input_text"
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  placeholder={"Confirm password"}
+                />
+              </div>
+              <div className="passowrdError_div"></div>
+
+              <div className="form_input_div">
+                <button
+                  onClick={signUpHandler}
+                  className={"input_submit"}
+                >
+                  {" "}
+                  <span className="btn_txt_cn">
+                    Sign-Up!{" "}
+                    {LoadSpinner && (
+                      <AiOutlineLoading3Quarters className="loading_icon" />
+                     )}
+                  </span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <section className="alternative_choice_cn">
+          <div className="log_in_out_div">
+            <h1>Welcome To SignUp</h1>
+            <p>Already Have an Account?</p>
+            <span onClick={() => navigate("/signin")} className={"signup_tag"}>
+              sign-In Now!
+            </span>
+          </div>
+        </section>
       </div>
     </div>
   );
