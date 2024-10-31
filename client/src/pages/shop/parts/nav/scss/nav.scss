@@ -1,4 +1,4 @@
-@import "../../../../scss_variables/variables";
+@import "../../../../../scss_variables/variables";
 
 .navbar {
   @include flex(flex, flex-start, wrap, column);

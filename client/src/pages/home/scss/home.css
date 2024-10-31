@@ -2163,7 +2163,7 @@
   .HomePg .shop_product_deal_sn .shop_product_deals_text {
     display: flex;
     justify-content: space-between;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     flex-direction: row;
     height: 350px;
   }

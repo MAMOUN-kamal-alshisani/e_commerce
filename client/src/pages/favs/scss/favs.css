@@ -242,7 +242,7 @@
     border-right: 1px solid rgb(181, 178, 178);
   }
 }
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 400px) {
   .fav_cn {
     background-color: rgba(0, 0, 0, 0.461);
     width: 100%;
@@ -291,7 +291,7 @@
     margin-bottom: 18px;
   }
   .fav_cn .favs .favs_header_cn #favs_list_header {
-    padding: 5px;
+    padding: 10px;
     margin: 0;
   }
   .fav_cn .favs .items_card_list {

@@ -222,7 +222,7 @@
 
 
 
-@media screen and (max-width:350px) {
+@media screen and (max-width:400px) {
   .fav_cn {
     background-color: rgba(0, 0, 0, 0.461);
     width: 100%;
@@ -266,7 +266,7 @@
         @include flex(flex, space-between, nowrap, row);
         margin-bottom: 18px;
         #favs_list_header {
-          padding: 5px;
+          padding: 10px;
           margin: 0;
         }
   

@@ -41,7 +41,7 @@ function Profile() {
   const fileUploadHandler = async () => {
     const formData = new FormData();
     formData.append("file", uploadFile);
-    const url = "http://localhost:4000/api/upload";
+    const url = `${process.env.REACT_APP_BASE_URL}/api/upload`;
     const req = await axios.post(url, formData);
 
     return req.data;

@@ -107,7 +107,7 @@ function SignIn() {
                 <button onClick={signInHandler} className={"input_submit"}>
                   {" "}
                   <span className="btn_txt_cn">
-                    Login!{" "}
+                    Login{" "}
                     {errorSpinner && (
                       <AiOutlineLoading3Quarters className="loading_icon" />
                     )}
