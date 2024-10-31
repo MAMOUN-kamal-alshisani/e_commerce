@@ -2075,9 +2075,8 @@
       padding: 0px 5px;
       max-width: 1124px;
       .shop_product_deals_text {
-        @include flex(flex, space-between, nowrap, row);
+        @include flex(flex, space-between, wrap, row);
         height: 350px;
-
         .deals_first_section {
           background-color: #f8f9fa;
           color: black;

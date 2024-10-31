@@ -19,7 +19,7 @@ function Cart() {
   const [decreaseOneCartItem] = useDecreaseUserCartMutation();
   const [increaseOneCartItem] = useIncreaseUserCartMutation();
   const cartQuantity = useFetchCartCountQuery(user);
-  const [totalCartPrice, setTotalCartPrice] = useState([]);
+  const [totalCartPrice, setTotalCartPrice] = useState([0]);
   useEffect(() => {
     switch (shippingCountry) {
       case "Jordan":
@@ -167,7 +167,7 @@ function Cart() {
           </div>
           <div className="ship_details_pt3">
             <span className="details_label">Items Cost</span>
-            <span>${Math.round(eval(totalCartPrice.join("+")))}</span>
+            <span>${Math.round(eval(totalCartPrice.join("+"))) || '$0'}</span>
           </div>
           <div className="ship_details_pt4">
             <span className="details_label">shipping</span>

@@ -137,7 +137,7 @@ function SignUp() {
                 >
                   {" "}
                   <span className="btn_txt_cn">
-                    Sign-Up!{" "}
+                    Sign-Up{" "}
                     {LoadSpinner && (
                       <AiOutlineLoading3Quarters className="loading_icon" />
                      )}

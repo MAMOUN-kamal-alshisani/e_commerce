@@ -7,18 +7,18 @@ import { BiCategory } from "react-icons/bi";
 import { TbHexagonLetterA } from "react-icons/tb";
 import { TbHexagonLetterE } from "react-icons/tb";
 // import { LuPackageOpen } from "react-icons/lu";
-import { Range } from "react-range";
+// import { Range } from "react-range";
 // import { useDispatch } from "react-redux";
 import {
-  useFetchItemsQuery,
+  // useFetchItemsQuery,
   useFetchElectronicItemsQuery,
   useFetchAccessorieItemsQuery,
   useFetchItemsByPriceQuery,
   useFetchSearchedItemsQuery
 } from "../../../../store/apis/itemApi";
 import { useState, useEffect } from "react";
-import Box from "@mui/material/Box";
-import Slider from "@mui/material/Slider";
+// import Box from "@mui/material/Box";
+// import Slider from "@mui/material/Slider";
 export default function Nav({ setFilteredItems, items, setActivateLink }) {
   // console.log(items);
   // const dispatch = useDispatch();
@@ -45,15 +45,12 @@ export default function Nav({ setFilteredItems, items, setActivateLink }) {
   const accessoriesCategory = useFetchAccessorieItemsQuery();
   const ItemsByPrice = useFetchItemsByPriceQuery();
   const SearchedItem  = useFetchSearchedItemsQuery(searchInput)
-// console.log(SearchedItem.data);
   useEffect(() => {
-    // console.log(searchInput);
-    // console.log(Math.min(Number(...ItemsByPrice.data)));
-    // console.log(Math.min(...ItemsByPrice.data));
+  
     /// fetch api data and take min&max price for range type input ///
     const numArr = [];
     ItemsByPrice.isSuccess &&
-      ItemsByPrice.data.map((item) => numArr.push(Number(Math.round(item))));
+      ItemsByPrice?.data?.map((item) => numArr.push(Number(Math.round(item))));
     setMinPriceRange(Math.min(...numArr));
     setMaxPriceRange(Math.max(...numArr));
     // console.log(maxPriceRange);
@@ -62,7 +59,6 @@ export default function Nav({ setFilteredItems, items, setActivateLink }) {
   useEffect(() => {
     /// list items that are in electrics category
     if (electricsCategory.isSuccess) {
-      console.log(electricsCategory);
       setElectronicsList([
         ...new Set(
           electricsCategory?.data?.map((item) => {
@@ -92,28 +88,26 @@ export default function Nav({ setFilteredItems, items, setActivateLink }) {
   }, [toggleSideBar, setToggleSideBar]);
 
   const filterByListHandler = (e) => {
-    // console.log(e.target.innerHTML);
     const filteredItem = items.filter(
-      (item) => item.title == e.target.innerHTML
+      (item) => item.title === e.target.innerHTML
     );
     setFilteredItems(filteredItem);
     setActivateLink(null);
   };
   const handlePriceRange = (e) => {
     const priceLbl = document.querySelector(".price_lbl");
-    priceLbl.innerHTML = "$0 - " + "$" + e.target.value;
+    priceLbl.innerHTML = `$0 - $${e.target.value}`;
     setCurrentPriceRange(e.target.value);
   };
   const filterPriceHandler = () => {
     const filterItemByPrice = items.filter((item) => {
-      console.log(minPriceRange);
       return Number(item.price) <= currentPriceRange;
     });
     setFilteredItems(filterItemByPrice);
   };
 
   const handleSearchedItem = ()=>{
-    setFilteredItems(SearchedItem.data)
+    setFilteredItems(SearchedItem?.data)
   }
   return (
     <nav className={`navbar ${toggleSideBar && "mini_navbar"}`}>
