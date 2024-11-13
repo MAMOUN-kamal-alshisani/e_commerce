@@ -1,4 +1,4 @@
-const { db } = require("../db/db");
+const { db } = require('../db/db');
 const Sequelize = require("sequelize");
 const Profile = require("./profile");
 const User = db.define("User", {
