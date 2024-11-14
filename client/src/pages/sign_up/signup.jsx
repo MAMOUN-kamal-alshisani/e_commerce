@@ -4,7 +4,7 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { FaHome } from "react-icons/fa";
-
+import { BsEyeFill } from "react-icons/bs";
 function SignUp() {
   const errorEmail = document.querySelector(".emailError_div");
   const errorPassword = document.querySelector(".passowrdError_div");
@@ -60,13 +60,17 @@ function SignUp() {
   ]);
 
   useEffect(() => {
+  const errorEmail = document.querySelector(".emailError_div");
+
     // console.log(error);
     if (error !== null) {
       return (errorEmail.textContent = error?.response?.data?.msg);
     }
 
     setTimeout(() => {
-      return (errorEmail.textContent = "");
+      if(errorEmail.textContent !== null){
+        return (errorEmail.textContent = "");
+      }
     }, 4000);
   }, [error, setError,errorEmail]);
   return (
@@ -118,6 +122,7 @@ function SignUp() {
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder={"Enter password"}
                 />
+                  <BsEyeFill/>
               </div>
               <div className="form_input_div">
                 <input

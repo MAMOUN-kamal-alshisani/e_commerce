@@ -6,12 +6,11 @@ import {
   useUpdateProfileDataMutation,
 } from "../../store/apis/profileApi";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
-import SyncRoundedIcon from "@mui/icons-material/SyncRounded";
+import { ImSpinner8 } from "react-icons/im";
 import Cookies from "universal-cookie";
 function Profile() {
   const [uploadFile, setUploadFile] = useState("");
   const user = new Cookies().get("user");
-  console.log(user);
   const [updateProfile, result] = useUpdateProfileDataMutation();
   const [loadSpinner, setLoadSpinner] = useState(false);
   const { data, isSuccess, refetch } = useFetchProfileDataQuery(user);
@@ -38,22 +37,30 @@ function Profile() {
       Gender: data?.Gender,
     });
   }, [data, isSuccess]);
-  const fileUploadHandler = async () => {
-    const formData = new FormData();
-    formData.append("file", uploadFile);
-    const url = `${process.env.REACT_APP_BASE_URL}/api/upload`;
-    const req = await axios.post(url, formData);
 
-    return req.data;
+
+  const fileUploadHandler = async () => {
+    try{
+      const formData = new FormData();
+      formData.append("file", uploadFile);
+      const url = `${process.env.REACT_APP_BASE_URL}/api/upload`;
+      const req = await axios.post(url, formData);
+  
+      return req.data;
+    }catch(err){
+      console.error(err)
+    }
+ 
   };
   const changeUserPictureHandler = async () => {
-    const profilePicBtn = document.querySelector(".ud_profile_pic_btn");
     try {
+    const profilePicBtn = document.querySelector(".ud_profile_pic_btn");
+
       const imgUrl = await fileUploadHandler();
       const url = await axios.put(
-        `${process.env.REACT_APP_BASE_URL}/contact/${user.user.id}`,
+        `${process.env.REACT_APP_BASE_URL}/contact/${user?.user?.id}`,
         {
-          Photo: imgUrl.downloadURL,
+          Photo: imgUrl?.downloadURL,
         }
       );
 
@@ -67,7 +74,8 @@ function Profile() {
       }, 3000);
       return url.data;
     } catch (err) {
-      console.log(err);
+      console.error(err);
+      
     }
   };
 
@@ -105,10 +113,10 @@ function Profile() {
               </div>
             </div>
             <p id="user_dt_p1" className="user_dt">
-              {user?.user?.Username}
+              {user?.user?.username}
             </p>
             <p id="user_dt_p2" className="user_dt">
-              {user?.user?.Email}
+              {user?.user?.email}
             </p>
             <p id="user_dt_p3" className="user_dt">
               {" "}
@@ -119,7 +127,7 @@ function Profile() {
             className="ud_profile_pic_btn"
             onClick={() => changeUserPictureHandler()}
           >
-            update picture {loadSpinner && <SyncRoundedIcon className="icon" />}
+            update picture {loadSpinner && <ImSpinner8 className="icon" />}
           </button>
         </section>
         <section className="profile_details_section">
@@ -218,7 +226,7 @@ function Profile() {
               onClick={() => updateProfile({ user, data: profileInput })}
             >
               {result.isLoading ? (
-                <SyncRoundedIcon className="details_change_icon" />
+                <ImSpinner8 className="details_change_icon" />
               ) : (
                 "Update My Profile"
               )}
