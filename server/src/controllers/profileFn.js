@@ -69,28 +69,23 @@ async function deleteContact(req, res) {
 
 async function updateContact(req, res) {
   const userId = req.params.userId;
-  const Photo = req.body.Photo;
   try {
     const userContact = await Profile.findOne({
       where: { userId: userId },
     });
-    if (userContact) {
+    if(!userContact) return res.status(404).send('profile with specified (Id) is not found!')
+    else {
       const contactD = await Profile.update(req.body, {
         where: { userId: userId },
       });
-      res.status(201).send("contact has been updated successfully");
-    } else {
-      const contactD = await Profile.create(
-        {
-          Photo: Photo,
-          userId: userId,
-        },
-        {
-          where: { userId: userId },
-        }
-      );
-      res.status(201).send("contact has been updated successfully");
+      res.status(201).send("profile data has been updated successfully");
     }
+    //  else {
+    //   const contactD = await Profile.create(req.body, userId {
+    //     where: { userId: userId },
+    //   });
+    //   res.status(201).send("contact has been updated successfully");
+    // }
   } catch (err) {
     res.status(404).send(err.message);
   }
