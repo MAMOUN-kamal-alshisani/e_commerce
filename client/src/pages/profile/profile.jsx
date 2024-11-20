@@ -57,8 +57,8 @@ function Profile() {
     try {
     // const profilePicBtn = document.querySelector(".ud_profile_pic_btn");
 
-      const imgUrl = await fileUploadHandler();
-console.log(imgUrl);
+      // const imgUrl = await fileUploadHandler();
+console.log(uploadFile);
 
       // if(imgUrl){
         // console.log(imgUrl);
