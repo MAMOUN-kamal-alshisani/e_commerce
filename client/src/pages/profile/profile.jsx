@@ -38,50 +38,50 @@ function Profile() {
     });
   }, [data, isSuccess]);
 
-
   const fileUploadHandler = async () => {
-    try{
+    try {
       const formData = new FormData();
       formData.append("file", uploadFile);
-      const url = `${process.env.REACT_APP_BASE_URL}/api/upload`;
-      const req = await axios.post(url, formData);
-  // console.log(req.data);
-  
+      // const url = ;
+      const req = await axios.post(
+        `${process.env.REACT_APP_BASE_URL}/api/upload`,
+        formData
+      );
+      // console.log(req.data);
+
       return req.data;
-    }catch(err){
-      console.error(err)
+    } catch (err) {
+      console.error(err);
     }
- 
   };
   const changeUserPictureHandler = async () => {
     try {
-    // const profilePicBtn = document.querySelector(".ud_profile_pic_btn");
+      const profilePicBtn = document.querySelector(".ud_profile_pic_btn");
 
-      // const imgUrl = await fileUploadHandler();
-console.log(uploadFile);
+      const imgUrl = await fileUploadHandler();
+      // console.log(uploadFile);
 
-      // if(imgUrl){
-        // console.log(imgUrl);
-        
-      //   const url = await axios.put(
-      //     `${process.env.REACT_APP_BASE_URL}/contact/${user.user.id}`,
-      //     {
-      //       Photo: imgUrl.downloadURL,
-      //     }
-      //   )     
-      //    return url.data;
-      // }
-      // setLoadSpinner(true);
-      // profilePicBtn.disable = true;
-      // setTimeout(() => {
-      //   setUploadFile("");
-      //   setLoadSpinner(false);
-      //   profilePicBtn.disable = false;
-      //   refetch();
-      // }, 3000);
+      if(uploadFile){
+      // console.log(imgUrl);
+
+        const url = await axios.put(
+          `${process.env.REACT_APP_BASE_URL}/contact/${user.user.id}`,
+          {
+            Photo: imgUrl.downloadURL,
+          }
+        )
+         return url.data;
+      }
+      setLoadSpinner(true);
+      profilePicBtn.disable = true;
+      setTimeout(() => {
+        setUploadFile("");
+        setLoadSpinner(false);
+        profilePicBtn.disable = false;
+        refetch();
+      }, 1000)
     } catch (err) {
       console.error(err);
-      
     }
   };
 
