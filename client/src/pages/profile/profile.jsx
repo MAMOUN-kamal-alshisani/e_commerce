@@ -45,6 +45,7 @@ function Profile() {
       formData.append("file", uploadFile);
       const url = `${process.env.REACT_APP_BASE_URL}/api/upload`;
       const req = await axios.post(url, formData);
+  // console.log(req.data);
   
       return req.data;
     }catch(err){
@@ -54,25 +55,30 @@ function Profile() {
   };
   const changeUserPictureHandler = async () => {
     try {
-    const profilePicBtn = document.querySelector(".ud_profile_pic_btn");
+    // const profilePicBtn = document.querySelector(".ud_profile_pic_btn");
 
       const imgUrl = await fileUploadHandler();
-      const url = await axios.put(
-        `${process.env.REACT_APP_BASE_URL}/contact/${user?.user?.id}`,
-        {
-          Photo: imgUrl?.downloadURL,
-        }
-      );
+console.log(imgUrl);
 
-      setLoadSpinner(true);
-      profilePicBtn.disable = true;
-      setTimeout(() => {
-        setUploadFile("");
-        setLoadSpinner(false);
-        profilePicBtn.disable = false;
-        refetch();
-      }, 3000);
-      return url.data;
+      // if(imgUrl){
+        // console.log(imgUrl);
+        
+      //   const url = await axios.put(
+      //     `${process.env.REACT_APP_BASE_URL}/contact/${user.user.id}`,
+      //     {
+      //       Photo: imgUrl.downloadURL,
+      //     }
+      //   )     
+      //    return url.data;
+      // }
+      // setLoadSpinner(true);
+      // profilePicBtn.disable = true;
+      // setTimeout(() => {
+      //   setUploadFile("");
+      //   setLoadSpinner(false);
+      //   profilePicBtn.disable = false;
+      //   refetch();
+      // }, 3000);
     } catch (err) {
       console.error(err);
       
