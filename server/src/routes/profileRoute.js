@@ -14,9 +14,10 @@ const {verifyToken,verifyAdmin} = require("../middlewares/verfyToken");
 profileRoute.get("/contact", /*verifyToken,*/ getAllContacts);
 profileRoute.get("/contact/:id", /*verifyToken,*/ getContact);
 profileRoute.get("/contacted/:userId", getUserContact);
+// profileRoute.post("/contact/picture/:userId",createContact);
 
 profileRoute.post("/contact/:userId" ,createContact);
 profileRoute.delete("/contact/:id",verifyToken ,/*verifyToken,*/ deleteContact);
-profileRoute.put("/contact/:userId", updateContact);
+profileRoute.put("/contact/picture/:userId", updateContact);
 
 module.exports = profileRoute;

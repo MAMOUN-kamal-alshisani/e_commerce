@@ -4,6 +4,7 @@ import axios from "axios";
 import {
   useFetchProfileDataQuery,
   useUpdateProfileDataMutation,
+  useAddProfilePictureMutation,
 } from "../../store/apis/profileApi";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import { ImSpinner8 } from "react-icons/im";
@@ -11,9 +12,12 @@ import Cookies from "universal-cookie";
 function Profile() {
   const [uploadFile, setUploadFile] = useState("");
   const user = new Cookies().get("user");
+
   const [updateProfile, result] = useUpdateProfileDataMutation();
+  const [addProfilePicture, addPictureResult] = useAddProfilePictureMutation();
+
   const [loadSpinner, setLoadSpinner] = useState(false);
-  const { data, isSuccess, refetch } = useFetchProfileDataQuery(user);
+  const { data, isSuccess } = useFetchProfileDataQuery(user);
   const [profileInput, setProfileInput] = useState({
     Fname: "",
     Lname: "",
@@ -37,51 +41,43 @@ function Profile() {
       Gender: data?.Gender,
     });
   }, [data, isSuccess]);
-
-
+  useEffect(() => {
+    const profilePicBtn = document.querySelector(".ud_profile_pic_btn");
+    if (addPictureResult.isLoading) {
+      setLoadSpinner(true);
+      profilePicBtn.disable = true;
+    }
+    if (addPictureResult.isSuccess) {
+      setUploadFile("");
+      setLoadSpinner(false);
+      profilePicBtn.disable = false;
+    }
+  }, [addPictureResult.isLoading,addPictureResult.isSuccess]);
   const fileUploadHandler = async () => {
-    try{
+    try {
       const formData = new FormData();
       formData.append("file", uploadFile);
-      const url = `${process.env.REACT_APP_BASE_URL}/api/upload`;
-      const req = await axios.post(url, formData);
-  // console.log(req.data);
-  
+      // const url = ;
+      const req = await axios.post(
+        `${process.env.REACT_APP_BASE_URL}/api/upload`,
+        formData
+      );
+
       return req.data;
-    }catch(err){
-      console.error(err)
+    } catch (err) {
+      console.error(err);
     }
- 
   };
   const changeUserPictureHandler = async () => {
     try {
-    // const profilePicBtn = document.querySelector(".ud_profile_pic_btn");
+      const imgUrl = await fileUploadHandler();
+      // console.log(uploadFile);
 
-      // const imgUrl = await fileUploadHandler();
-console.log(uploadFile);
-
-      // if(imgUrl){
-        // console.log(imgUrl);
-        
-      //   const url = await axios.put(
-      //     `${process.env.REACT_APP_BASE_URL}/contact/${user.user.id}`,
-      //     {
-      //       Photo: imgUrl.downloadURL,
-      //     }
-      //   )     
-      //    return url.data;
-      // }
-      // setLoadSpinner(true);
-      // profilePicBtn.disable = true;
-      // setTimeout(() => {
-      //   setUploadFile("");
-      //   setLoadSpinner(false);
-      //   profilePicBtn.disable = false;
-      //   refetch();
-      // }, 3000);
+      if (imgUrl) {
+        addProfilePicture({ user: user.user, data: imgUrl.downloadURL });
+      }
     } catch (err) {
       console.error(err);
-      
     }
   };
 
