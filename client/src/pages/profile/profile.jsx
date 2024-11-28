@@ -4,6 +4,7 @@ import axios from "axios";
 import {
   useFetchProfileDataQuery,
   useUpdateProfileDataMutation,
+  useAddProfilePictureMutation,
 } from "../../store/apis/profileApi";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import { ImSpinner8 } from "react-icons/im";
@@ -11,9 +12,12 @@ import Cookies from "universal-cookie";
 function Profile() {
   const [uploadFile, setUploadFile] = useState("");
   const user = new Cookies().get("user");
+
   const [updateProfile, result] = useUpdateProfileDataMutation();
+  const [addProfilePicture, addPictureResult] = useAddProfilePictureMutation();
+
   const [loadSpinner, setLoadSpinner] = useState(false);
-  const { data, isSuccess, refetch } = useFetchProfileDataQuery(user);
+  const { data, isSuccess } = useFetchProfileDataQuery(user);
   const [profileInput, setProfileInput] = useState({
     Fname: "",
     Lname: "",
@@ -37,7 +41,18 @@ function Profile() {
       Gender: data?.Gender,
     });
   }, [data, isSuccess]);
-
+  useEffect(() => {
+    const profilePicBtn = document.querySelector(".ud_profile_pic_btn");
+    if (addPictureResult.isLoading) {
+      setLoadSpinner(true);
+      profilePicBtn.disable = true;
+    }
+    if (addPictureResult.isSuccess) {
+      setUploadFile("");
+      setLoadSpinner(false);
+      profilePicBtn.disable = false;
+    }
+  }, [addPictureResult.isLoading,addPictureResult.isSuccess]);
   const fileUploadHandler = async () => {
     try {
       const formData = new FormData();
@@ -47,7 +62,6 @@ function Profile() {
         `${process.env.REACT_APP_BASE_URL}/api/upload`,
         formData
       );
-      // console.log(req.data);
 
       return req.data;
     } catch (err) {
@@ -56,30 +70,12 @@ function Profile() {
   };
   const changeUserPictureHandler = async () => {
     try {
-      const profilePicBtn = document.querySelector(".ud_profile_pic_btn");
-
       const imgUrl = await fileUploadHandler();
       // console.log(uploadFile);
 
-      if(uploadFile){
-      // console.log(imgUrl);
-
-        const url = await axios.put(
-          `${process.env.REACT_APP_BASE_URL}/contact/${user.user.id}`,
-          {
-            Photo: imgUrl.downloadURL,
-          }
-        )
-         return url.data;
+      if (imgUrl) {
+        addProfilePicture({ user: user.user, data: imgUrl.downloadURL });
       }
-      setLoadSpinner(true);
-      profilePicBtn.disable = true;
-      setTimeout(() => {
-        setUploadFile("");
-        setLoadSpinner(false);
-        profilePicBtn.disable = false;
-        refetch();
-      }, 1000)
     } catch (err) {
       console.error(err);
     }
