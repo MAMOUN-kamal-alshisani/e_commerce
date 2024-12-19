@@ -15,7 +15,7 @@ const News =  db.define('news',{
           },
     },
     description:{
-        type:Sequelize.DataTypes.CHAR(500),
+        type:Sequelize.DataTypes.CHAR(1000),
         validate: {
             notEmpty: true,
           },
