@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 require("dotenv").config();
 const sql = new Sequelize(process.env.DATABASE);
-
+// postgresql://localhost:5432/0000/e-commerce
 sql
   .authenticate()
   .then(() => {
