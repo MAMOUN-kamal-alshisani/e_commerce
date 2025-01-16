@@ -10,7 +10,7 @@ function Pagination({ postsPerPage, totalPosts, paginate }) {
   return (
     <div className="pagination_container">
       <nav className="pagination">
-        {pageNumbers.map((number) => (
+        {pageNumbers?.map((number) => (
           <li
             onClick={() => paginate(number)}
             key={number}

@@ -36,7 +36,9 @@ export default function Blog() {
         </div>
 
         </section>
-        <Pagination postsPerPage={3} totalPosts={20} paginate={1} />
+        <Pagination postsPerPage={3} totalPosts={20} paginate={()=>{
+          return 1
+        }} />
 
       </div>
     </>

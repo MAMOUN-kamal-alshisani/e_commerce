@@ -9,8 +9,11 @@ import Profile from "./pages/profile/profile";
 import Blog from './pages/blog/blog'
 import Product from "./pages/product/product";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import RequireAuth from "./store/requireAuth";
+// import RequireAuth from "./store/requireAuth";
+// import Cookies from "universal-cookie";
 import "./index.css";
+
+  // const token = new Cookies()?.get('user')
 const router = createBrowserRouter([
   {
     element: <Layout />,
@@ -23,7 +26,8 @@ const router = createBrowserRouter([
         path: "/Profile",
         element: (
           // <RequireAuth>
-         <Profile />
+        /* //  token?.user ? <Profile /> : <SignIn /> */
+        <Profile />
           // </RequireAuth>  
         ),
       },
@@ -32,8 +36,9 @@ const router = createBrowserRouter([
         element: (
           // <RequireAuth>
           <Cart />
-          // </RequireAuth>
+        //  </RequireAuth>
         ),
+        
       },
       {
         path: "/Blog",
