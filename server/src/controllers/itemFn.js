@@ -1,6 +1,7 @@
-const Item = require("../models/item");
-const Sequelize = require("sequelize");
-//
+import Item from "../models/item.js";
+import Sequelize from "sequelize";
+
+// fetch all items in the database
 async function getAllItems(req, res) {
   try {
     const item = await Item.findAll({});
@@ -9,7 +10,7 @@ async function getAllItems(req, res) {
     res.status(404).send(err);
   }
 }
-
+// fetch one item by id
 async function getItem(req, res) {
   try {
     const id = req.params.id;
@@ -19,7 +20,7 @@ async function getItem(req, res) {
     res.status(404).send(err);
   }
 }
-
+// fetch an item by a specific criteria being true
 async function getFeaturedItem(req, res) {
   try {
     const item = await Item.findAll({ where: { featured: true }, limit: 5 });
@@ -28,7 +29,7 @@ async function getFeaturedItem(req, res) {
     res.status(404).send(err);
   }
 }
-
+// fetch an item by a specific criteria
 async function getElectronics(req, res) {
   try {
     const item = await Item.findAll({ where: { category: "Electronics" } });
@@ -37,7 +38,7 @@ async function getElectronics(req, res) {
     res.status(404).send(err);
   }
 }
-
+// fetch an item by a specific criteria
 async function getAccessories(req, res) {
   try {
     const item = await Item.findAll({ where: { category: "Accessories" } });
@@ -46,7 +47,7 @@ async function getAccessories(req, res) {
     res.status(404).send(err);
   }
 }
-
+// fetch an item by a specific criteria
 async function getItemsByLatest(req, res) {
   try {
     const Items = await Item.findAll({
@@ -68,7 +69,7 @@ async function getItemsByLatest(req, res) {
     res.status(500).send(err);
   }
 }
-
+// fetch an item by a specific criteria
 async function getAllItemsByLatest(req, res) {
   try {
     const Items = await Item.findAll({
@@ -82,7 +83,7 @@ async function getAllItemsByLatest(req, res) {
     res.status(500).send(err);
   }
 }
-
+// fetch an item by a specific criteria
 async function getExclusiveItem(req, res) {
   try {
     const Items = await Item.findAll({
@@ -101,7 +102,7 @@ async function getExclusiveItem(req, res) {
     res.status(500).send(err);
   }
 }
-
+// fetch an item by a specific criteria
 async function getItemPrice(req, res) {
   try {
     const PriceArr = [];
@@ -117,7 +118,7 @@ async function getItemPrice(req, res) {
     res.status(500).send(err);
   }
 }
-
+// create an item in the database
 async function createItem(req, res) {
   try {
     const item = await Item.create(req.body);
@@ -126,7 +127,7 @@ async function createItem(req, res) {
     res.status(404).send(err);
   }
 }
-
+// remove an item from the database
 async function deleteItem(req, res) {
   const id = req.params.id;
   try {
@@ -141,7 +142,7 @@ async function deleteItem(req, res) {
     res.status(404).send(err);
   }
 }
-
+// update item in the database
 async function updateItem(req, res) {
   const id = req.params.id;
   try {
@@ -158,7 +159,7 @@ async function updateItem(req, res) {
     res.status(404).send(err);
   }
 }
-
+// search for the items that match the keyword by character
 async function searchItem(req, res) {
   try {
     const keyWord = req.query.name;
@@ -169,10 +170,10 @@ async function searchItem(req, res) {
         },
       },
     });
-    if(findItem.length > 0){
+    if (findItem.length > 0) {
       res.send(findItem);
-    }else{
-      const subKeyWord = keyWord.at(0)
+    } else {
+      const subKeyWord = keyWord.at(0);
       const findItem = await Item.findAll({
         [Sequelize.Op.iLike]: `%${subKeyWord}%`,
       });
@@ -182,7 +183,8 @@ async function searchItem(req, res) {
     res.send(err);
   }
 }
-module.exports = {
+
+export {
   getAllItems,
   getItem,
   getFeaturedItem,
@@ -191,9 +193,9 @@ module.exports = {
   getItemsByLatest,
   getAllItemsByLatest,
   getExclusiveItem,
-  createItem,
-  deleteItem,
-  updateItem,
   getItemPrice,
   searchItem,
+  createItem,
+  updateItem,
+  deleteItem,
 };

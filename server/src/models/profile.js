@@ -1,5 +1,6 @@
-const { db } = require("../db/db");
-const Sequelize = require("sequelize");
+import db from "../db/db.js";
+import Sequelize from "sequelize";
+
 const Profile = db.define("Profile", {
   id: {
     type: Sequelize.DataTypes.INTEGER,
@@ -8,35 +9,35 @@ const Profile = db.define("Profile", {
   },
   Fname: {
     type: Sequelize.DataTypes.STRING,
-    allowNull:true
+    allowNull: true,
   },
   Lname: {
     type: Sequelize.DataTypes.STRING,
-    allowNull:true
+    allowNull: true,
   },
   Phone: {
     type: Sequelize.DataTypes.INTEGER,
-    allowNull:true
+    allowNull: true,
   },
   BirthDate: {
     type: Sequelize.DataTypes.DATE,
-    allowNull:true
+    allowNull: true,
   },
   Country: {
     type: Sequelize.DataTypes.STRING,
-    allowNull:true
+    allowNull: true,
   },
   Address: {
     type: Sequelize.DataTypes.STRING,
-    allowNull:true
+    allowNull: true,
   },
-  Gender:{
+  Gender: {
     type: Sequelize.DataTypes.STRING,
-    allowNull:true
+    allowNull: true,
   },
   Email: {
     type: Sequelize.DataTypes.STRING,
-    allowNull:true
+    allowNull: true,
   },
   Photo: {
     type: Sequelize.DataTypes.STRING,
@@ -48,4 +49,4 @@ const Profile = db.define("Profile", {
   },
 });
 
-module.exports = Profile;
+export default Profile;

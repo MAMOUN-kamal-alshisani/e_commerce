@@ -1,6 +1,8 @@
-const FavItems = require("../models/favorite");
-const ItemsData = require("../models/item");
 
+import FavItems from "../models/favorite.js";
+import ItemsData from "../models/item.js";
+
+// fetch all favored items lists in database
 async function getFavItems(req, res) {
   try {
     const FavItem = await FavItems.findAll({});
@@ -9,7 +11,7 @@ async function getFavItems(req, res) {
     res.status(404).send(err);
   }
 }
-
+// fetch user favored items ids by user id
 async function getUserFavItemsIds(req, res) {
   try {
     const userId = req.params.userId;
@@ -26,6 +28,7 @@ async function getUserFavItemsIds(req, res) {
     res.status(404).send(err.message);
   }
 }
+// fetch user favored items by user id
 async function getUserFavItems(req, res) {
   try {
     const userId = req.params.userId;
@@ -49,6 +52,8 @@ async function getUserFavItems(req, res) {
     res.status(404).send(err.message);
   }
 }
+
+// fetch user favored items quantity by user id
 async function getItemsCountInFav(req, res) {
   try {
     const userId = req.params.userId;
@@ -68,7 +73,7 @@ async function getItemsCountInFav(req, res) {
     res.status(404).send({ message: err.message });
   }
 }
-
+// add items to as favored if not already on the list
 async function createFavItems(req, res) {
   try {
     const userId = req.params.userId;
@@ -99,6 +104,7 @@ async function createFavItems(req, res) {
     res.status(500).send(err);
   }
 }
+// remove item from the favored list by user id
 async function deleteFavoriteProducts(req, res) {
   try {
     const id = req.params.id;
@@ -127,7 +133,7 @@ async function deleteFavoriteProducts(req, res) {
     res.status(404).send(err);
   }
 }
-
+// remove the whole favored list by user id
 async function deleteFavProducts(req, res) {
   const userId = req.params.userId;
   try {
@@ -140,12 +146,13 @@ async function deleteFavProducts(req, res) {
     res.status(404).send(err);
   }
 }
-module.exports = {
-  getFavItems,
-  getUserFavItems,
-  getItemsCountInFav,
-  createFavItems,
-  getUserFavItemsIds,
-  deleteFavoriteProducts,
-  deleteFavProducts,
-};
+
+export  {
+    getFavItems,
+    getUserFavItems,
+    getItemsCountInFav,
+    createFavItems,
+    getUserFavItemsIds,
+    deleteFavoriteProducts,
+    deleteFavProducts,
+  };

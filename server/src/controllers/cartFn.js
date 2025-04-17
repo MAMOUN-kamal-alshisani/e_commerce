@@ -1,7 +1,8 @@
-const Cart = require("../models/cart");
-const ItemsData = require("../models/item");
 
-async function getAllCarts(req, res) {
+import Cart from '../models/cart.js'
+import ItemsData  from '../models/item.js';
+//fetch all carts from the database
+export async function getAllCarts(req, res) {
   try {
     const cart = await Cart.findAll({});
     console.log(cart);
@@ -11,8 +12,8 @@ async function getAllCarts(req, res) {
     res.status(404).send(err.message);
   }
 }
-
-async function getCart(req, res) {
+// fetch specific cart by id
+export async function getCart(req, res) {
   try {
     const id = req.params.id;
     const cart = await Cart.findOne({ where: { id: id } });
@@ -22,8 +23,8 @@ async function getCart(req, res) {
     res.status(404).send(err.message);
   }
 }
-
-async function getUserCart(req, res) {
+// fetch a specific cart by user id
+export async function getUserCart(req, res) {
   try {
     const userId = req.params.userId;
     const cart = await Cart.findOne({ where: { userId: userId } });
@@ -51,7 +52,8 @@ async function getUserCart(req, res) {
     res.status(404).send(err.message);
   }
 }
-async function getItemsInCart(req, res) {
+// fetch items count in cart for specific user by user id
+export async function getItemsInCart(req, res) {
   try {
     const userId = req.params.userId;
     const cart = await Cart.findOne({ where: { userId: userId } });
@@ -65,8 +67,8 @@ async function getItemsInCart(req, res) {
     res.status(404).send(err.message);
   }
 }
-
-async function createCart(req, res) {
+// create cart || update existing cart
+export async function createCart(req, res) {
   const carted = req.body.cart;
   const userId = req.params.userId;
   try {
@@ -87,7 +89,8 @@ async function createCart(req, res) {
     res.status(404).send(err.message);
   }
 }
-async function createCartWithQuantity(req, res) {
+// create cart || update cart with quantity of the same item
+export async function createCartWithQuantity(req, res) {
   const cart = req.body.cart;
   const productQuantity = req.body.quantity;
   const userId = req.params.userId;
@@ -113,7 +116,22 @@ async function createCartWithQuantity(req, res) {
     res.status(404).send(err.message);
   }
 }
-async function deleteCart(req, res) {
+// update cart by id
+export async function updateCart(req, res) {
+  const id = req.params.id;
+  try {
+    const cart = await Cart.update(req.body, {
+      where: { id: id },
+    });
+    console.log(cart);
+    res.status(201).send("cart has been updated successfully");
+  } catch (err) {
+    console.log(err);
+    res.status(404).send(err.message);
+  }
+}
+// remove cart by id
+export async function deleteCart(req, res) {
   const id = req.params.id;
   try {
     const cart = await Cart.destroy({ where: { id: id } });
@@ -123,8 +141,8 @@ async function deleteCart(req, res) {
     res.status(404).send(err);
   }
 }
-
-async function deleteItemQuantityCart(req, res) {
+// remove item with quantity by user id
+export async function deleteItemQuantityCart(req, res) {
   try {
     const id = req.params.id;
     const userId = req.params.userId;
@@ -148,7 +166,8 @@ async function deleteItemQuantityCart(req, res) {
     res.status(404).send(err);
   }
 }
-async function decreaseUserCart(req, res) {
+// decrease item quantity by user id
+export async function decreaseUserCart(req, res) {
   const id = req.params.id;
   const userId = req.params.userId;
 
@@ -171,20 +190,8 @@ async function decreaseUserCart(req, res) {
   }
 }
 
-async function updateCart(req, res) {
-  const id = req.params.id;
-  try {
-    const cart = await Cart.update(req.body, {
-      where: { id: id },
-    });
-    console.log(cart);
-    res.status(201).send("cart has been updated successfully");
-  } catch (err) {
-    console.log(err);
-    res.status(404).send(err.message);
-  }
-}
-async function increaseUserCart(req, res) {
+// increase item quantity by user id
+export async function increaseUserCart(req, res) {
   try {
     const id = Number(req.params.id);
     const userId = req.params.userId;
@@ -204,17 +211,3 @@ async function increaseUserCart(req, res) {
     res.status(404).send(err.message);
   }
 }
-
-module.exports = {
-  getAllCarts,
-  getCart,
-  getUserCart,
-  getItemsInCart,
-  createCart,
-  deleteCart,
-  decreaseUserCart,
-  deleteItemQuantityCart,
-  updateCart,
-  increaseUserCart,
-  createCartWithQuantity,
-};

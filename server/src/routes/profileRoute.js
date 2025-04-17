@@ -1,15 +1,15 @@
-const express = require("express");
-const profileRoute = express.Router();
-const {
+import express from 'express'
+import  {
   getAllContacts,
   getContact,
   createContact,
   deleteContact,
   updateContact,
   getUserContact,
-} = require("../controllers/profileFn");
-const {verifyToken,verifyAdmin} = require("../middlewares/verfyToken");
+} from "../controllers/profileFn.js";
+import {verifyToken,verifyAdmin} from "../middlewares/verfyToken.js";
 
+export const profileRoute = express.Router();
 
 profileRoute.get("/contact", /*verifyToken,*/ getAllContacts);
 profileRoute.get("/contact/:id", /*verifyToken,*/ getContact);
@@ -20,4 +20,3 @@ profileRoute.post("/contact/:userId" ,createContact);
 profileRoute.delete("/contact/:id",verifyToken ,/*verifyToken,*/ deleteContact);
 profileRoute.put("/contact/picture/:userId", updateContact);
 
-module.exports = profileRoute;

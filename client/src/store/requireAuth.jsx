@@ -3,7 +3,6 @@ import Cookies from "universal-cookie";
 
 const RequireAuth = ({child}) => {
   const token = new Cookies()?.get('user')
-  // const token = useSelector(selectCurrentToken);
   const location = useLocation();
   console.log(token.user);
   

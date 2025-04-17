@@ -1,7 +1,10 @@
-const Sequelize = require("sequelize");
-require("dotenv").config();
+import { Sequelize } from "sequelize";
+import dotenv from "dotenv";
+
+
+dotenv.config();
 const sql = new Sequelize(process.env.DATABASE);
-// postgresql://localhost:5432/0000/e-commerce
+
 sql
   .authenticate()
   .then(() => {
@@ -14,4 +17,6 @@ sql
   .then(() => console.log("database models have been created successfully"))
   .catch((err) => console.error(err));
 
-module.exports = { db: sql };
+const db = sql;
+
+export default db;

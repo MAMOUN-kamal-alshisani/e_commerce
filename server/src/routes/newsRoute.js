@@ -1,12 +1,17 @@
-const express = require("express");
+import express from "express";
 
-const newsRoute = express.Router();
+export const newsRoute = express.Router();
 
-const { getAllNews, getNews, createNews,updateNews } = require("../controllers/newsFn");
+import {
+  getAllNews,
+  getNews,
+  createNews,
+  updateNews,
+  deleteNews,
+} from "../controllers/newsFn.js";
 
 newsRoute.get("/news", getAllNews);
 newsRoute.get("/news/:id", getNews);
 newsRoute.post("/news", createNews);
 newsRoute.put("/news/:id", updateNews);
-
-module.exports = newsRoute
+newsRoute.delete("/news/:id", deleteNews);

@@ -25,7 +25,7 @@ function NavBar() {
       <div className="navbar_text">Awesome! Free shipping Deals Only Here!</div>
 
       <div className="search_site">
-        <IoIosSearch/>
+        <IoIosSearch />
       </div>
     </div>
   );

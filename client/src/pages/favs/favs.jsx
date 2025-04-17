@@ -11,12 +11,14 @@ import { IoBagRemoveOutline } from "react-icons/io5";
 import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
 import { useState, useEffect } from "react";
 import Cookies from "universal-cookie";
+
 function Favs({ showMd, setShowMd }) {
   const user = new Cookies().get("user");
   const { data } = useFetchUserFavItemQuery(user);
   const [addToCart, addToCartResult] = useAddToCartMutation();
   const [deleteFavProduct] = useDeleteFavoriteProductsMutation();
   const [mdStatusMessage, setMdStatusMessage] = useState("");
+
   const handleModel = () => {
     setTimeout(() => {
       setShowMd(false);
@@ -54,7 +56,7 @@ function Favs({ showMd, setShowMd }) {
       <div className="product_status_md">
         <strong>{mdStatusMessage}</strong>
       </div>
-      <div className={`${showMd == false && "favs_not_show"} favs`}>
+      <div className={`${showMd === false && "favs_not_show"} favs`}>
         <div className="favs_header_cn">
           <h3 id="favs_list_header">WishList</h3>
           <button onClick={() => handleModel()} className="exit_md_btn">
@@ -71,11 +73,11 @@ function Favs({ showMd, setShowMd }) {
                 <div className="item_card">
                   <div className="card_list_cn">
                     <div className="item_img">
-                      <img src={item.item.img[0]} alt={item.item.id} />
+                      <img src={item?.item?.img[0]} alt={item?.item?.id} />
                     </div>
                     <div className="item_details">
-                      <p>{item.item.name}</p>
-                      <p>${item.item.price}</p>
+                      <p>{item?.item?.name}</p>
+                      <p>${item?.item?.price}</p>
                     </div>
                   </div>
                   <div className="Item_fav_btn_cn">
@@ -86,7 +88,7 @@ function Favs({ showMd, setShowMd }) {
                       <TiShoppingCart className="fav_icon" />
                     </button>
 
-                    <Link to={`product/${item.item.id}`}>
+                    <Link to={`product/${item?.item?.id}`}>
                       <button className="view_btn fav_btn">
                         <TbZoomIn className="icon" />
                       </button>

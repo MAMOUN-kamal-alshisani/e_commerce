@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const itemsApi = createApi({
   reducerPath: "items",
-  tagTypes:["products"],
+  tagTypes: ["products"],
   baseQuery: fetchBaseQuery({
     baseUrl: `${process.env.REACT_APP_BASE_URL}`,
   }),
@@ -21,14 +21,12 @@ const itemsApi = createApi({
       fetchItemById: builder.query({
         providesTags: ["products"],
         query: (ProductId) => {
-          // console.log(ProductId);
           return {
             url: `/item/${ProductId}`,
             method: "GET",
           };
         },
       }),
-      // /item/:id"
       fetchFeaturedItems: builder.query({
         providesTags: ["products"],
         query: (item) => {
@@ -56,7 +54,6 @@ const itemsApi = createApi({
           };
         },
       }),
-      // /item/category/accessories
       fetchElectronicItems: builder.query({
         providesTags: ["products"],
         query: (item) => {
@@ -66,7 +63,7 @@ const itemsApi = createApi({
           };
         },
       }),
-      
+
       fetchAccessorieItems: builder.query({
         providesTags: ["products"],
         query: (item) => {
@@ -117,8 +114,7 @@ export const {
   useFetchAllLatestItemsQuery,
   useFetchExclusiveItemQuery,
   useFetchItemsByPriceQuery,
-  useFetchSearchedItemsQuery
+  useFetchSearchedItemsQuery,
 } = itemsApi;
-// export const {useFetchElectronicItemsQuery} = itemsApi
-// export const {useFetchAccessorieItemsQuery} = itemsApi
+
 export { itemsApi };

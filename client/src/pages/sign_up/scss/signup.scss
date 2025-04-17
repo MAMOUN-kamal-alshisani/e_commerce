@@ -5,39 +5,26 @@
   width: $fullWidth;
   align-items: center;
   height: 100vh;
-  // gap: 10%;
   background-color: #f8f9fa;
   .section_container {
     @include flex(flex, center, nowrap, row);
     height: 80%;
     width: 75%;
     border: 1px solid #e3e5e7;
-    // gap: 5%;
     .signup_cn {
       @include flex(flex, space-between, nowrap, column);
       padding: 0 15px;
-      // background-color: #f8f9fa;
-      // background-image: linear-gradient(#cdcccc, rgb(240, 240, 240));
       background-color: white;
-      // width: 50%;
-      // background: url("https://cutewallpaper.org/21/red-tech-wallpaper/Images-of-Red-Tech-Wallpaper-SpaceHero.jpg");
-      // flex: 1;
-      // width: $fullWidth;
-      // height: 50%;
       width: 50%;
       align-items: $itemsAlignCenter;
 
       .home_name_div {
         @include flex(flex, space-between, nowrap, row);
-        // padding: 0px 15px;
         width: 100%;
         h3:first-child {
           letter-spacing: 4.5px;
           &::first-letter {
-            // background-color: #e10c0c;
-            // letter-spacing: 0px;
             color: #d10024;
-            // padding: 5px 10px;
             border-radius: 50%;
           }
         }
@@ -47,25 +34,30 @@
         align-content: $itemsAlignCenter;
         padding: 10px;
         margin: auto 0;
-        // width: 600px;
-        // height: 80vh;
-        // background-color: #2196f3;
-        // background-color: #3f51b5;
-        // background-image: linear-gradient(#D10024, rgb(38, 38, 41));
         border-radius: $borderRadius;
-
-        // box-shadow: 0px 0px 1px 0px $primaryclr4;
-
         .form_header {
           font-family: "Courier New", Courier, monospace;
           text-align: $txtAlignCenter;
-          // color: red;
           letter-spacing: 1px;
           margin: 0;
         }
 
         .sign_form {
+          .pass-input{
+            .un-showPass{
+              position: absolute;
+              top: 32%;
+              right: 5px;
+              color: grey;
+
+              &:hover{
+                cursor: pointer;
+                color: black;
+              }
+            }
+          }
           .form_input_div {
+            position: relative;
             margin-top: 20px;
 
             .input_text {
@@ -132,9 +124,10 @@
                 }
               }
            
-
+           
 
             }
+         
           }
         }
 
@@ -244,6 +237,21 @@
           }
   
           .sign_form {
+
+            .pass-input{
+              .un-showPass{
+                position: absolute;
+                top:50%;
+                transform: translateY(-50%);
+                right: 25px;
+                color: grey;
+  
+                &:hover{
+                  cursor: pointer;
+                  color: black;
+                }
+              }
+            }
             .form_input_div {
               margin-top: 20px;
               .input_text {
@@ -263,7 +271,7 @@
               .input_submit {
                 @include flex(flex, center, wrap, column);
                 align-content: $itemsAlignCenter;
-                width: 310px;
+                width: 95%;
                 height: 30px;
                 padding: 20px;
                 background-color: #d10024;
@@ -312,6 +320,8 @@
   
   
               }
+
+          
             }
           }
   

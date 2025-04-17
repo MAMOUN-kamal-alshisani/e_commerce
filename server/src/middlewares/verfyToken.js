@@ -1,7 +1,8 @@
-const jwt = require("jsonwebtoken");
-const User = require("../models/user");
-require("dotenv").config();
+import dotenv from "dotenv";
+import jwt from "jsonwebtoken";
+import User from "../models/user.js";
 
+dotenv.config();
 async function verifyToken(req, res, next) {
   const token = req.cookies.token;
 
@@ -47,4 +48,5 @@ async function verifyAdmin(req, res, next) {
     console.log(err);
   }
 }
-module.exports = { verifyToken, verifyAdmin };
+
+export { verifyToken, verifyAdmin };

@@ -1,6 +1,6 @@
 
-
-function notFound(req,res,next){
+// middleware controllers 
+export function notFound(req,res,next){
 
 const error = new Error(`Error, Not Found ${req.originalUrl}`)
 res.status(404)
@@ -9,7 +9,7 @@ next(error)
 }
 
 
-function handleError(err,req,res,next){
+export function handleError(err,req,res,next){
 
     const statusCode = res.statusCode == 200 ? 500 : res.statusCode;
     req.status(statusCode);
@@ -21,4 +21,4 @@ function handleError(err,req,res,next){
 }
 
 
-module.exports = {notFound,handleError}
+// module.exports = {notFound,handleError}

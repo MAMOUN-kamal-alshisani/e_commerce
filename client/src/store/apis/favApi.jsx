@@ -21,7 +21,6 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
         providesTags: ["favs"],
         query: (user) => {
           return {
-            // /fav/user/:userId
             url: `/fav/user/${user?.user?.id}`,
             method: "GET",
           };
@@ -31,7 +30,6 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
         providesTags: ["favs"],
         query: (user) => {
           return {
-            // /fav/user/:userId
             url: `/fav/productsId/${user?.user?.id}`,
             method: "GET",
           };
@@ -41,10 +39,8 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
       addToFav: builder.mutation({
         invalidatesTags: ["favs"],
         query: ({ user, data }) => {
-          // console.log(user);
           return {
-            // /fav/user/:userId
-            // /fav/:userId'
+
             url: `/fav/${user?.user?.id}`,
             method: "POST",
             body: {
@@ -58,26 +54,17 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
       deleteFavoriteProducts: builder.mutation({
         invalidatesTags: ["favs"],
         query: ({ user, item }) => {
-          // console.log(user);
           return {
-            // /fav/user/:userId
-            // /fav/:userId'
+
             url: `/fav/${user?.user?.id}/${item?.item?.id}`,
             method: "DELETE",
-            // body: {
-            //   favorite: [data.id],
-            //   userId: user.user.id,
-            // },
-            // onSuccess: (user)=>{
-            //   // console.log(user)
-            // }
+
           };
         },
       }),
     };
   },
 });
-// export { favApi };
 export const {
   useFetchFavCountQuery,
   useFetchUserFavItemQuery,
