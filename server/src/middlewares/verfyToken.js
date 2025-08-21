@@ -14,7 +14,7 @@ async function verifyToken(req, res, next) {
     const validToken = jwt.verify(token, process.env.SECRET);
 
     if (validToken) {
-      req.user = User.findOne({ where: { id: validToken.id } });
+      req.user = await User.findOne({ where: { id: validToken.id } });
 
       next();
     }

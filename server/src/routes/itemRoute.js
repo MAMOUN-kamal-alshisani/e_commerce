@@ -18,6 +18,7 @@ import  {
 import  { verifyToken, verifyAdmin } from "../middlewares/verfyToken.js";
 
 export const itemRoute = express.Router();
+// itemRoute.get("/item", /*verifyToken,*/ getAllItems);
 
 itemRoute.get("/item", /*verifyToken,*/ getAllItems);
 itemRoute.get("/item/:id", getItem);

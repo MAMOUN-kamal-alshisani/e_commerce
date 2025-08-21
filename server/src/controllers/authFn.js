@@ -7,7 +7,8 @@ dotenv.config()
 
 function createToken(id) {
   return jwt.sign({ id: id }, process.env.SECRET);
-}
+}  
+
 
 export async function signup(req, res) {
   try {
