@@ -5,39 +5,25 @@
   width: $fullWidth;
   align-items: center;
   height: 100vh;
-  // gap: 10%;
   background-color: #f8f9fa;
   .section_container {
     @include flex(flex, center, nowrap, row);
     height: 80%;
     width: 75%;
     border: 1px solid #e3e5e7;
-    // gap: 5%;
     .signin_cn {
       @include flex(flex, space-between, wrap, column);
       padding: 0 15px;
-      // background-color: #f8f9fa;
-      // background-image: linear-gradient(#cdcccc, rgb(240, 240, 240));
       background-color: white;
-      // width: 50%;
-      // background: url("https://cutewallpaper.org/21/red-tech-wallpaper/Images-of-Red-Tech-Wallpaper-SpaceHero.jpg");
-      // flex: 1;
-      // width: $fullWidth;
-      // height: 50%;
       width: 50%;
       align-items: $itemsAlignCenter;
-
       .home_name_div {
         @include flex(flex, space-between, nowrap, row);
-        // padding: 0px 15px;
         width: 100%;
         h3:first-child {
           letter-spacing: 4.5px;
           &::first-letter {
-            // background-color: #e10c0c;
-            // letter-spacing: 0px;
             color: #d10024;
-            // padding: 5px 10px;
             border-radius: 50%;
           }
         }
@@ -47,30 +33,36 @@
         align-content: $itemsAlignCenter;
         padding: 10px;
         margin: auto 0;
-        // width: 600px;
-        // height: 80vh;
-        // background-color: #2196f3;
-        // background-color: #3f51b5;
-        // background-image: linear-gradient(#D10024, rgb(38, 38, 41));
         border-radius: $borderRadius;
-
-        // box-shadow: 0px 0px 1px 0px $primaryclr4;
-
         .form_header {
           font-family: "Courier New", Courier, monospace;
           text-align: $txtAlignCenter;
-          // color: red;
           letter-spacing: 1px;
           margin: 0;
         }
 
         .sign_form {
+
+          .pass-input{
+            .un-showPass{
+              position: absolute;
+              top: 32%;
+              right: 5px;
+              color: grey;
+
+              &:hover{
+                cursor: pointer;
+                color: black;
+              }
+            }
+          }
           .form_input_div {
+            position: relative;
+
             margin-top: 20px;
 
             .input_text {
               @include flex(flex, center, wrap, column);
-
               width: 300px;
               height: 25px;
               padding: $paddingFive;
@@ -86,15 +78,15 @@
             .input_submit {
               @include flex(flex, center, wrap, column);
               align-content: $itemsAlignCenter;
-              width: 310px;
-              height: 30px;
-              padding: 20px;
               background-color: #d10024;
               border: $primaryclr4;
               color: $bg_color1;
               cursor: $pointer;
               font-size: $fontSizeLarge;
               transition: $transition;
+              width: 310px;
+              height: 30px;
+              padding: 20px;
               &:hover {
                 box-shadow: 0px 0px 5px 0px $bg_color1;
                 background-color: #bf0c2a;
@@ -106,9 +98,7 @@
               }
 
               .btn_txt_cn{
-                
                 .loading_icon {
-                  // transform: rotateX(90);
                   font-size: medium;
                   animation: rotateIcon 3s infinite;
                 }
@@ -136,29 +126,27 @@
             }
           }
         }
-
-        // .login_div {
-        //   @include flex(flex, center, wrap, row);
-        // }
-
         .usernameError_div {
           padding: $paddingFive;
-          padding-top: 10px;
           color: $primaryclr3;
+          padding-top: 10px;
+
         }
 
         .emailError_div {
           padding: $paddingFive;
-          padding-top: 10px;
           color: $primaryclr3;
+          padding-top: 10px;
+
         }
         .emailError_div:empty {
           display: none;
         }
         .passowrdError_div {
           padding: $paddingFive;
-          padding-top: 10px;
           color: $primaryclr3;
+          padding-top: 10px;
+
         }
         .passowrdError_div:empty {
           display: none;
@@ -168,10 +156,8 @@
     .alternative_choice_cn {
       @include flex(flex, center, wrap, row);
       width: 50%;
-      // width: 50%;
       background: url("https://www.wallpaperflare.com/static/903/815/781/nature-landscape-trees-forest-wallpaper.jpg");
       background-size: cover;
-      // background-color: #D10024;
       color: #f8f9fa;
       align-items: $itemsAlignCenter;
       .log_in_out_div {
@@ -238,11 +224,25 @@
             margin: 0;
           }
           .sign_form {
+            .pass-input{
+              .un-showPass{
+                position: absolute;
+                top: 32%;
+                right: 0px;
+                color: grey;
+  
+                &:hover{
+                  cursor: pointer;
+                  color: black;
+                }
+              }
+            }
             .form_input_div {
               margin-top: 20px;
+              max-width: 100%;
               .input_text {
                 @include flex(flex, center, wrap, column);
-                width: 90%;
+                width: 100%;
                 height: 25px;
                 padding: $paddingFive;
                 border: 1px solid grey;
@@ -257,7 +257,7 @@
               .input_submit {
                 @include flex(flex, center, wrap, column);
                 align-content: $itemsAlignCenter;
-                width: 310px;
+                width: 105%;
                 height: 30px;
                 padding: 20px;
                 background-color: #d10024;

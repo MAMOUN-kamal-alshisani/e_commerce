@@ -57,7 +57,18 @@
   letter-spacing: 1px;
   margin: 0;
 }
+.signup .section_container .signup_cn .form_div .sign_form .pass-input .un-showPass {
+  position: absolute;
+  top: 32%;
+  right: 5px;
+  color: grey;
+}
+.signup .section_container .signup_cn .form_div .sign_form .pass-input .un-showPass:hover {
+  cursor: pointer;
+  color: black;
+}
 .signup .section_container .signup_cn .form_div .sign_form .form_input_div {
+  position: relative;
   margin-top: 20px;
 }
 .signup .section_container .signup_cn .form_div .sign_form .form_input_div .input_text {
@@ -248,6 +259,17 @@
     letter-spacing: 1px;
     margin: 0;
   }
+  .signup .section_container .signup_cn .form_div .sign_form .pass-input .un-showPass {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 25px;
+    color: grey;
+  }
+  .signup .section_container .signup_cn .form_div .sign_form .pass-input .un-showPass:hover {
+    cursor: pointer;
+    color: black;
+  }
   .signup .section_container .signup_cn .form_div .sign_form .form_input_div {
     margin-top: 20px;
   }
@@ -273,7 +295,7 @@
     flex-wrap: wrap;
     flex-direction: column;
     align-content: center;
-    width: 310px;
+    width: 95%;
     height: 30px;
     padding: 20px;
     background-color: #d10024;

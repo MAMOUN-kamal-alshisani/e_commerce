@@ -1,6 +1,5 @@
-const express = require("express");
-const itemRoute = express.Router();
-const {
+import express from 'express'
+import  {
   getAllItems,
   getItem,
   getFeaturedItem,
@@ -9,13 +8,18 @@ const {
   getItemsByLatest,
   getAllItemsByLatest,
   getExclusiveItem,
-  createItem,
-  deleteItem,
-  updateItem,
   getItemPrice,
   searchItem,
-} = require("../controllers/itemFn");
-const { verifyToken, verifyAdmin } = require("../middlewares/verfyToken");
+  createItem,
+  updateItem,
+  deleteItem,
+  
+} from "../controllers/itemFn.js";
+import  { verifyToken, verifyAdmin } from "../middlewares/verfyToken.js";
+
+export const itemRoute = express.Router();
+// itemRoute.get("/item", /*verifyToken,*/ getAllItems);
+
 itemRoute.get("/item", /*verifyToken,*/ getAllItems);
 itemRoute.get("/item/:id", getItem);
 itemRoute.get("/item/group/featured", getFeaturedItem);
@@ -32,4 +36,3 @@ itemRoute.post("/item", /*verifyAdmin,*/ createItem);
 itemRoute.delete("/item/:id", /*verifyAdmin,*/ /*verifyToken,*/ deleteItem);
 itemRoute.put("/item/:id", /*verifyAdmin,*/ updateItem);
 
-module.exports = itemRoute;

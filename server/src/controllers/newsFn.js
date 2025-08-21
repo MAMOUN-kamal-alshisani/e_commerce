@@ -1,5 +1,5 @@
-const News = require("../models/news");
-
+import News from "../models/news.js";
+// fetch all the news lists from the databsae
 async function getAllNews(req, res) {
   try {
     const news = await News.findAll({});
@@ -8,7 +8,7 @@ async function getAllNews(req, res) {
     res.status(404).send(err);
   }
 }
-
+// fetch news list by id
 async function getNews(req, res) {
   try {
     const id = req.params.id;
@@ -18,6 +18,7 @@ async function getNews(req, res) {
     res.status(404).send(err);
   }
 }
+// create new news data
 async function createNews(req, res) {
   try {
     const news = await News.create(req.body);
@@ -26,6 +27,8 @@ async function createNews(req, res) {
     res.status(404).send(err);
   }
 }
+
+// update existing news data
 async function updateNews(req, res) {
   try {
     const id = req.params.id;
@@ -35,9 +38,25 @@ async function updateNews(req, res) {
     res.status(404).send(err);
   }
 }
-module.exports = {
-  getAllNews,
-  getNews,
-  createNews,
-  updateNews,
-};
+// romove intended news post by id
+async function deleteNews(req, res) {
+  const id = req.params.id;
+  try {
+    const findNews= await News.findOne({ where: { id: id } });
+    if (findNews) {
+      const item = await News.destroy({ where: { id: id } });
+      res.status(200).send("News Post has been removed successfully");
+    } else {
+      return res.status(404).send(err);
+    }
+  } catch (err) {
+    res.status(404).send(err);
+  }
+}
+export  {
+    getAllNews,
+    getNews,
+    createNews,
+    updateNews,
+    deleteNews
+  }

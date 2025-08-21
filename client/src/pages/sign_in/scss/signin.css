@@ -57,7 +57,18 @@
   letter-spacing: 1px;
   margin: 0;
 }
+.signin .section_container .signin_cn .form_div .sign_form .pass-input .un-showPass {
+  position: absolute;
+  top: 32%;
+  right: 5px;
+  color: grey;
+}
+.signin .section_container .signin_cn .form_div .sign_form .pass-input .un-showPass:hover {
+  cursor: pointer;
+  color: black;
+}
 .signin .section_container .signin_cn .form_div .sign_form .form_input_div {
+  position: relative;
   margin-top: 20px;
 }
 .signin .section_container .signin_cn .form_div .sign_form .form_input_div .input_text {
@@ -82,15 +93,15 @@
   flex-wrap: wrap;
   flex-direction: column;
   align-content: center;
-  width: 310px;
-  height: 30px;
-  padding: 20px;
   background-color: #d10024;
   border: grey;
   color: white;
   cursor: pointer;
   font-size: large;
   transition: ease-in-out 1s;
+  width: 310px;
+  height: 30px;
+  padding: 20px;
 }
 .signin .section_container .signin_cn .form_div .sign_form .form_input_div .input_submit:hover {
   box-shadow: 0px 0px 5px 0px white;
@@ -123,21 +134,21 @@
 }
 .signin .section_container .signin_cn .form_div .usernameError_div {
   padding: 5px;
-  padding-top: 10px;
   color: red;
+  padding-top: 10px;
 }
 .signin .section_container .signin_cn .form_div .emailError_div {
   padding: 5px;
-  padding-top: 10px;
   color: red;
+  padding-top: 10px;
 }
 .signin .section_container .signin_cn .form_div .emailError_div:empty {
   display: none;
 }
 .signin .section_container .signin_cn .form_div .passowrdError_div {
   padding: 5px;
-  padding-top: 10px;
   color: red;
+  padding-top: 10px;
 }
 .signin .section_container .signin_cn .form_div .passowrdError_div:empty {
   display: none;
@@ -236,15 +247,26 @@
     letter-spacing: 1px;
     margin: 0;
   }
+  .signin .section_container .signin_cn .form_div .sign_form .pass-input .un-showPass {
+    position: absolute;
+    top: 32%;
+    right: 0px;
+    color: grey;
+  }
+  .signin .section_container .signin_cn .form_div .sign_form .pass-input .un-showPass:hover {
+    cursor: pointer;
+    color: black;
+  }
   .signin .section_container .signin_cn .form_div .sign_form .form_input_div {
     margin-top: 20px;
+    max-width: 100%;
   }
   .signin .section_container .signin_cn .form_div .sign_form .form_input_div .input_text {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     flex-direction: column;
-    width: 90%;
+    width: 100%;
     height: 25px;
     padding: 5px;
     border: 1px solid grey;
@@ -261,7 +283,7 @@
     flex-wrap: wrap;
     flex-direction: column;
     align-content: center;
-    width: 310px;
+    width: 105%;
     height: 30px;
     padding: 20px;
     background-color: #d10024;

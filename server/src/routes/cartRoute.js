@@ -1,6 +1,5 @@
-const express = require("express");
-const cartRoute = express.Router();
-const {
+import express from 'express'
+import  {
   getAllCarts,
   getCart,
   getUserCart,
@@ -11,8 +10,11 @@ const {
   deleteItemQuantityCart,
   updateCart,
   increaseUserCart,
-} = require("../controllers/cartFn");
-const verifyToken = require("../middlewares/verfyToken");
+} from "../controllers/cartFn.js"
+
+export const cartRoute = express.Router();
+
+// const verifyToken = require("../middlewares/verfyToken.js");
 
 cartRoute.get("/cart", /*verifyToken,*/ getAllCarts);
 cartRoute.get("/cart/:id", /*verifyToken,*/ getCart);
@@ -31,4 +33,5 @@ cartRoute.delete(
 cartRoute.put("/cart/:id", /*verifyToken,*/ updateCart);
 cartRoute.put("/cart/item/:userId/:id", /*verifyToken,*/ increaseUserCart);
 
-module.exports = cartRoute;
+
+ 

@@ -1,7 +1,8 @@
-const express = require("express");
-const authRoute = express.Router();
-const {signup,signin} = require("../controllers/authFn");
-const { body} = require("express-validator");
+import express from 'express';
+import {signup,signin} from '../controllers/authFn.js'
+import {body} from "express-validator"
+
+export const authRoute = express.Router();
 
 authRoute.post(
   "/signup",
@@ -17,5 +18,3 @@ authRoute.post(
 );
 
 authRoute.post('/signin',signin)
-
-module.exports = authRoute;

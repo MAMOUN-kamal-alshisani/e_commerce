@@ -1,13 +1,16 @@
-const User = require("../models/user");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-require("dotenv").config();
+
+import User from '../models/user.js'
+import jwt from 'jsonwebtoken'
+import dotenv from 'dotenv';
+import bcrypt from 'bcrypt'
+dotenv.config()
 
 function createToken(id) {
   return jwt.sign({ id: id }, process.env.SECRET);
-}
+}  
 
-async function signup(req, res) {
+
+export async function signup(req, res) {
   try {
     const { Username, Email, Password } = req.body;
     const genSalt = bcrypt.genSaltSync(16);
@@ -37,13 +40,15 @@ async function signup(req, res) {
   }
 }
 
-async function signin(req, res) {
+export async function signin(req, res) {
   const { Email, Password } = req.body;
   try {
     const user = await User.findOne({ where: { Email: Email } });
-    if (!user) return res.status(404).send("email is incorrect");
+   
+    if (!user) return res.status(404).send({msg:"email is incorrect"});
+    
     const validPass = await bcrypt.compare(Password, user.Password);
-    if (!validPass) return res.status(404).send("password is incorrect");
+    if (!validPass) return res.status(404).send({msg:"password is incorrect"});
 
     const token = createToken(user.id);
    await res
@@ -57,8 +62,8 @@ async function signin(req, res) {
         user: { id: user.id, username: user.Username, email: user.Email },
       });
   } catch (err) {
+
     res.status(404).send(err);
+    
   }
 }
-
-module.exports = { signup, signin };

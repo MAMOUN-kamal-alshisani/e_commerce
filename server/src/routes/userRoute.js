@@ -1,19 +1,17 @@
-const express = require("express");
-const userRoute = express.Router();
-const {
+import express from "express";
+import {
   getAllUsers,
   getUser,
   createUser,
   deleteUser,
   UpdateUser,
-} = require("../controllers/userFn");
+} from "../controllers/userFn.js";
+import { verifyToken, verifyAdmin } from "../middlewares/verfyToken.js";
 
-const { verifyToken, verifyAdmin } = require("../middlewares/verfyToken");
+export const userRoute = express.Router();
 
 userRoute.get("/users", /*verifyAdmin,*/ getAllUsers);
 userRoute.get("/user/:id", verifyAdmin, getUser);
 userRoute.post("/users", verifyAdmin, createUser);
 userRoute.delete("/user/:id", verifyAdmin, deleteUser);
 userRoute.put("/user/:id", verifyAdmin, UpdateUser);
-
-module.exports = userRoute;

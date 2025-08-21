@@ -68,13 +68,16 @@ function Profile() {
       console.error(err);
     }
   };
-  const changeUserPictureHandler = async () => {
+  async function changeUserPictureHandler(){
     try {
       const imgUrl = await fileUploadHandler();
       // console.log(uploadFile);
 
       if (imgUrl) {
-        addProfilePicture({ user: user.user, data: imgUrl.downloadURL });
+       return addProfilePicture({ user: user.user, data: imgUrl.downloadURL });
+      }
+      else{
+        console.log('no img data');
       }
     } catch (err) {
       console.error(err);

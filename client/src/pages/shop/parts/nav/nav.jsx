@@ -6,28 +6,15 @@ import { IoIosPricetags } from "react-icons/io";
 import { BiCategory } from "react-icons/bi";
 import { TbHexagonLetterA } from "react-icons/tb";
 import { TbHexagonLetterE } from "react-icons/tb";
-// import { LuPackageOpen } from "react-icons/lu";
-// import { Range } from "react-range";
-// import { useDispatch } from "react-redux";
+
 import {
-  // useFetchItemsQuery,
   useFetchElectronicItemsQuery,
   useFetchAccessorieItemsQuery,
   useFetchItemsByPriceQuery,
-  useFetchSearchedItemsQuery
+  useFetchSearchedItemsQuery,
 } from "../../../../store/apis/itemApi";
 import { useState, useEffect } from "react";
-// import Box from "@mui/material/Box";
-// import Slider from "@mui/material/Slider";
 export default function Nav({ setFilteredItems, items, setActivateLink }) {
-  // console.log(items);
-  // const dispatch = useDispatch();
-  // const { data, error, isLoading } = useFetchItemsQuery(item);
-
-  // const electricsCategory  = useFetchElectronicItemsQuery()
-  // console.log(electricsCategory)
-  // console.log(electricsCategory);
-  // const [listItems, useListItems] = useState(data);
   const [electronicsList, setElectronicsList] = useState([]);
   const [accessoriesList, setAccessoriesList] = useState([]);
   const [showElectroList, setShowElectroList] = useState(false);
@@ -44,16 +31,14 @@ export default function Nav({ setFilteredItems, items, setActivateLink }) {
   const electricsCategory = useFetchElectronicItemsQuery();
   const accessoriesCategory = useFetchAccessorieItemsQuery();
   const ItemsByPrice = useFetchItemsByPriceQuery();
-  const SearchedItem  = useFetchSearchedItemsQuery(searchInput)
+  const SearchedItem = useFetchSearchedItemsQuery(searchInput);
   useEffect(() => {
-  
     /// fetch api data and take min&max price for range type input ///
     const numArr = [];
     ItemsByPrice.isSuccess &&
       ItemsByPrice?.data?.map((item) => numArr.push(Number(Math.round(item))));
     setMinPriceRange(Math.min(...numArr));
     setMaxPriceRange(Math.max(...numArr));
-    // console.log(maxPriceRange);
   }, [ItemsByPrice.isSuccess, ItemsByPrice.data]);
 
   useEffect(() => {
@@ -106,9 +91,9 @@ export default function Nav({ setFilteredItems, items, setActivateLink }) {
     setFilteredItems(filterItemByPrice);
   };
 
-  const handleSearchedItem = ()=>{
-    setFilteredItems(SearchedItem?.data)
-  }
+  const handleSearchedItem = () => {
+    setFilteredItems(SearchedItem?.data);
+  };
   return (
     <nav className={`navbar ${toggleSideBar && "mini_navbar"}`}>
       <div className="header_logo_menu">
@@ -183,13 +168,17 @@ export default function Nav({ setFilteredItems, items, setActivateLink }) {
 
         {showSearchInput && (
           <div className="search_input_cn">
-            <input type={"search"} id="search_input" onChange={(e)=>setSearchInput(e.target.value)}/>
+            <input
+              type={"search"}
+              id="search_input"
+              onChange={(e) => setSearchInput(e.target.value)}
+            />
             <input
               type={"submit"}
               id="search_sb"
               className="input_submit"
               value={"Search"}
-              onClick={()=>handleSearchedItem()}
+              onClick={() => handleSearchedItem()}
             />
           </div>
         )}

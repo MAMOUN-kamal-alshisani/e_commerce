@@ -1,9 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import Cookies from "universal-cookie";
-// const storage = JSON.parse(localStorage?.getItem("user"));
-// console.log(storage.user);
+
 const storage = new Cookies().get('user')
-// console.log(storage.user.id);
 
 const authSlice = createSlice({
   name: "auth",
@@ -32,5 +30,3 @@ export default authSlice;
 
 export const selectCurrentUser = (state) => state.auth.user;
 export const selectCurrentToken = (state) => state.auth.token;
-
-// console.log(selectCurrentUser);

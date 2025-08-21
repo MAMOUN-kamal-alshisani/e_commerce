@@ -71,6 +71,18 @@ function SignUp() {
       }
     }, 4000);
   }, [error, setError,errorEmail]);
+
+
+  const handleShowHidePassWord = (e)=>{
+  let input = e.target.parentElement;
+  if(input?.previousSibling.getAttribute('type') === 'password'){
+    input?.previousSibling.setAttribute('type','text')
+  }
+  else{
+    input?.previousSibling.setAttribute('type','password')
+  }
+
+  }
   return (
     <div className="signup">
       <div className="section_container">
@@ -111,7 +123,7 @@ function SignUp() {
                 />
               </div>
               <div className="emailError_div"></div>
-              <div className="form_input_div">
+              <div className="form_input_div pass-input">
                 <input
                   type="password"
                   name={"password"}
@@ -120,9 +132,9 @@ function SignUp() {
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder={"Enter password"}
                 />
-                  <BsEyeFill/>
+                  <BsEyeFill className="un-showPass" onClick={(e)=>handleShowHidePassWord(e)}/>
               </div>
-              <div className="form_input_div">
+              <div className="form_input_div pass-input">
                 <input
                   type="password"
                   name={"password"}
@@ -131,6 +143,7 @@ function SignUp() {
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   placeholder={"Confirm password"}
                 />
+                <BsEyeFill className="un-showPass" onClick={(e)=>handleShowHidePassWord(e)}/>
               </div>
               <div className="passowrdError_div"></div>
 

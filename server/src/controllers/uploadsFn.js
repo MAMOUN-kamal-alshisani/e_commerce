@@ -1,22 +1,20 @@
-const multer = require("multer");
-const { firebaseConfig } = require("../config/firebase.config");
-const { initializeApp } = require("firebase/app");
-const {
+import multer from "multer";
+import firebaseConfig from "../config/firebase.config.js";
+import { initializeApp } from "firebase/app";
+import {
   getStorage,
   ref,
   getDownloadURL,
   uploadBytesResumable,
-} = require("firebase/storage");
+} from "firebase/storage";
 
-initializeApp(firebaseConfig);
-
+// create an instance for firbase data which used in this case to store pictures
+initializeApp(firebaseConfig.firebaseConfig);
 const storage = getStorage();
-
 const uploadUserImg = multer({ storage: multer.memoryStorage() });
-
+// store pictures in firebase database
 async function handleUserPictureUpload(req, res) {
-
-  try{
+  try {
     const storageRef = ref(
       storage,
       `/pictures/${Date.now() + req.file.originalname}`
@@ -24,7 +22,7 @@ async function handleUserPictureUpload(req, res) {
     const metadata = {
       contentType: req.file.mimetype,
     };
-  
+
     // Upload the file in the bucket storage
     const snapshot = await uploadBytesResumable(
       storageRef,
@@ -32,7 +30,7 @@ async function handleUserPictureUpload(req, res) {
       metadata
     );
     //by using uploadBytesResumable we can control the progress of uploading like pause, resume, cancel
-  
+
     // Grab the public url
     const downloadURL = await getDownloadURL(snapshot.ref);
     res.status(201).json({
@@ -41,13 +39,9 @@ async function handleUserPictureUpload(req, res) {
       type: req.file.mimetype,
       downloadURL: downloadURL,
     });
-  }catch(err){
-    console.log(err)
+  } catch (err) {
+    console.log(err);
   }
-
 }
 
-module.exports = {
-  uploadUserImg,
-  handleUserPictureUpload,
-};
+export { uploadUserImg, handleUserPictureUpload };

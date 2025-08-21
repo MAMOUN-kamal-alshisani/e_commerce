@@ -1,6 +1,5 @@
-const Profile = require("../models/profile");
-const User = require("../models/user");
-
+import Profile from "../models/profile.js";
+// fetch all user profiles
 async function getAllContacts(req, res) {
   try {
     const contactD = await Profile.findAll({});
@@ -10,7 +9,7 @@ async function getAllContacts(req, res) {
     res.status(404).send(err);
   }
 }
-
+// fetch a profile data by id
 async function getContact(req, res) {
   try {
     const id = req.params.id;
@@ -20,7 +19,7 @@ async function getContact(req, res) {
     res.status(404).send(err.message);
   }
 }
-
+// create new user profile data || update an existing one
 async function createContact(req, res) {
   const { Fname, Lname, Phone, BirthDate, Country, Address, Gender, Email } =
     req.body;
@@ -53,7 +52,7 @@ async function createContact(req, res) {
     res.status(404).send(err);
   }
 }
-
+// remove an existing user profile
 async function deleteContact(req, res) {
   const id = req.params.id;
   try {
@@ -66,43 +65,43 @@ async function deleteContact(req, res) {
     res.status(404).send(err);
   }
 }
-
+// update existing profile picture data || create one
 async function updateContact(req, res) {
   const userId = req.params.userId;
-  const ProfilePhoto = req.body.Photo
+  const ProfilePhoto = req.body.Photo;
   try {
     const userContact = await Profile.findOne({
       where: { userId: userId },
     });
-    if(userContact){
-      const contactD = await Profile.update({
-        Photo:ProfilePhoto
-      },{
-        where: { userId: userId },
-      });
-      
-      res.status(201).send({mssg:"profile data has been updated successfully"});
-     
+    if (userContact) {
+      const contactD = await Profile.update(
+        {
+          Photo: ProfilePhoto,
+        },
+        {
+          where: { userId: userId },
+        }
+      );
+
+      res
+        .status(201)
+        .send({ mssg: "profile data has been updated successfully" });
+    } else {
+      const contactD = await Profile.create(
+        {
+          Photo: ProfilePhoto,
+        },
+        {
+          where: { userId: userId },
+        }
+      );
+      res.status(201).send({ mssg: "contact has been created successfully" });
     }
-    // if(!userContact) return res.status(404).send('profile with specified (Id) is not found!')
-    else {
-      const contactD = await Profile.create({
-        Photo:ProfilePhoto},{
-        where: { userId: userId },
-      });
-      res.status(201).send({mssg:"contact has been created successfully"});
-    }
-    //  else {
-    //   const contactD = await Profile.create(req.body, userId {
-    //     where: { userId: userId },
-    //   });
-    //   res.status(201).send("contact has been updated successfully");
-    // }
   } catch (err) {
     res.status(404).send(err.message);
   }
 }
-
+// fetch user profile by user id
 async function getUserContact(req, res) {
   try {
     const userId = req.params.userId;
@@ -119,7 +118,7 @@ async function getUserContact(req, res) {
   }
 }
 
-module.exports = {
+export {
   getUserContact,
   getAllContacts,
   getContact,

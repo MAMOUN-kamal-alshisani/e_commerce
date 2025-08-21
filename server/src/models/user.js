@@ -1,6 +1,7 @@
-const { db } = require('../db/db');
-const Sequelize = require("sequelize");
-const Profile = require("./profile");
+import db from "../db/db.js";
+import Sequelize from "sequelize";
+import Profile from "./profile.js";
+
 const User = db.define("User", {
   id: {
     type: Sequelize.DataTypes.INTEGER,
@@ -40,7 +41,7 @@ const User = db.define("User", {
   },
 });
 
-
 User.hasOne(Profile);
 Profile.belongsTo(User);
-module.exports = User;
+
+export default User;

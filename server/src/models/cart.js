@@ -1,6 +1,7 @@
-const { db } = require("../db/db");
-const Sequelize = require("sequelize");
-const User = require("./user");
+import db from "../db/db.js";
+import Sequelize from "sequelize";
+import User from "./user.js";
+
 const Cart = db.define("Cart", {
   id: {
     type: Sequelize.DataTypes.INTEGER,
@@ -18,4 +19,4 @@ const Cart = db.define("Cart", {
 
 Cart.belongsTo(User);
 
-module.exports = Cart;
+export default Cart;

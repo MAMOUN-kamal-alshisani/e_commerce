@@ -1,6 +1,6 @@
-const Sequelize = require("sequelize");
-const User = require("./user");
-const { db } = require("../db/db");
+import Sequelize from "sequelize";
+import User from "./user.js";
+import db from "../db/db.js";
 
 const FavItems = db.define("Favorite", {
   id: {
@@ -18,4 +18,4 @@ const FavItems = db.define("Favorite", {
 });
 FavItems.belongsTo(User);
 
-module.exports = FavItems;
+export default FavItems;

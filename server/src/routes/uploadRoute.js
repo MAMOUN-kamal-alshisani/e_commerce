@@ -1,10 +1,10 @@
-
-const express = require("express");
-const uploadRoute = express.Router();
-const {
+import express from 'express'
+import {
   uploadUserImg,
   handleUserPictureUpload,
-} = require("../controllers/uploadsFn");
+} from "../controllers/uploadsFn.js";
+
+export const uploadRoute = express.Router();
 
 uploadRoute.post(
   "/api/upload",
@@ -12,4 +12,4 @@ uploadRoute.post(
   handleUserPictureUpload
 );
 
-module.exports = uploadRoute;
+ 

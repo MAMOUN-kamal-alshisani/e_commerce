@@ -4,7 +4,6 @@ import {
   useFetchItemsQuery,
   useFetchAllLatestItemsQuery,
 } from "../../store/apis/itemApi";
-
 import { useState, useEffect } from "react";
 import Skeleton from "@mui/material/Skeleton";
 import Card from "./parts/shopcard/card";
@@ -13,13 +12,10 @@ import Nav from "./parts/nav/nav";
 function Shop({ item }) {
   const { data, error, isLoading } = useFetchItemsQuery(item);
   const latestItems = useFetchAllLatestItemsQuery();
+
   const [activateLink, setActivateLink] = useState(null);
   const [items] = useState(data);
   const [filteredItems, setFilteredItems] = useState(items);
-
-  useEffect(() => {
-    setFilteredItems(data);
-  }, [data]);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(8);
@@ -27,6 +23,10 @@ function Shop({ item }) {
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = filteredItems?.slice(indexOfFirstPost, indexOfLastPost);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  useEffect(() => {
+    setFilteredItems(data);
+  }, [data]);
 
   if (error) {
     return "error fetching data";
@@ -78,7 +78,6 @@ function Shop({ item }) {
       <div className="shopList_Container">
         <div className="card_container">
           <div className="filter_list">
-
             <div className="filter_product_type filter_cn">
               <button
                 id="all"
@@ -139,4 +138,3 @@ function Shop({ item }) {
 }
 
 export default Shop;
-

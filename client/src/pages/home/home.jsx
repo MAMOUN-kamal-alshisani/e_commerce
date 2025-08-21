@@ -27,7 +27,9 @@ import onLineOrder from "../../assets/online_order.jpg";
 import returnsAndFunds from "../../assets/returns_and_funds.webp";
 import Cookies from "universal-cookie";
 function Home() {
+
   const user = new Cookies().get("user");
+
   const { data, isSuccess } = useFetchLatestItemsQuery();
   const featuredItems = useFetchFeaturedItemsQuery();
   const ExclusiveItem = useFetchExclusiveItemQuery();
@@ -40,6 +42,7 @@ function Home() {
   const [loadTargetId, setLoadTargetId] = useState("");
   const [loadlikedId, setLoadlikedId] = useState("");
   const [mdStatusMessage, setMdStatusMessage] = useState("");
+
   useEffect(() => {
     setProductId(userLikedProductId.data);
   }, [
@@ -53,6 +56,7 @@ function Home() {
   useEffect(() => {
     const mdElement = document.querySelector(".product_status_md");
     const cartAddBtn = document.querySelectorAll(".cart_btn");
+    
     if (addToCartResult.isSuccess) {
       cartAddBtn.forEach((btn) => (btn.disabled = true));
       setTimeout(() => {

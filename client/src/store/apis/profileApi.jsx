@@ -10,7 +10,7 @@ const profileApi = createApi({
     return {
       fetchProfileData: builder.query({
         providesTags: ["profile"],
-        query: ({user}) => {
+        query: ({ user }) => {
           return {
             url: `/contacted/${user?.id}`,
             method: "GET",
@@ -19,7 +19,7 @@ const profileApi = createApi({
       }),
       updateProfileData: builder.mutation({
         invalidatesTags: ["profile"],
-        query: ({user, data}) => {
+        query: ({ user, data }) => {
           return {
             url: `/contact/${user?.user?.id}`,
             method: "POST",
@@ -32,20 +32,19 @@ const profileApi = createApi({
               Address: data.Address,
               Email: data.Email,
               Gender: data.Gender,
-              userId:user.user.id
+              userId: user.user.id,
             },
           };
         },
       }),
       AddProfilePicture: builder.mutation({
         invalidatesTags: ["profile"],
-        query: ({user, data}) => {
-
+        query: ({ user, data }) => {
           return {
             url: `/contact/picture/${user?.id}`,
             method: "PUT",
             body: {
-              Photo:data
+              Photo: data,
             },
           };
         },
@@ -54,7 +53,10 @@ const profileApi = createApi({
   },
 });
 
-export const { useFetchProfileDataQuery, useUpdateProfileDataMutation, useAddProfilePictureMutation } =
-  profileApi;
+export const {
+  useFetchProfileDataQuery,
+  useUpdateProfileDataMutation,
+  useAddProfilePictureMutation,
+} = profileApi;
 
 export { profileApi };

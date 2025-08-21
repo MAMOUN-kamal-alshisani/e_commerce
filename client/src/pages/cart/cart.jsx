@@ -12,14 +12,16 @@ import { CgSpinner } from "react-icons/cg";
 import Cookies from "universal-cookie";
 function Cart() {
   const user = new Cookies().get("user");
-  const [shippingCountry, setShippingCountry] = useState("");
-  const [shippingCost, setShippingCost] = useState(0);
-  const { data, isLoading } = useFetchCartQuery(user);
   const [removeItem] = useRemoveFromCartMutation();
   const [decreaseOneCartItem] = useDecreaseUserCartMutation();
   const [increaseOneCartItem] = useIncreaseUserCartMutation();
+  const { data, isLoading } = useFetchCartQuery(user);
   const cartQuantity = useFetchCartCountQuery(user);
+
   const [totalCartPrice, setTotalCartPrice] = useState([0]);
+  const [shippingCost, setShippingCost] = useState(0);
+  const [shippingCountry, setShippingCountry] = useState("");
+
   useEffect(() => {
     switch (shippingCountry) {
       case "Jordan":
@@ -38,10 +40,10 @@ function Cart() {
   useEffect(() => {
     setTotalCartPrice([]);
     data?.map((item) => {
-       return setTotalCartPrice((prev) => [
-          ...prev,
-          eval(Number(item?.item?.price) + "*" + item?.quantity)
-        ]);
+      return setTotalCartPrice((prev) => [
+        ...prev,
+        eval(Number(item?.item?.price) + "*" + item?.quantity),
+      ]);
     });
   }, [data, decreaseOneCartItem, increaseOneCartItem]);
   return (
@@ -66,10 +68,7 @@ function Cart() {
                     <td className="item_card">
                       <div className="card_list">
                         <div className="cardImg_cn">
-                          <img
-                            src={item.item?.img[0]}
-                            alt="pic"
-                          />
+                          <img src={item.item?.img[0]} alt="pic" />
                         </div>
 
                         <div className="cart_item_info_cn">
@@ -167,7 +166,7 @@ function Cart() {
           </div>
           <div className="ship_details_pt3">
             <span className="details_label">Items Cost</span>
-            <span>${Math.round(eval(totalCartPrice.join("+"))) || '$0'}</span>
+            <span>${Math.round(eval(totalCartPrice.join("+"))) || "$0"}</span>
           </div>
           <div className="ship_details_pt4">
             <span className="details_label">shipping</span>

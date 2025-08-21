@@ -10,7 +10,7 @@ export default function Blog() {
       <div className="Blog">
         <section className="Blog_img_sn">
           <img
-            src="https://wolfiq.com.au/wp-content/uploads/2022/03/Why-are-blogs-so-important-for-your-website.jpg"
+            src="https://clickfirstmarketing.com/wp-content/uploads/Purpose-of-Blogging.jpeg"
             alt=""
             className='main_blog_img'
           />
@@ -36,7 +36,9 @@ export default function Blog() {
         </div>
 
         </section>
-        <Pagination postsPerPage={3} totalPosts={20} paginate={1} />
+        <Pagination postsPerPage={3} totalPosts={20} paginate={()=>{
+          return 1
+        }} />
 
       </div>
     </>

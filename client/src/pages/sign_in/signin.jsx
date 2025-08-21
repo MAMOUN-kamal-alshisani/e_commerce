@@ -1,5 +1,5 @@
 import "./scss/signin.css";
-import { useState } from "react";
+import {  useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -7,6 +7,8 @@ import { authActions } from "../../store/slices/authSlice";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { FaHome } from "react-icons/fa";
 import Cookies from "universal-cookie";
+import { BsEyeFill } from "react-icons/bs";
+
 function SignIn() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -46,24 +48,37 @@ function SignIn() {
     } catch (err) {
       setErrorSpinner(true);
       setError(err);
-      console.log(err);
+      console.log(err.response);
     }
   };
 
   if (error) {
-    if (error.response.data.includes("password")) {
+    if (error?.response?.data.msg?.includes("password")) {
       setTimeout(() => {
         setErrorSpinner(false);
-        errorPassword.textContent = error.response.data;
+        errorPassword.textContent = error?.response?.data.msg;
       }, 3000);
-    } else if (error.response.data.includes("email")) {
+    } else if (error?.response?.data?.msg.includes("email")) {
       setTimeout(() => {
         setErrorSpinner(false);
-        errorEmail.textContent = error.response.data;
+        errorEmail.textContent = error?.response?.data.msg;
+      }, 3000);
+    } else {
+      setTimeout(() => {
+        setErrorSpinner(false);
+        errorEmail.textContent = "user not registered";
       }, 3000);
     }
   }
 
+  const handleShowHidePassWord = (e) => {
+    let input = e.target.parentElement;
+    if (input?.previousSibling.getAttribute("type") === "password") {
+      input?.previousSibling.setAttribute("type", "text");
+    } else {
+      input?.previousSibling.setAttribute("type", "password");
+    }
+  };
 
   return (
     <div className="signin">
@@ -93,7 +108,7 @@ function SignIn() {
                 />
               </div>
               <div className="emailError_div"></div>
-              <div className="form_input_div">
+              <div className="form_input_div pass-input">
                 <input
                   type="password"
                   name={"password"}
@@ -101,6 +116,10 @@ function SignIn() {
                   className="input_text"
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder={"Enter password"}
+                />
+                <BsEyeFill
+                  className="un-showPass"
+                  onClick={(e) => handleShowHidePassWord(e)}
                 />
               </div>
 

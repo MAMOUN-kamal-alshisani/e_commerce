@@ -11,18 +11,23 @@ import { useEffect, useState } from "react";
 import Rating from "../../components/star/rating";
 import "react-photo-view/dist/react-photo-view.css";
 import Cookies from "universal-cookie";
+
 function Product() {
+  const user = new Cookies().get("user");
   const Location = useLocation();
   const ProductId = Location.pathname.split("/")[2];
   const { data, isSuccess } = useFetchItemByIdQuery(ProductId);
-  const [dataSpecialGrading, setDataSpecialGrading] = useState("");
   const [addToCart, addToCartResult] = useAddQuantityToCartMutation();
+
+  
+  const [dataSpecialGrading, setDataSpecialGrading] = useState("");
   const [stock, SetStock] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [productAddStatus, setProductAddStatus] = useState("");
   const [imgMd, setImgMd] = useState("");
   const [showMd, setShowMd] = useState(false);
-  const user = new Cookies().get("user");
+
+  
   const handleImgMd = (e) => {
     setShowMd(true);
     setImgMd(e.target.src);

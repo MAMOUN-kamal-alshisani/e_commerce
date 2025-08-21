@@ -1,4 +1,3 @@
-// / for future devs
 
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
@@ -14,16 +13,9 @@ const cartApi = createApi({
       fetchCart: builder.query({
         providesTags: ["carts"],
         query: (user) => {
-          // console.log(data);
-          // console.log(user);
-
           return {
             url: `/carted/${user?.user?.id}`,
             method: "GET",
-            // body:{
-            //   cart:[data.id],
-            //   userId:user.id
-            // }
           };
         },
       }),
@@ -31,29 +23,18 @@ const cartApi = createApi({
         providesTags: ["carts"],
 
         query: (user) => {
-          // console.log(data);
-          // console.log(user);
-          // onSuccess(user)=>{
-
-          // };
           return {
             url: `/cart/count/${user?.user?.id}`,
             method: "GET",
             onSuccess: (data) => {
               return data;
             },
-            // body:{
-            //   cart:[data.id],
-            //   userId:user.id
-            // }
           };
         },
       }),
       addToCart: builder.mutation({
         invalidatesTags: ["carts"],
         query: ({ user, data }) => {
-          // console.log(data);
-          // console.log(user.user);
           return {
             url: `/cart/${user?.user?.id}`,
             method: "POST",
@@ -70,9 +51,6 @@ const cartApi = createApi({
           let cartArr = []
           for(let i = 0; i< quantity; i++){
           cartArr.push(Number(data?.id))
-            
-            // console.log('sdjsabdaskdbasscsasadasdsad');
-            // console.log(data.id);
           }
           return {
             url: `/cart/${user?.user?.id}`,
@@ -115,7 +93,6 @@ const cartApi = createApi({
   },
 });
 
-// .useFetchItemsQuery()
 
 export const {
   useFetchCartQuery,
@@ -126,5 +103,5 @@ export const {
   useIncreaseUserCartMutation,
   useAddQuantityToCartMutation
 } = cartApi;
-// export const { }= cartApi
+
 export { cartApi };

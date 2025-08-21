@@ -1,12 +1,13 @@
 import { useLocation, Navigate, Outlet } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { selectCurrentToken } from "./slices/authSlice";
+import Cookies from "universal-cookie";
 
-const RequireAuth = () => {
-  const token = useSelector(selectCurrentToken);
+const RequireAuth = ({child}) => {
+  const token = new Cookies()?.get('user')
   const location = useLocation();
-  return token ? (
-    <Outlet />
+  console.log(token.user);
+  
+  return token.user !== undefined ? (
+     <Outlet />
   ) : (
     <Navigate to={"/signin"} state={{ from: location }} replace />
   );

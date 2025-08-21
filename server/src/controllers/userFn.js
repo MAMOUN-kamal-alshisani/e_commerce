@@ -1,5 +1,7 @@
-const User = require("../models/user");
+// const User = require("../models/user");
+import User from "../models/user.js";
 
+// fetch all users from the database
 async function getAllUsers(req, res) {
   try {
     const user = await User.findAll({});
@@ -8,7 +10,7 @@ async function getAllUsers(req, res) {
     res.status(404).send(err.message);
   }
 }
-
+// fetch a user by id
 async function getUser(req, res) {
   try {
     const id = req.params.id;
@@ -18,7 +20,7 @@ async function getUser(req, res) {
     res.status(404).send(err.message);
   }
 }
-
+// create new user
 async function createUser(req, res) {
   try {
     const user = await User.create(req.body);
@@ -27,7 +29,7 @@ async function createUser(req, res) {
     res.send(err.message);
   }
 }
-
+// remove a user by id
 async function deleteUser(req, res) {
   const id = req.params.id;
   try {
@@ -37,7 +39,7 @@ async function deleteUser(req, res) {
     res.status(404).send(err);
   }
 }
-
+// update user data
 async function UpdateUser(req, res) {
   const { Username, Email, Password } = req.body;
   const id = req.params.id;
@@ -52,4 +54,4 @@ async function UpdateUser(req, res) {
   }
 }
 
-module.exports = { getAllUsers, getUser, createUser, deleteUser, UpdateUser };
+export { getAllUsers, getUser, createUser, deleteUser, UpdateUser };
