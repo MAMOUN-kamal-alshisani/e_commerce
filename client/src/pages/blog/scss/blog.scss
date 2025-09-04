@@ -26,7 +26,7 @@
         }
         .bg_details {
           height: 350px;
-          @include flex(flex, center, wrap, row);
+          @include flex(flex, center, nowrap, row);
           align-items: flex-start;
         
           p {
@@ -57,7 +57,7 @@
     }
   }
 }
-@media screen and (max-width:1100px) {
+@media screen and (max-width:1120px) {
   
   .Blog {
     .Blog_img_sn {
