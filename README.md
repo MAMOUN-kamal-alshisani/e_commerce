@@ -4,9 +4,9 @@ TechStore is a full-stack e-commerce web application built with modern web techn
 
 ## 🌐 Live Demo
 
-Frontend [TechStore]: (https://techshop-application.netlify.app)
+Frontend [TechStore](https://techshop-application.netlify.app)
 
-Backend [TechStore-API]: (https://e-commerce-application-w5za.onrender.com)
+Backend [TechStore-API](https://e-commerce-application-w5za.onrender.com)
 
 ## Features
 
