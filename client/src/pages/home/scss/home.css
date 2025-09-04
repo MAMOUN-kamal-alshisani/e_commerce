@@ -259,7 +259,10 @@
   margin: 0;
 }
 .HomePg .product_deals_sn {
-  background: url("https://www.reviewsed.com/wp-content/uploads/2020/01/Gaming-Tech-Gadgets.jpg");
+  background: url("/src/assets/consumer-electronics.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
   margin: 80px auto;
   max-width: 1124px;
   padding: 0px 5px;
@@ -824,7 +827,10 @@
     margin: 0;
   }
   .HomePg .product_deals_sn {
-    background: url("https://www.reviewsed.com/wp-content/uploads/2020/01/Gaming-Tech-Gadgets.jpg");
+    background: url("/src/assets/consumer-electronics.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
     margin: 80px 5px;
     max-width: 1124px;
     padding: 0px 5px;
@@ -1397,7 +1403,10 @@
     margin: 0;
   }
   .HomePg .product_deals_sn {
-    background: url("https://www.reviewsed.com/wp-content/uploads/2020/01/Gaming-Tech-Gadgets.jpg");
+    background: url("/src/assets/consumer-electronics.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
     margin: 80px 5px;
     max-width: 620px;
     padding: 0px 5px;
@@ -1974,7 +1983,10 @@
     margin: 0;
   }
   .HomePg .product_deals_sn {
-    background: url("https://www.reviewsed.com/wp-content/uploads/2020/01/Gaming-Tech-Gadgets.jpg");
+    background: url("/src/assets/consumer-electronics.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
     margin: 80px 5px;
     max-width: 620px;
     padding: 0px 5px;
