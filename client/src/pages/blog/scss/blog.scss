@@ -28,8 +28,7 @@
           height: 350px;
           @include flex(flex, center, wrap, row);
           align-items: flex-start;
-          h3 {
-          }
+        
           p {
             font-family: Arial, Helvetica, sans-serif;
             color: grey;
