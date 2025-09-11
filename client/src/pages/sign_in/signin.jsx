@@ -13,6 +13,7 @@ function SignIn() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const [error, setError] = useState(null);
   const [errorSpinner, setErrorSpinner] = useState(false);
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ function SignIn() {
   const errorPassword = document.querySelector(".passowrdError_div");
   const cookies = new Cookies();
   const signInHandler = async () => {
+
     try {
       const url = `${process.env.REACT_APP_BASE_URL}/signin`;
       const user = await axios.post(url, {
@@ -68,6 +70,7 @@ function SignIn() {
       }, 3000);
     }
   }
+
   const handleShowHidePassWord = (e) => {
     let input = e.target.parentElement;
     if (input?.previousSibling.getAttribute("type") === "password") {
@@ -76,6 +79,7 @@ function SignIn() {
       input?.previousSibling.setAttribute("type", "password");
     }
   };
+
   return (
     <div className="signin">
       <div className="section_container">

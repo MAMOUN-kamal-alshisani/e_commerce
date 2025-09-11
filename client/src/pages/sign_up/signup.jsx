@@ -59,14 +59,12 @@ function SignUp() {
     errorPassword,
   ]);
 
-  useEffect(() => {
-  const errorEmail = document.querySelector(".emailError_div");
 
-    // console.log(error);
+  useEffect(() => {
+
     if (error !== null) {
       return (errorEmail.textContent = error?.response?.data?.msg);
     }
-
     setTimeout(() => {
       if(errorEmail.textContent !== null){
         return (errorEmail.textContent = "");
