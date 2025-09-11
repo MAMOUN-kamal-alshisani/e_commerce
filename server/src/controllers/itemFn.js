@@ -170,15 +170,19 @@ async function searchItem(req, res) {
         },
       },
     });
-    if (findItem.length > 0) {
-      res.send(findItem);
-    } else {
+
+    if (findItem.length <= 0) {
       const subKeyWord = keyWord.at(0);
       const findItem = await Item.findAll({
         [Sequelize.Op.iLike]: `%${subKeyWord}%`,
       });
-      res.send(findItem);
+
+      return res.send(findItem);
     }
+    // else {
+
+   return  res.send(findItem);
+    // }
   } catch (err) {
     res.send(err);
   }

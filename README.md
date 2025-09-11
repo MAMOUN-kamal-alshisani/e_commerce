@@ -1,3 +1,4 @@
+
 # TechStore
 
 TechStore is a full-stack e-commerce web application built with modern web technologies. It allows users to browse, search, and purchase tech products in a smooth and responsive interface.
@@ -64,3 +65,4 @@ Contributions are welcome! Feel free to open issues and pull requests.
 ## 📜 License
 
 This project is licensed under the MIT License
+

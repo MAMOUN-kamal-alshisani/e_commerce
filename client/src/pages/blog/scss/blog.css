@@ -34,7 +34,7 @@
   display: flex;
   justify-content: center;
   flex-wrap: nowrap;
-  flex-direction: row;
+  flex-direction: column;
   align-items: flex-start;
 }
 .Blog .Blog_card_sn .blog_cards .bg_card .bg_details p {
