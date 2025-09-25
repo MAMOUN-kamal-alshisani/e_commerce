@@ -25,8 +25,13 @@ server.get("/", (req, res) => {
 });
 
 server.use(
-  cors(/*{
-  credentials: true,}*/)
+  cors(
+    {
+      origin: ["http://localhost:3000", 'https://e-commerce-application-w5za.onrender.com', process.env.DATABASE],
+      methods: ["GET", "POST", "PUT", "DELETE"],
+      credentials: true,
+    }
+  )
 );
 server.use(morgan("tiny"));
 server.use(express.json());
